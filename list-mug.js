@@ -19,6 +19,7 @@ const jsonData = [
 
 // <div class="item-Area"> 요소 선택.
 const itemArea = document.querySelector('.item-area');
+const itemCount = document.querySelector('.item-count');
 
 // jsonData 배열 각 항목을 반복하고 <a> 요소 생성.
 const links = jsonData.map(data => {
@@ -50,3 +51,6 @@ const links = jsonData.map(data => {
 
 // 반환된 <a> 요소들을 <div class="item-Area">에 추가.
 links.forEach(link => itemArea.appendChild(link));
+
+//jsonData의 length를 측정하여 itemCount의 innerHTML에 추가.
+itemCount.innerHTML = `${jsonData.length}`;
