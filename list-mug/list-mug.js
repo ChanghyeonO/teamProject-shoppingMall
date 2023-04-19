@@ -55,6 +55,7 @@ colorMenuTitle.addEventListener('click', function () {
     if (itemColorMenu.style.display === 'none') {
         itemColorMenu.style.display = 'block';
         itemColorMenu.style.display = 'flex';
+
     } else {
         itemColorMenu.style.display = 'none';
     }
