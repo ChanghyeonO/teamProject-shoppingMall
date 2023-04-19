@@ -6,6 +6,12 @@ const itemCount = document.querySelector('.item-count');
 const colorMenuTitle = document.querySelector('.color-menu-title');
 const itemColorMenu = document.querySelector('.item-color-menu');
 
+const stockMenuTitle = document.querySelector('.stock-menu-title');
+const itemStockMenu = document.querySelector('.item-stock-menu');
+
+const priceMenuTitle = document.querySelector('.price-menu-title');
+const itemPriceMenu = document.querySelector('.item-price-menu');
+
 //item-area에 html코드를 생성해주고 데이터와 넣어주는 코드 작성
 
 // jsonData 배열 각 항목을 반복하고 <a> 요소 생성.
@@ -13,7 +19,7 @@ const links = jsonData.map(data => {
 
     // <a> 요소 생성, css 조작을 위해 classList 추가.
     const link = document.createElement('a');
-    link.setAttribute('href', jsonData.pageLink);
+    link.setAttribute('href', data.pageLink);
     link.classList.add('item-box');
 
     // <img> 요소 생성하고 src와 alt 속성 설정, css 조작을 위해 classList 추가.
@@ -53,10 +59,24 @@ itemCount.innerHTML = `${jsonData.length}`;
 
 colorMenuTitle.addEventListener('click', function () {
     if (itemColorMenu.style.display === 'none') {
+
         itemColorMenu.style.display = 'block';
+        itemStockMenu.style.display = 'none';
+
         itemColorMenu.style.display = 'flex';
 
     } else {
         itemColorMenu.style.display = 'none';
+    }
+});
+
+stockMenuTitle.addEventListener('click', function () {
+    if (itemStockMenu.style.display === 'none') {
+
+        itemStockMenu.style.display = 'block';
+        itemColorMenu.style.display = 'none';
+
+    } else {
+        itemStockMenu.style.display = 'none';
     }
 });
