@@ -28,10 +28,19 @@ async function handleSubmit(e) {
   // const addressOption = addressOptionInput.value
 
     
-  // 비밀번호 비교
-  if (password !== passwordConfirm) {
-    return alert("비밀번호가 일치하지 않습니다.")
-  } 
+  // 유효성 검사
+
+  const isIdValid = id.length >= 2;
+  const isPasswordValid = password.length >= 4;
+  const isPasswordCheck = password === passwordConfirm;
+
+  if (!isIdValid || !isPasswordValid) {
+    return alert("이름은 2글자 이상, 비밀번호는 4글자 이상이어야 합니다.");
+  }
+
+  if (!isPasswordCheck) {
+    return alert("비밀번호가 일치하지 않습니다.");
+  }
 
   // 객체 생성
   const data = {
