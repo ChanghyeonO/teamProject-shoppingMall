@@ -12,6 +12,7 @@ body {
 	width: 100%;
 	height: 50px;
 	background-color: aqua;
+	z-index: 1;
 }
 
 .homepage-name {
@@ -144,4 +145,89 @@ body {
 .item-price {
 	font-size: 12px;
 	margin-top: 10%;
+}
+
+.item-color-menu {
+	display: none;
+	position: absolute;
+	text-align: left;
+	flex-wrap: wrap;
+	width: 220px;
+	height: 240px;
+	margin-left: 120px;
+	margin-top: 30px;
+	padding: 20px 20px 10px 20px;
+	background-color: aliceblue;
+	font-size: 20px;
+	border: 1px solid #000;
+	box-shadow: 3px 3px 15px #666;
+}
+
+.item-color-menu li {
+	width: 50%;
+	height: 20px;
+	cursor: pointer;
+	color: #ccc;
+	box-sizing: border-box;
+	padding: 5px;
+}
+
+.item-color-menu li input {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: 15px;
+	height: 15px;
+	border-radius: 50%;
+	border: 1px solid #ccc;
+	outline: none;
+	cursor: pointer;
+	vertical-align: middle;
+}
+.item-color-menu li input:checked {
+	border: 1px solid black;
+	padding: 1px;
+}
+
+.color-clear input {
+	background-color: none;
+}
+.color-white input {
+	background-color: #fff;
+}
+.color-black input {
+	background-color: black;
+}
+.color-gray input {
+	background-color: gray;
+}
+.color-brown input {
+	background-color: brown;
+}
+.color-beige input {
+	background-color: beige;
+}
+.color-green input {
+	background-color: green;
+}
+.color-blue input {
+	background-color: blue;
+}
+.color-yellow input {
+	background-color: yellow;
+}
+.color-pink input {
+	background-color: pink;
+}
+.color-red input {
+	background-color: red;
+}
+.color-orange input {
+	background-color: orange;
+}
+
+.item-color-menu-button {
+	width: 100%;
+	height: 40px;
+	margin-top: 10px;
 }

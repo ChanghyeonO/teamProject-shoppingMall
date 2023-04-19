@@ -3,6 +3,9 @@ import { jsonData } from "./list-mug-json.js";
 const itemArea = document.querySelector('.item-area');
 const itemCount = document.querySelector('.item-count');
 
+const colorMenuTitle = document.querySelector('.color-menu-title');
+const itemColorMenu = document.querySelector('.item-color-menu');
+
 //item-area에 html코드를 생성해주고 데이터와 넣어주는 코드 작성
 
 // jsonData 배열 각 항목을 반복하고 <a> 요소 생성.
@@ -44,3 +47,15 @@ links.forEach(link => itemArea.appendChild(link));
 //jsonData의 length를 측정하여 itemCount의 innerHTML에 추가.
 itemCount.innerHTML = `${jsonData.length}`;
 
+
+
+// item - color - menu 조작하는 js 코드 생성
+
+colorMenuTitle.addEventListener('click', function () {
+    if (itemColorMenu.style.display === 'none') {
+        itemColorMenu.style.display = 'block';
+        itemColorMenu.style.display = 'flex';
+    } else {
+        itemColorMenu.style.display = 'none';
+    }
+});
