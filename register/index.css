@@ -6,10 +6,13 @@
 .container {
     width: 540px;
     height: 900px;
-    border: 1px solid #AACDFF;
+    border: 1px solid gray;
     border-radius: 10px;
     margin: auto;
     margin-top: 30px;
+    background-image: url(../img/register\ image.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
 
     display: flex;
     flex-direction: column;
@@ -23,6 +26,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    opacity: 0.8;
 }
 
 .field {
@@ -49,10 +53,11 @@
     font-size: 20px;
     border-style: none;
     border-radius: 10px;
-    background-color: rgba(0, 104, 255, 0.25);
+    background-color: gray;
+    color: white;
 }
 
 #registerButton:hover {
-    background-color: rgba(0, 102, 255, 0.685);
+    background-color: rgb(102, 102, 102)
 
 }
