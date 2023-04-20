@@ -13,22 +13,22 @@
 .container {
     display: flex;
     justify-content: center;
-    align-items: center;
 
     width: 100%;    
     height: 800px;
 
-    background-image: url("../img/login-img.jpg");
+    background-image: url("../img/login-img.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
-
-    opacity: 0.8;
+    /* background-size: contain; */
 }
 
 .loginBox{
-    width: 450px;
+    width: 420px;
     display: flex;
     flex-direction: column;
+
+    margin-top: 100px;
 }
 
 .field {
@@ -37,8 +37,7 @@
 
 .input {
     width: 100%;
-    height: 50px;
-    border-radius: 5px;
+    height: 40px;
     border-style: none;
     margin-bottom: 4px;
 }
@@ -47,14 +46,15 @@
     width: 100%;
     height: 60px;
     margin-top: 10px;
-    font-size: 20px;
-    background-color: rgb(214, 214, 214);
+    font-size: 15px;
+    color: white;
+    background-color: gray;
+
     border-style: none;
-    border-radius: 5px;
 }
 
 #loginButton:hover {
-    background-color: rgb(214, 200, 200);
+    background-color: rgb(102, 102, 102);
 }
 
 #register {
@@ -66,9 +66,14 @@
 }
 
 a {
-    color: rgb(191, 214, 172);
+    color: gray;
+    font-size: small;
 }
 
 a:hover {
-    color: rgb(159, 190, 133);
+    color: rgb(102, 102, 102);
+}
+
+p {
+    margin-bottom: 10px;
 }
