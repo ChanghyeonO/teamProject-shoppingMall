@@ -101,17 +101,17 @@ body {
 	margin-left: 30px;
 }
 
-.item-sorting-title {
+.item-sorting {
 	margin-left: 72%;
 	cursor: pointer;
 }
 
 .item-area {
-	width: 75%;
+	width: 80%;
 	height: 3000px;
 	/* background-color: #555; */
 	margin-top: 5%;
-	margin-left: 12%;
+	margin-left: 10%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: left;
@@ -120,37 +120,32 @@ body {
 }
 
 .item-box {
-	width: 13%;
+	width: 10%;
 	height: 220px;
 	padding: 25px;
 	margin-left: 30px;
 	margin-top: 20px;
-	/* background-color: aqua; */
-	/* border: 1px solid #000; */
+	background-color: aqua;
+	border: 1px solid #000;
 	text-align: left;
 	text-decoration: none;
-	color: #000;
 }
 
 .item-image {
 	width: 100%;
-	height: 75%;
+	height: 50px;
 	font-size: 13px;
 }
 
 .item-name {
-	font-size: 15px;
-	height: 30px;
+	font-size: 13px;
+	margin-top: 80%;
 }
 
 .item-price {
-	/* position: absolute; */
 	font-size: 12px;
-	margin-top: 20px;
-	display: flex;
+	margin-top: 10%;
 }
-
-/* item-color-menu */
 
 .item-color-menu {
 	display: none;
@@ -236,79 +231,4 @@ body {
 	height: 40px;
 	margin-top: 10px;
 	cursor: pointer;
-}
-
-/* item-stock-menu */
-
-.item-stock-menu {
-	display: none;
-	position: absolute;
-	width: 220px;
-	height: 100px;
-	margin-top: 30px;
-	margin-left: 190px;
-	padding: 20px 20px 10px 20px;
-	border: 1px solid #000;
-	box-shadow: 3px 3px 15px #666;
-	background-color: aliceblue;
-}
-
-.stock-check {
-	margin-top: 10px;
-	font-size: 20px;
-}
-
-.stock-check input {
-	/* appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none; */
-	width: 15px;
-	height: 15px;
-	border: 1px solid #ccc;
-	outline: none;
-	cursor: pointer;
-}
-
-.stock-check-button {
-	width: 100%;
-	height: 40px;
-	margin-top: 20px;
-	cursor: pointer;
-}
-
-/* item-sorting-menu */
-
-.item-sorting-menu {
-	display: none;
-	position: absolute;
-	width: 220px;
-	height: 150px;
-	margin-top: 30px;
-	right: 12%;
-	padding: 20px 20px 10px 20px;
-	border: 1px solid #000;
-	box-shadow: 3px 3px 15px #666;
-	background-color: aliceblue;
-}
-/*  */
-.item-sorting-menu li {
-	margin-bottom: 20px;
-}
-
-.item-sorting-menu input {
-	appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	width: 15px;
-	height: 15px;
-	border-radius: 50%;
-	border: 1px solid #ccc;
-	outline: none;
-	cursor: pointer;
-	vertical-align: middle;
-}
-
-.item-sorting-menu input:checked {
-	border: 1px solid #000;
-	background: #ccc;
 }
