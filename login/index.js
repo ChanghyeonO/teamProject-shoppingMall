@@ -44,11 +44,13 @@ async function handleSubmit(e) {
       return response.json();
   })
   .then(data => {
-    if (data.success) {
+    if (res.status === 200) {
       // Session Storage에 token 저장
       sessionStorage.setItem('accessToken', data.accessToken);
+      //httpOnly???
+      
       // 로그인 후 페이지 이동
-      window.location.href = '' // 메인 페이지 추가하기
+      window.location.href = '' // 메인 페이지 연결하기
     } else {
       throw new Error('로그인 실패')
     }
