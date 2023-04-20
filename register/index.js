@@ -17,7 +17,7 @@ registerButton.addEventListener('click', handleSubmit)
 // 이벤트 함수
 async function handleSubmit(e) {
   e.preventDefault
-  const id = idInput.value
+  const userName = idInput.value
   const password = passwordInput.value
   const passwordConfirm = passwordConfirmInput.value
 
@@ -29,8 +29,7 @@ async function handleSubmit(e) {
 
     
   // 유효성 검사
-
-  const isIdValid = id.length >= 2;
+  const isIdValid = userName.length >= 2;
   const isPasswordValid = password.length >= 4;
   const isPasswordCheck = password === passwordConfirm;
 
@@ -44,7 +43,7 @@ async function handleSubmit(e) {
 
   // 객체 생성
   const data = {
-    id,
+    userName,
     password,
     // name,
     // phoneNumber,
@@ -56,9 +55,7 @@ async function handleSubmit(e) {
   // JSON 생성
   const dataJson = JSON.stringify(data)
   
-  const apiUrl = `` // Url 연결
-
-  const res = await fetch(apiUrl, {
+  const res = await fetch('/auth/signup', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -67,9 +64,12 @@ async function handleSubmit(e) {
   });
   
   if (res.status === 200) {
-    alert("회원가입에 성공하였습니다!")
+    alert("회원가입에 성공하였습니다!");
+    // 로그인 페이지로 이동
+    window.location.href = '/auth/login';
   } else {
-    alert("회원가입에 실패하였습니다")
+    alert("회원가입에 실패하였습니다");
+    console.log(error);
   }
 
 }
