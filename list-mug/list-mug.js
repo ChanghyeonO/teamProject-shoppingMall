@@ -12,6 +12,9 @@ const itemStockMenu = document.querySelector('.item-stock-menu');
 const priceMenuTitle = document.querySelector('.price-menu-title');
 const itemPriceMenu = document.querySelector('.item-price-menu');
 
+const itemSortingTitle = document.querySelector('.item-sorting-title');
+const itemSortingMenu = document.querySelector('.item-sorting-menu');
+
 //item-area에 html코드를 생성해주고 데이터와 넣어주는 코드 작성
 
 // jsonData 배열 각 항목을 반복하고 <a> 요소 생성.
@@ -62,6 +65,7 @@ colorMenuTitle.addEventListener('click', function () {
 
         itemColorMenu.style.display = 'block';
         itemStockMenu.style.display = 'none';
+        itemSortingMenu.style.display = 'none';
 
         itemColorMenu.style.display = 'flex';
 
@@ -75,8 +79,23 @@ stockMenuTitle.addEventListener('click', function () {
 
         itemStockMenu.style.display = 'block';
         itemColorMenu.style.display = 'none';
+        itemSortingMenu.style.display = 'none';
+
 
     } else {
         itemStockMenu.style.display = 'none';
+    }
+});
+
+
+itemSortingTitle.addEventListener('click', function () {
+    if (itemSortingMenu.style.display === 'none') {
+
+        itemSortingMenu.style.display = 'block';
+        itemColorMenu.style.display = 'none';
+        itemStockMenu.style.display = 'none';
+
+    } else {
+        itemSortingMenu.style.display = 'none';
     }
 });
