@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>login</title>
-  <!-- bulma 가져오기 -->
-  <link rel="stylesheet" href="../bulma/css/bulma-rtl.min.css">
   <!-- 커스텀 css -->
   <link rel="stylesheet" href="index.css">
   <!-- 자바스크립트 파일 -->
@@ -13,26 +11,24 @@
 <body>
   <div class ="nav-bar">
   </div>
-  <div class="containerBox">
-    <div class="container">
+
+  <div class="container">
+    <div class="loginBox">
+
       <div class="field">
         <label class="label" for="idInput"></label>
-        <div class="control">
-          <input class="input" id="idInput" type="text" placeholder="아이디" autocomplete="on">
-        </div>
+        <input class="input" id="idInput" type="text" placeholder="아이디" autocomplete="on">
       </div>
 
       <div class="field">
         <label class="label" for="passwordInput"></label>
-        <div class="control">
-          <input class="input" id="passwordInput" type="password" placeholder="비밀번호" autocomplete="on">
-        </div>
+        <input class="input" id="passwordInput" type="password" placeholder="비밀번호" autocomplete="on">
       </div>
       
-      <div class="control">
+      <div>
         <button class="button is-dark" id="loginButton">로그인</button>
       </div>
-      <div class ="field">
+
       <label class="label" for="register"></label>
       <div id = "register">
         <a href="../register/register.html">회원가입</a>
