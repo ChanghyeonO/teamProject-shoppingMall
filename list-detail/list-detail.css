@@ -1,0 +1,95 @@
+@import "../reset.css";
+
+body {
+	height: 3700px;
+}
+
+/* header */
+
+.navbar {
+	position: fixed;
+	display: flex;
+	width: 100%;
+	height: 50px;
+	background-color: aqua;
+	z-index: 1;
+}
+
+.homepage-name {
+	font-size: 30px;
+	margin: 10px 15px 15px 40px;
+	text-decoration: none;
+}
+
+.text-navigation {
+	font-size: 15px;
+	margin: 18px 0px 0px 50px;
+}
+
+.text-navigation a {
+	margin-right: 30px;
+	text-decoration: none;
+}
+
+.icon-navigation {
+	font-size: 15px;
+	margin-top: 18px;
+	margin-left: 65%;
+}
+
+.icon-navigation a {
+	margin-right: 35px;
+}
+
+.products-detail {
+	position: absolute;
+	/* position: fixed; */
+	width: 100px;
+	height: 100px;
+	background-color: aquamarine;
+	text-align: center;
+	margin-top: 50px;
+	margin-left: 140px;
+	display: none;
+}
+
+.products-detail li {
+	margin-top: 12px;
+}
+
+.products-detail li a {
+	text-decoration: none;
+}
+
+/* body */
+
+.main-content-box {
+	position: absolute;
+	width: 80%;
+	height: 5000px;
+	top: 150px;
+	left: 10%;
+	background-color: blue;
+}
+
+.left-content {
+	float: left;
+	width: 120px;
+	height: 360px;
+	margin-right: 5%;
+	background-color: aquamarine;
+}
+
+.middle-content {
+	float: left;
+	width: 550px;
+	height: 1000px;
+	background-color: blueviolet;
+}
+
+.right-content {
+	float: right;
+	width: 550px;
+	height: 700px;
+	background-color: aqua;
+}
