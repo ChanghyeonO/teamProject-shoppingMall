@@ -12,14 +12,7 @@
 .container {
     width: 800px;
     height: 900px;
-
-    border-radius: 10px;
     margin: auto;
-
-    /* background-image: url(../img/register\ image.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover; */
-
     display: flex;
     flex-direction: column;
     justify-content: center;

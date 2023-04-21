@@ -18,7 +18,7 @@ registerButton.addEventListener('click', handleSubmit)
 async function handleSubmit(e) {
   e.preventDefault() 
 
-  const userName = idInput.value
+  const userId = idInput.value
   const password = passwordInput.value
   const passwordConfirm = passwordConfirmInput.value
 
@@ -29,7 +29,7 @@ async function handleSubmit(e) {
   const addressOption = addressOptionInput.value
     
   // 유효성 검사
-  const isIdValid = userName.length >= 2;
+  const isIdValid = userId.length >= 2;
   const isPasswordValid = password.length >= 4;
   const isPasswordCheck = password === passwordConfirm;
 
@@ -43,7 +43,7 @@ async function handleSubmit(e) {
 
   // 객체 생성
   const data = {
-    userName,
+    userId,
     password,
     name,
     phoneNumber,
