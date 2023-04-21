@@ -13,51 +13,69 @@
     <div class = "nav-bar">
     </div>
     <div class ="container">
-        <div class = "user-buttons">
-            <ul>
-                <li>
-                    <a href="#">로그아웃</a>
-                </li>
-                <li>
-                    <a href="#">회원정보수정</a>
-                </li>
-                <li>
-                    <a href="#">회원탈퇴</a>
-                </li>
-            </ul>
-        </div>
-        <div class ="userProfile">
-            <div class ="userProfile-userName">
-                userID
+        <div class ="container-user">
+            <div class = "user-buttons">
+                <ul>
+                    <li>
+                        <a href="#">로그아웃</a>
+                    </li>
+                    <li>
+                        <a href="#">회원정보수정</a>
+                    </li>
+                    <li>
+                        <a href="#">회원탈퇴</a>
+                    </li>
+                </ul>
             </div>
-            <div class ="userProfile-userInfo">
+            <p>회원정보</p>
+            <div class ="userProfile">
+                <div class ="userProfile-userName">
+                    userID
+                </div>
+                <div class ="userProfile-userInfo">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td class="tableList">이름</td>
+                                <td id="name">김철수</td>
+                            </tr>
+                            <tr>
+                                <td class="tableList">이메일</td>
+                                <td id="email">abc@example.com</td>
+                            </tr>
+                            <tr>
+                                <td class="tableList">핸드폰 번호</td>
+                                <td id="phoneNumber">010-1234-5678</td>
+                            </tr>
+                            <tr>
+                                <td class="tableList">주소</td>
+                                <td id="address">서울시 성동구 성수동2가</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <p>주문내역</p>
+            <div class ="ordered">
                 <table>
+                    <thead>
+                        <tr>
+                            <th>주문서 번호</th>
+                            <th>제품 번호</th>
+                            <th>상품 수</th>
+                            <th>상태</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr>
-                            <td class="tableList">이름</td>
-                            <td>김철수</td>
-                        </tr>
-                        <tr>
-                            <td class="tableList">이메일</td>
-                        <td>abc@example.com</td>
-                        </tr>
-                        <tr>
-                            <td class="tableList">핸드폰 번호</td>
-                            <td>010-1234-5678</td>
-                        </tr>
-                        <tr>
-                            <td class="tableList">주소</td>
-                            <td>서울시 성동구 성수동2가</td>
+                            <td id="orderNumber">12315465</td>
+                            <td id="productNumber">00015114</td>
+                            <td id="productCount">3</td>
+                            <td id="status">Done</td>
                         </tr>
                     </tbody>
-                  </table>
+                </table>
             </div>
-        </div>
-        <div class ="ordered">
-            <p>주문서 번호</p>
-            <p>제품 번호</p>
-            <p>상품 수</p>
-            <p>상태</p>
         </div>
     </div>
 </body>
