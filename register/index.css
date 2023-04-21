@@ -1,11 +1,63 @@
-.container{
-    width: 800px;
-    margin-top: 10vh;
+* {
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+.container {
+    width: 540px;
+    height: 900px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 30px;
+    background-image: url(../img/register\ image.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+}
+
+.registerBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.8;
+}
+
+.field {
+    margin: 10px;
+}
+.inputbox {
+    width: 380px;
+    height: 60px;
+    background-color: white;
+    border-radius: 7px;
+    border: 1px solid #D2D2D2;
+    padding: 18px;
+    margin-top: 10px;
+}
+
+.label {
+    font-weight: bold;
 }
 
 #registerButton {
-    width: 100%;
+    width: 300px;
     height: 70px;
-    margin-top: 10px;
+    margin-top: 30px;
     font-size: 20px;
+    border-style: none;
+    border-radius: 10px;
+    background-color: gray;
+    color: white;
+}
+
+#registerButton:hover {
+    background-color: rgb(102, 102, 102)
+
 }
