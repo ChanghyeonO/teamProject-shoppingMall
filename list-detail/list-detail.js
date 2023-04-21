@@ -32,3 +32,4 @@ handlingPrecautionsContainer.addEventListener('click', function () {
         innerContentsText2.style.display = "none";
     }
 });
+
