@@ -2,9 +2,43 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>user</title>
-</head>
-<body>
-    
+    <title>register</title>
+    <!-- css 파일 가져오기 -->
+    <link rel="stylesheet" href="index.css">
+    <!-- 자바스크립트 파일 가져오기 -->
+    <script src="index.js" defer></script>
+  </head>
+  
+  <body>
+    <div class = "nav-bar">
+    </div>
+    <div class ="container">
+        <div class = "user-buttons">
+            <ul>
+                <li>
+                    <a href="#">로그아웃</a>
+                </li>
+                <li>
+                    <a href="#">회원정보수정</a>
+                </li>
+                <li>
+                    <a href="#">회원탈퇴</a>
+                </li>
+            </ul>
+            <div class = "user-buttons-logout">로그아웃</div>
+            <div class = "user-buttons-change">회원정보수정</div>
+            <div class = "user-buttons-delete">회원탈퇴</div>
+        </div>
+        <div class ="userProfile">
+            <div class ="userProfile-userName"></div>
+            <div class ="userProfile-userInfo"></div>
+        </div>
+        <div class ="ordered">
+            <p>주문서 번호</p>
+            <p>제품 번호</p>
+            <p>상품 수</p>
+            <p>상태</p>
+        </div>
+    </div>
 </body>
 </html>
