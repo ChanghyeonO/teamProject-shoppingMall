@@ -3,11 +3,11 @@ const idInput = document.querySelector('#idInput')
 const passwordInput = document.querySelector('#passwordInput')
 const passwordConfirmInput = document.querySelector('#passwordConfirmInput')
 
-// const nameInput = document.querySelector('#nameInput')
-// const emailInput = document.querySelector('#emailInput')
-// const phoneNumberInput = document.querySelector('#phoneNumberInput')
-// const addressInput = document.querySelector('#addressInput')
-// const addressOptionInput = document.querySelector('#addressOptionInput')
+const nameInput = document.querySelector('#nameInput')
+const emailInput = document.querySelector('#emailInput')
+const phoneNumberInput = document.querySelector('#phoneNumberInput')
+const addressBasicInput = document.querySelector('#addressBasicInput')
+const addressOptionInput = document.querySelector('#addressOptionInput')
 
 const registerButton = document.querySelector('#registerButton')
 
@@ -16,17 +16,17 @@ registerButton.addEventListener('click', handleSubmit)
 
 // 이벤트 함수
 async function handleSubmit(e) {
-  e.preventDefault
+  e.preventDefault() 
+
   const userName = idInput.value
   const password = passwordInput.value
   const passwordConfirm = passwordConfirmInput.value
 
-  // const name = nameInput.value
-  // const phoneNumber = phoneNumberInput.value
-  // const email = emailInput.value
-  // const address = addressInput.value
-  // const addressOption = addressOptionInput.value
-
+  const name = nameInput.value
+  const phoneNumber = phoneNumberInput.value
+  const email = emailInput.value
+  const address = addressBasicInput.value
+  const addressOption = addressOptionInput.value
     
   // 유효성 검사
   const isIdValid = userName.length >= 2;
@@ -45,11 +45,11 @@ async function handleSubmit(e) {
   const data = {
     userName,
     password,
-    // name,
-    // phoneNumber,
-    // email,
-    // address,
-    // addressOption
+    name,
+    phoneNumber,
+    email,
+    address,
+    addressOption
   }
   
   // JSON 생성
