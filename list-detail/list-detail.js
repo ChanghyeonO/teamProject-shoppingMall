@@ -1,5 +1,13 @@
 const productName = document.querySelector('.product-name');
 const productPrice = document.querySelector('.product-price');
+const innerText1 = document.querySelector('.inner-text1');
+const innerText2 = document.querySelector('.inner-text2');
+
+const minusButton = document.querySelector('.minus-button');
+const plusButton = document.querySelector('.plus-button');
+let innerNumber = document.querySelector('.inner-number');
+let count = 1;
+const cartAddButton = document.querySelector('.cart-add-button');
 
 const specificationsContainer = document.querySelector('.specifications-container');
 const handlingPrecautionsContainer = document.querySelector('.handling-precautions-container');
@@ -7,15 +15,49 @@ const handlingPrecautionsContainer = document.querySelector('.handling-precautio
 const innerContentsText1 = document.querySelector(".inner-contents1");
 const innerContentsText2 = document.querySelector(".inner-contents2");
 
-fetch('../list-mug/list-mug-json.js')
+fetch('./inner-data.json')
     .then(response => response.json())
     .then(data => {
-        productName.innerHTML = data.title;
-        productPrice.innerHTML = data.description;
-        innerContentsText1.innerHTML = data.innerData.specifications;
-        innerContentsText2.innerHTML = data.innerData.handlingPrecautions;
+        productName.innerHTML = data[0].title;
+        productPrice.innerHTML = data[0].description;
+        innerText1.innerHTML = data[0].specifications;
+        innerText2.innerHTML = data[0].handlingPrecautions;
     })
     .catch(error => console.log(error));
+
+minusButton.addEventListener('click', function () {
+    if (count > 0) {
+        count--;
+    }
+    innerNumber.value = count;
+})
+plusButton.addEventListener('click', function () {
+    count++;
+    innerNumber.value = count;
+})
+
+innerNumber.addEventListener('input', function () {
+    const value = innerNumber.value;
+    if (isNaN(value)) {
+        alert('숫자가 아닙니다!');
+        innerNumber.value = 1;
+    } else {
+        count = parseInt(value);
+    }
+});
+
+cartAddButton.addEventListener('click', function () {
+    const cartItem = {
+        productName: productName.innerHTML,
+        productPrice: productPrice.innerHTML,
+        quantity: innerNumber.value
+    };
+
+    const jsonCartItem = JSON.stringify(cartItem);
+    console.log(jsonCartItem); // 브라우저 콘솔에 JSON 형태로 출력
+    return jsonCartItem; // 반환하거나, 다른 함수로 전달하여 사용
+});
+
 
 specificationsContainer.addEventListener('click', function () {
     if (innerContentsText1.style.display === "none") {
@@ -28,8 +70,13 @@ specificationsContainer.addEventListener('click', function () {
 handlingPrecautionsContainer.addEventListener('click', function () {
     if (innerContentsText2.style.display === "none") {
         innerContentsText2.style.display = "block";
+        handlingPrecautionsContainer.style.borderBottom = 'none';
+
     } else {
         innerContentsText2.style.display = "none";
+        handlingPrecautionsContainer.style.borderBottom = '2px solid #ccc';
+
+
     }
 });
 

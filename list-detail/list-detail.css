@@ -91,33 +91,35 @@ body {
 	float: right;
 	width: 550px;
 	height: 80%;
-	background-color: aqua;
+	background-color: #fff;
 }
 
 .top-content {
 	width: 100%;
-	height: 300px;
-	background-color: beige;
+	height: 200px;
+	/* background-color: beige; */
 }
 
 .product-name {
 	width: 100%;
 	height: 100px;
 	color: #000;
-	background-color: #dbdada;
+	/* background-color: #dbdada; */
+	font-size: 25px;
 }
 
 .product-price {
 	width: 100%;
 	height: 100px;
-	background-color: aliceblue;
+	/* background-color: aliceblue; */
+	font-size: 20px;
 }
 
 .count-container {
 	display: flex;
 	width: 100%;
 	height: 60px;
-	background-color: burlywood;
+	/* background-color: burlywood; */
 	align-items: center;
 }
 
@@ -150,14 +152,14 @@ body {
 .count-hint {
 	width: 100%;
 	height: 30px;
-	background-color: aliceblue;
+	/* background-color: aliceblue; */
 	padding-top: 10px;
 }
 
 .cart-container {
 	width: 100%;
 	height: 80px;
-	background-color: #000;
+	/* background-color: #000; */
 }
 
 .cart-add-button {
@@ -178,36 +180,59 @@ body {
 }
 
 .specifications-container {
+	display: flex;
 	width: 100%;
-	height: 50px;
-	padding-top: 30px;
+	height: 40px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	border-top: 2px solid #ccc;
-	background-color: bisque;
+	/* background-color: bisque; */
 	align-items: center;
 	cursor: pointer;
+}
+
+.specifications-container i {
+	margin-left: 70%;
 }
 
 .inner-contents1 {
 	width: 100%;
-	height: 200px;
+	height: 100px;
 	background-color: #fff;
 	display: none;
 }
 
+.inner-text1 {
+	padding-top: 40px;
+	letter-spacing: 0.1em;
+}
+
 .handling-precautions-container {
+	display: flex;
 	width: 100%;
-	height: 50px;
-	padding-top: 30px;
+	height: 40px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	border-top: 2px solid #ccc;
-	background-color: beige;
+	border-bottom: 2px solid #ccc;
+	/* background-color: beige; */
 	align-items: center;
 	cursor: pointer;
 }
 
+.handling-precautions-container i {
+	margin-left: 58.5%;
+}
+
 .inner-contents2 {
 	width: 100%;
-	height: 500px;
+	height: 300px;
 	border-bottom: 2px solid #ccc;
 	background-color: #fff;
 	display: none;
+}
+
+.inner-text2 {
+	padding-top: 40px;
+	letter-spacing: 0.1em;
 }
