@@ -45,10 +45,7 @@ async function handleSubmit(e) {
   })
   .then(data => {
     if (res.status === 200) {
-      // Session Storage에 token 저장
-      sessionStorage.setItem('accessToken', data.accessToken);
-      //httpOnly???
-      
+      alert("로그인에 성공하였습니다!")
       // 로그인 후 페이지 이동
       window.location.href = '' // 메인 페이지 연결하기
     } else {
@@ -58,10 +55,4 @@ async function handleSubmit(e) {
   .catch(error => {
     console.error(error);
   });
-  
-  if (res.status === 200) {
-    alert("로그인에 성공하였습니다!")
-  } else {
-    alert("로그인에 실패하였습니다")
-  }
 }
