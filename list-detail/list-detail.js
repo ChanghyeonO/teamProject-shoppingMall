@@ -1,3 +1,7 @@
+const contentTopData = document.querySelector('.content-top-data');
+const contentMiddleData = document.querySelector('.content-middle-data')
+
+
 const productName = document.querySelector('.product-name');
 const productPrice = document.querySelector('.product-price');
 const innerText1 = document.querySelector('.inner-text1');
@@ -18,6 +22,23 @@ const innerContentsText2 = document.querySelector(".inner-contents2");
 fetch('./inner-data.json')
     .then(response => response.json())
     .then(data => {
+        //middle-content-box의 inner-data
+        contentTopData.innerHTML = `
+        <img src="${data[0].imgSrc}" />
+        <img src="${data[0].imgSrc1}" />
+        <img src="${data[0].imgSrc2}" />
+    `;
+
+        contentMiddleData.innerHTML = `
+        <img src="${data[0].imgSrc3}" />
+        <h5>${data[0].explanationTitle1}</h5>
+        <p>${data[0].Explanation1}</p>
+        <img src="${data[0].imgSrc4}" />
+        <h5>${data[0].explanationTitle2}</h5>
+        <p>${data[0].Explanation2}</p>
+    `;
+
+        //right-content-box의 inner-data
         productName.innerHTML = data[0].title;
         productPrice.innerHTML = data[0].description;
         innerText1.innerHTML = data[0].specifications;
@@ -62,11 +83,8 @@ cartAddButton.addEventListener('click', function () {
 
 
 specificationsContainer.addEventListener('click', function () {
-    if (innerContentsText1.style.display === "none") {
-        innerContentsText1.style.display = "block";
-    } else {
-        innerContentsText1.style.display = "none";
-    }
+    innerContentsText1.style.display = innerContentsText1.style.display === "none" ? "block" : "none";
+
 });
 
 handlingPrecautionsContainer.addEventListener('click', function () {
