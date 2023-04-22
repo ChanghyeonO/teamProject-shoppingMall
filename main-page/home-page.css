@@ -1,84 +1,74 @@
 /* navbar-menu의 마진 모두 20px 늘리기 */
 .navbar-menu {
-    margin: 20px;
+  margin: 20px;
 }
 
 /*navbar-item 간 거리 13px만큼 늘리기 */
 .navbar-item {
-    margin-right: 13px;
+  margin-right: 13px;
 }
 
 /* icon-button 간 거리 15px만큼 늘리기 */
 .icon-button {
-    margin-right: 15px;
+  margin-right: 15px;
 }
-
 
 /*---------- 여기서부터 main화면 slider 관련 ----------*/
 .slider-container {
-    position: relative;
-    overflow: hidden;
-    width: 90%;
-    height: 700px; /* adjust to desired height */
+  position: relative;
+  overflow: hidden;
+  width: 90%;
+  height: 700px; /* adjust to desired height */
 }
-
 .slider {
-    display: flex;
-    width: 300%;
-    height: 100%;
+  display: flex;
+  width: 300%;
+  height: 100%;
 }
-
 .slider img {
-    width: 33.33%;
-    height: 100%;
-    object-fit: cover;
+  width: 33.33%;
+  height: 100%;
+  object-fit: cover;
 }
-
 .dots-container {
-    position: absolute;
-    bottom: 15%;
-    right: 110px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  position: absolute;
+  top: 50%;
+  bottom: 15%;
+  right: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
 .dot {
-    width: 10px;
-    height: 10px;
-    margin: 5px;
-    border-radius: 50%;
-    background-color: #bbb;
-    cursor: pointer;
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+  border-radius: 50%;
+  background-color: #bbb;
+  cursor: pointer;
 }
-
 .active {
-    background-color: #555;
+  background-color: #555;
 }
-/*---------- 여기까지 main화면 slider 관련 ----------*/
-
 
 /*---------- 여기부터 footer ----------*/
-footer {
+/* footer {
     font-family: 'Swis721 BT', 'Noto Sans KR', sans-serif;
     background-color: #f5f5f5;
     padding: 20px;
     margin-top: 50px;
     text-align: center;
 }
-
 .container {
     max-width: 960px;
     margin: 0 auto;
 }
-
 p {
     margin-bottom: 5px;
     font-size: 14px;
     line-height: 1.5;
 }
-
 @media (min-width: 768px) {
     .col-md-6 {
         float: left;
@@ -86,9 +76,7 @@ p {
         box-sizing: border-box;
         padding: 0 15px;
     }
-}
-/*---------- 여기까지 footer ----------*/
-
+} */
 
 /* 하단 비디오 재생 div, css로 변환필요 */
 /* #videoPlay-main{
@@ -148,24 +136,39 @@ color: #fff;
 border: 1px solid #00a7e1;
 transition: 0.2s;
 } */
-
-#player-wrapper {
-position: relative;
-width: 100%;
-height: 600px;
+.container.is-fullhd {
+  position: relative;
+}
+.container.is-widescreen {
+  position: relative;
+  left: 0;
+  right: 0;
+  max-width: 1920px;
 }
 
-#player-overlay {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-pointer-events: none;
+/* .video-container-text-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+} */
+.video-container-text-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 230%);
+  text-align: center;
+  color: white;
 }
 
-#player {
-    pointer-events: none;
+.video-container-text {
+  color: white;
+  text-align: center;
+  font-size: 35px;
+  letter-spacing: 3.8px;
+  line-height: 56px;
+  font-family: 'Noto Sans KR', serif;
 }
-
-    
