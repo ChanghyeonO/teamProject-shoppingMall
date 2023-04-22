@@ -1,6 +1,7 @@
 /* navbar-menu의 마진 모두 20px 늘리기 */
 .navbar-menu {
     margin: 20px;
+    /* background-color: #f3f3f0ea; */
 }
   
 /*navbar-item 간 거리 13px만큼 늘리기 */
