@@ -3,9 +3,10 @@ async function getData() {
         // 임의의 유저 데이터인 userInfo를 가져옴. 이후 서버 데이터로 변경 필요!!
         const response = await fetch('./userInfo.json'); 
         const userInfoData = await response.json();
-        
+
+        // userId만 먼저 적용
         document.querySelector('.userProfile-userName').textContent = userInfoData.userId;
-        // 가져온 데이터를 테이블로 만듦
+        // 가져온 데이터를 테이블로 만들어 insert
         const userInfoTable = `
         <div class ="userProfile-userInfo">
             <table>
