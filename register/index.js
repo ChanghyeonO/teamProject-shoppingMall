@@ -1,35 +1,35 @@
 // html 요소
-const idInput = document.querySelector('#idInput')
-const passwordInput = document.querySelector('#passwordInput')
-const passwordConfirmInput = document.querySelector('#passwordConfirmInput')
+const idInput = document.querySelector('#idInput');
+const passwordInput = document.querySelector('#passwordInput');
+const passwordConfirmInput = document.querySelector('#passwordConfirmInput');
 
-const nameInput = document.querySelector('#nameInput')
-const emailInput = document.querySelector('#emailInput')
-const phoneNumberInput = document.querySelector('#phoneNumberInput')
-const addressBasicInput = document.querySelector('#addressBasicInput')
-const addressOptionInput = document.querySelector('#addressOptionInput')
+const nameInput = document.querySelector('#nameInput');
+const emailInput = document.querySelector('#emailInput');
+const phoneNumberInput = document.querySelector('#phoneNumberInput');
+const addressBasicInput = document.querySelector('#addressBasicInput');
+const addressOptionInput = document.querySelector('#addressOptionInput');
 
-const registerButton = document.querySelector('#registerButton')
+const registerButton = document.querySelector('#registerButton');
 
 // 회원가입 버튼 이벤트
-registerButton.addEventListener('click', handleSubmit)
+registerButton.addEventListener('click', handleSubmit);
 
 // 이벤트 함수
 async function handleSubmit(e) {
-  e.preventDefault() 
+  e.preventDefault();
 
-  const userName = idInput.value
-  const password = passwordInput.value
-  const passwordConfirm = passwordConfirmInput.value
+  const userId = idInput.value;
+  const password = passwordInput.value;
+  const passwordConfirm = passwordConfirmInput.value;
 
-  const name = nameInput.value
-  const phoneNumber = phoneNumberInput.value
-  const email = emailInput.value
-  const address = addressBasicInput.value
-  const addressOption = addressOptionInput.value
+  const name = nameInput.value;
+  const phoneNumber = phoneNumberInput.value;
+  const email = emailInput.value;
+  const address = addressBasicInput.value;
+  const addressOption = addressOptionInput.value;
     
   // 유효성 검사
-  const isIdValid = userName.length >= 2;
+  const isIdValid = userId.length >= 2;
   const isPasswordValid = password.length >= 4;
   const isPasswordCheck = password === passwordConfirm;
 
@@ -43,7 +43,7 @@ async function handleSubmit(e) {
 
   // 객체 생성
   const data = {
-    userName,
+    userId,
     password,
     name,
     phoneNumber,
@@ -53,7 +53,7 @@ async function handleSubmit(e) {
   }
   
   // JSON 생성
-  const dataJson = JSON.stringify(data)
+  const dataJson = JSON.stringify(data);
   
   const res = await fetch('/auth/signup', {
     method: 'POST',
@@ -71,5 +71,4 @@ async function handleSubmit(e) {
     alert("회원가입에 실패하였습니다");
     console.log(error);
   }
-
 }
