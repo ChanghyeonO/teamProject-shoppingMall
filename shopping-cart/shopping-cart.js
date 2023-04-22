@@ -1,8 +1,9 @@
 // 장바구니에서 아이템 삭제
-document.querySelectorAll('a.remove').forEach(function (removeLink) {
-  removeLink.addEventListener('click', function (event) {
+document.querySelectorAll('button.btn-remove').forEach(function (removeButton) {
+  removeButton.addEventListener('click', function (event) {
     event.preventDefault();
-    removeLink.parentNode.parentNode.parentNode.style.display = 'none';
+    // 해당 삭제 버튼의 부모부모부모 노드(li<div<div<a>>>)가 아이템의 범위, 그걸 remove
+    removeButton.parentNode.parentNode.parentNode.style.display = 'none';
   });
 });
 
