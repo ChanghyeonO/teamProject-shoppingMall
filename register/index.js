@@ -33,8 +33,12 @@ async function handleSubmit(e) {
   const isPasswordValid = password.length >= 4;
   const isPasswordCheck = password === passwordConfirm;
 
-  if (!isIdValid || !isPasswordValid) {
-    return alert("이름은 2글자 이상, 비밀번호는 4글자 이상이어야 합니다.");
+  if (!isIdValid) {
+    return alert("이름은 2글자 이상이어야 합니다.");
+  }
+
+  if (!isPasswordValid) {
+    return alert("비밀번호는 4글자 이상이어야 합니다.");
   }
 
   if (!isPasswordCheck) {

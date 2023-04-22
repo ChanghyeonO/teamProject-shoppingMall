@@ -40,6 +40,10 @@
     margin-bottom: 4px;
 }
 
+.input::placeholder {
+    text-indent: 5px;
+}
+
 #loginButton {
     width: 100%;
     height: 60px;
