@@ -14,12 +14,6 @@ async function handleSubmit(e) {
   const userName = idInput.value
   const password = passwordInput.value
 
-  // 객체 생성
-  const data = {
-    userName,
-    password
-  }
-  
   // 입력 여부 확인
   if (!userName) {
     return alert("아이디를 입력해 주세요.")
@@ -28,21 +22,25 @@ async function handleSubmit(e) {
   if (!password) {
     return alert("비밀번호를 입력해 주세요.")
   }
+
+  // 객체 생성
+  const data = {
+    userName,
+    password
+  }
   
   // JSON 생성
   const dataJson = JSON.stringify(data)
   
   // 로그인 요청 서버에 보내기
-  const res = await fetch(`/auth/login`, {
+  const response = await fetch(`/auth/login`, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
     },
     body: dataJson,
   })
-  .then(response => {
-      return response.json();
-  })
+  .then(response => response.json())
   .then(data => {
     if (res.status === 200) {
       alert("로그인에 성공하였습니다!")
