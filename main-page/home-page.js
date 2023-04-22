@@ -17,8 +17,6 @@
 //   drawAdminLink,
 // } from '../useful-functions.js';
 
-
-
 // 모든 slider images 가져옴, 이미지 루틴을 돌리기 위한 index 설정
 const sliderImages = document.querySelectorAll('.slider img');
 let currentImageIndex = 0;
@@ -38,3 +36,39 @@ function changeImage() {
 }
 // 이미지 전환 간격은 7000ms
 setInterval(changeImage, 7000);
+
+
+// Load the YouTube API script asynchronously
+var tag = document.createElement('script');
+tag.src = 'https://www.youtube.com/iframe_api';
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    width: '100%',
+    height: '600px',
+    videoId: 'jYc3RZbWTHg',
+    playerVars: {
+      autoplay: 1,
+      mute: 1,
+      controls: 0,
+      loop: 1, // 반복 재생
+      modestbranding: 1,
+      // 'fs': 1,    // 전체 화면 버튼이 표시 x
+      playsinline: 1,
+      rel: 0, // 관련 영상 보이는 거 막기
+      iv_load_policy: 3,
+      enablejsapi: 1, // 비디오 클릭 불가하게
+    },
+    events: {
+      onReady: onPlayerReady,
+    },
+  });
+}
+
+// Start playing the video when it's ready
+function onPlayerReady(event) {
+  event.target.playVideo();
+}

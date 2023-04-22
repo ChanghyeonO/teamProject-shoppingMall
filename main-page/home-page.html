@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>DAM-AH</title>
-        <link rel="stylesheet" href="./home-page.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
-        <!-- flacticon styles load all -->
-        <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-        <script src="./home-page.js" type="module" defer></script>
-
-    </head>
-    <body>
-        <!-- nav bar 관련 -->
-        <nav class="navbar" role="navigation">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DAM-AH</title>
+    <link rel="stylesheet" href="./home-page.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+    <!-- flacticon styles load all -->
+    <link
+      rel="stylesheet"
+      href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css"
+    />
+    <!-- defer 속성은 HTML 파싱이 끝날 때까지 JS 로드를 defer하라고 브라우저에 요청하는 것 -->
+    <script src="./home-page.js" type="module" defer></script>
+  </head>
+  <body>
+    <!-- nav bar 관련 -->
+    <!-- <nav class="navbar" role="navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="/">
                     <img src="https://i.imgur.com/EosrH1t.png" alt="담아" style="width: 140px; height: 60px;">
@@ -51,28 +57,31 @@
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav> -->
 
+    <!-- 메인 화면 대형 슬라이드 -->
+    <div class="slider-container">
+      <div class="slider">
+        <img
+          src="https://kinto.kr/data/file/main_banner1/thumb-31826310_T2BzCw4O_7dc077d54c5cecb791716279c5ed57380a83644b_x969.jpg"
+        />
+        <img
+          src="https://kinto.kr/data/file/main_banner1/thumb-32237718_FTaHqXm0_54239c6ee1bf964d0b25db0392ed4e6583c64e92_x969.jpg"
+        />
+        <img
+          src="https://kinto.kr/data/file/main_banner1/thumb-31826310_xFi3gvUa_864337f014a36a05b64f05024237d86db09fbb22_x969.jpg"
+        />
+      </div>
+    </div>
 
+    <div class="dots-container">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
 
-        <!-- 메인 화면 대형 슬라이드 -->
-        <div class="slider-container">
-            <div class="slider">
-                <img src="https://kinto.kr/data/file/main_banner1/thumb-31826310_T2BzCw4O_7dc077d54c5cecb791716279c5ed57380a83644b_x969.jpg">
-                <img src="https://kinto.kr/data/file/main_banner1/thumb-32237718_FTaHqXm0_54239c6ee1bf964d0b25db0392ed4e6583c64e92_x969.jpg">
-                <img src="https://kinto.kr/data/file/main_banner1/thumb-31826310_xFi3gvUa_864337f014a36a05b64f05024237d86db09fbb22_x969.jpg">
-            </div>
-        </div>
-
-        <div class="dots-container">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
-
-
-        <!-- 하단 비디오 div -->
-        <!-- <figure id="videoPlay-main">
+    <!-- 하단 비디오 div -->
+    <!-- <figure id="videoPlay-main">
             <iframe id="iframe_videoPlay_main" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 style="width: 1517px; height: 852.7px;"
@@ -84,50 +93,14 @@
                     <a href="#">ABOUT US</a>
             </div>
         </figure>  -->
-        <div id="player"></div>
-        <script>
-            // Load the YouTube API script asynchronously
-            var tag = document.createElement('script');
-            tag.src = 'https://www.youtube.com/iframe_api';
-            var firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    <div class="container is-widescreen">
+      <video autoplay loop>
+        <source src="./video-about.mp4" type="video/mp4" />
+      </video>
+    </div>
 
-            // Create the YouTube player object
-            // something to change
-            var player;
-            function onYouTubeIframeAPIReady() {
-                player = new YT.Player('player', {
-                    width: '100%',
-                    height: '600px',
-                    videoId: 'jYc3RZbWTHg',
-                    playerVars: {
-                        'autoplay': 1,
-                        'mute': 1,
-                        'controls': 0,
-                        'loop': 1,  // 반복 재생
-                        'modestbranding': 1,
-                        // 'fs': 1,    // 전체 화면 버튼이 표시 x
-                        'playsinline': 1,
-                        'rel': 0,   // 관련 영상 보이는 거 막기
-                        'iv_load_policy': 3,
-                        'enablejsapi': 1    // 비디오 클릭 불가하게
-                    },
-                    events: {
-                        'onReady': onPlayerReady
-                    }
-                });
-            }
-
-            // Start playing the video when it's ready
-            function onPlayerReady(event) {
-                event.target.playVideo();
-            }
-        </script>
-
-
-
-        <!-- footer -->
-        <footer>
+    <!-- footer -->
+    <!-- <footer>
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
@@ -142,10 +115,6 @@
                     </div>
                 </div>
             </div>
-        </footer>
-
-          
-
-    </body>
+        </footer> -->
+  </body>
 </html>
-
