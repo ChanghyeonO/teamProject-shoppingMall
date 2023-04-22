@@ -52,6 +52,10 @@
     border-radius: 2px;
 }
 
+.user-buttons li:hover {
+    background-color: rgba(128, 128, 128, 0.747);
+}
+
 .user-buttons a {
     color: #4a4a4a;
     text-decoration: none;
