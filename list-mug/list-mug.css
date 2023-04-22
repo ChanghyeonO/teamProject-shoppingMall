@@ -153,7 +153,7 @@ body {
 /* item-color-menu */
 
 .item-color-menu {
-	display: none;
+	display: flex;
 	position: absolute;
 	text-align: left;
 	flex-wrap: wrap;
@@ -166,6 +166,7 @@ body {
 	font-size: 20px;
 	border: 1px solid #000;
 	box-shadow: 3px 3px 15px #666;
+	display: none;
 }
 
 .item-color-menu li {
@@ -251,6 +252,7 @@ body {
 	border: 1px solid #000;
 	box-shadow: 3px 3px 15px #666;
 	background-color: aliceblue;
+	list-style: none;
 }
 
 .stock-check {
