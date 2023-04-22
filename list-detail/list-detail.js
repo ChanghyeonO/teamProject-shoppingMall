@@ -5,8 +5,8 @@ const innerText2 = document.querySelector('.inner-text2');
 
 const minusButton = document.querySelector('.minus-button');
 const plusButton = document.querySelector('.plus-button');
-let innerNumber = document.querySelector('.inner-number');
-let count = 1;
+const innerNumber = document.querySelector('.inner-number');
+
 const cartAddButton = document.querySelector('.cart-add-button');
 
 const specificationsContainer = document.querySelector('.specifications-container');
@@ -24,6 +24,8 @@ fetch('./inner-data.json')
         innerText2.innerHTML = data[0].handlingPrecautions;
     })
     .catch(error => console.log(error));
+
+let count = 1;
 
 minusButton.addEventListener('click', function () {
     if (count > 0) {
