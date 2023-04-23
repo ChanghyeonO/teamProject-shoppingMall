@@ -1,4 +1,5 @@
 const itemArea = document.querySelector('.item-area');
+const mainTitle = document.querySelector('.main-title')
 const itemCount = document.querySelector('.item-count');
 
 const colorMenuTitle = document.querySelector('.color-menu-title');
@@ -16,19 +17,26 @@ const itemSortingMenu = document.querySelector('.item-sorting-menu');
 fetch('./list-mug.json')
     .then(response => response.json())
     .then(jsonData => {
-        const links = jsonData.map(data => {
-            return `
-                <a href="${data.pageLink}" class="item-box">
-                    <img src="${data.imgSrc}" alt="이미지가 손상되었습니다" class="item-image">
-                    <h5 class="item-name">${data.title}</h5>
-                    <p class="item-price">${data.description}</p>
-                </a>
-            `;
-        });
-        itemArea.innerHTML = links.join('');
-        //jsonData의 length를 측정하여 itemCount의 innerHTML에 추가.
-        itemCount.innerHTML = `${jsonData.length}`;
-    });
+        if (Array.isArray(jsonData)) {
+            const links = jsonData.map(data => {
+                for (let i = 0; i < jsonData.length; i++) {
+                    return `
+                    <a href="${data.data[i].pageLink}" class="item-box">
+                        <img src="${data.data[i].imgSrc}" alt="${data.data[i].name}" class="item-image">
+                        <h5 class="item-name">${data.data[i].name}</h5>
+                        <p class="item-price">${data.data[i].price}원 (부가세포함)</p>
+                    </a>
+                `;
+                }
+            });
+            itemArea.innerHTML = links.join('');
+            //jsonData의 length를 측정하여 itemCount의 innerHTML에 추가.
+            mainTitle.innerHTML = jsonData[0].data[0].category;
+
+            itemCount.innerHTML = `${jsonData.length}`;
+        }
+    })
+    .catch(error => console.log(error));
 
 // item - color - menu 조작하는 js 코드 생성
 
