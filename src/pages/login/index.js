@@ -39,7 +39,7 @@ async function handleSubmit(e) {
   })
   .then(response => response.json())
   .then(data => {
-    if (res.status === 200) {
+    if (response.status === 200) {
       alert("로그인에 성공하였습니다!");
       // 로그인 후 페이지 이동
       window.location.href = '' // 메인 페이지 연결하기
