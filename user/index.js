@@ -1,8 +1,8 @@
 async function getData() {
     try {
         // 임의의 유저 데이터인 userInfo를 가져옴. 이후 서버 데이터로 변경 필요!!
-        const response = await fetch('./userInfo.json'); 
-        const userInfoData = await response.json();
+        const response1 = await fetch('./userInfo.json'); 
+        const userInfoData = await response1.json();
 
         // userId만 먼저 적용
         document.querySelector('.userProfile-userName').textContent = userInfoData.userId;
@@ -35,6 +35,7 @@ async function getData() {
         // insertAdjacentHTML로 전달
         document.querySelector('.userProfile').insertAdjacentHTML('beforeend', userInfoTable);
 
+        // 주문 내역 데이터를 가져와 적용. 
         const response2 = await fetch('url2');
         const data2 = await response2.json();
         document.getElementById('orderNumber').textContent = data2.orderNumber;
