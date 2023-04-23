@@ -12,11 +12,11 @@ async function handleSubmit(e) {
   e.preventDefault();
   
   // 입력 여부 확인
-  if (!userName) {
+  if (!idInput.value) {
     return alert("아이디를 입력해 주세요.");
   }
   
-  if (!password) {
+  if (!passwordInput.value) {
     return alert("비밀번호를 입력해 주세요.");
   }
 
