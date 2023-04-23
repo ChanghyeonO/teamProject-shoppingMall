@@ -1,11 +1,14 @@
-async function getData() {
+// fetch data의 경우 후에 서버 데이터로 변경이 필요함으로, 상수로 꺼내 유지보수를 편리하게 함.
+const USER_INFO_URL = "./userInfo.json";
+const USER_ORDER_URL = "./userOrder.json";
+
+async function getUserData() {
     try {
-        // 임의의 유저 데이터인 userInfo를 가져옴. 이후 서버 데이터로 변경 필요!!
-        const response1 = await fetch('./userInfo.json'); 
+        const response1 = await fetch(USER_INFO_URL); 
         const userInfoData = await response1.json();
 
-        // userId만 먼저 적용
-        document.querySelector('.userProfile-userName').textContent = userInfoData.userId;
+        // userId 먼저 적용
+        document.querySelector('.userProfile-userName').innerText = userInfoData.userId;
         // 가져온 데이터를 테이블로 만들어 insert
         const userInfoTable = `
         <div class ="userProfile-userInfo">
@@ -35,16 +38,47 @@ async function getData() {
         // insertAdjacentHTML로 전달
         document.querySelector('.userProfile').insertAdjacentHTML('beforeend', userInfoTable);
 
-        // 주문 내역 데이터를 가져와 적용. 
-        const response2 = await fetch('url2');
-        const data2 = await response2.json();
-        document.getElementById('orderNumber').textContent = data2.orderNumber;
-        document.getElementById('productNumber').textContent = data2.productNumber;
-        document.getElementById('productCount').textContent = data2.productCount;
-        document.getElementById('status').textContent = data2.status;
+        
     } catch (error) {
         console.error(error);
     }
-  }
-  
-  getData();
+}
+
+async function getOrderData() {
+    try {
+        // 주문 내역 데이터를 가져와 적용. 
+        const response2 = await fetch(USER_ORDER_URL);
+        const userOrderData = await response2.json();
+
+        // map으로 여러개의 데이터를 가져와 순회하면서 td 생성.
+        const userOrderTable = ` <table>
+            <thead>
+                <tr>
+                    <th>주문서 번호</th>
+                    <th>제품 번호</th>
+                    <th>상품 수</th>
+                    <th>상태</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${userOrderData.map((Data) => `
+                    <tr>
+                        <td>${Data.orderNumber}</td>
+                        <td>${Data.productNumber}</td>
+                        <td>${Data.productCount}</td>
+                        <td>${Data.status}</td>
+                    </tr>
+                `).join('')}
+                
+            </tbody>
+        </table>
+        `;
+
+        document.querySelector('.ordered').insertAdjacentHTML('beforeend', userOrderTable);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+getUserData();
+getOrderData();
