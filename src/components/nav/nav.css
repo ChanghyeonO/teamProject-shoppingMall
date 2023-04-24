@@ -15,27 +15,155 @@
 }
 
 
-/* wrapper 설정 */
-.navbar-wrapper {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  z-index: 1;
-  transition: all 0.3s ease-in-out;
-}
-.navbar-wrapper:active {
+/* navbar menu */
+.navbar-start {
   display: block;
-  animation: slide-down 0.3s ease-in-out;
+  margin: 1rem auto;
+  padding: .5em 1em;
+  border: 0.25rem solid #fff;
+  color: #fff;
+  background-color: #22222200;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 250ms;
+  border-radius: 1em;
 }
-@keyframes slide-down {
-  0% {
-    opacity: 0; 
-    transform: translateY(-100px);
+
+@media (min-width: 40rem) {    
+  button {
+      display: none;
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+}
+
+/* Menu */
+
+.navbar-menu {
+  --color-menu-dark: #222;
+  display: none;    
+  flex-direction: column;      
+  position: relative;
+}  
+
+@media (min-width: 40rem) {    
+  .navbar-menu {   
+      display: flex;     
+      flex-direction: row;              
+  }  
+}
+
+.navbar-menu.activated {
+  display: flex;
+}
+
+
+/* Menu button */
+
+.navbar-item {    
+  padding: .75em 1em;
+  cursor: pointer;
+  text-align: center;    
+  flex: 1 0 auto;
+  position: relative;   
+}
+
+.navbar-item:hover {
+  background-color: #ffe4b5b9;
+}
+
+@media (min-width: 40rem) {    
+  .navbar-item--arrow {   
+      position: relative;        
+  }  
+
+  
+  .navbar-item--arrow::before {   
+      content: '▼';
+      color: #333;
+      position: absolute;
+      left: 50%;
+      bottom: -5px;
+      transform: scale(.7, .6) translate(-50%);
+  }  
+
+  .navbar-item--arrow:hover::before {   
+      display: none;
+  }  
+}
+
+/* Dropdown menu */
+.dropdown-container {
+  width: 320%;
+  display: none;
+  top: 1.8rem;
+  margin-top: 1rem;
+  position: relative;
+  box-shadow: 0 0 2rem #222;        
+}
+
+.dropdown-container::before {
+  content: '▼';
+  transform: scale(0.7);    
+  position: absolute;
+  color: #fff;    
+  top: -2.5rem;
+  left: 0;
+  background-color: #444;
+  border-radius: 100%;    
+  padding: .25em .55em;
+  box-shadow: 0 0 2rem #222;        
+}
+
+/* 화면 너비가 40rem 이상일 때 드롭다운 컨테이너의 스타일을 변경*/
+@media (min-width: 40rem) {    
+  .dropdown-container {        
+      display: block;        
+      position: absolute;
+      left: 0;          
+      box-shadow: none;
+      pointer-events: none;
+      overflow: hidden;
+      margin-top: .75rem;
+      border-radius: 0 0 .25em .25em;        
   }
+  
+  .dropdown-container::before {                
+      display: none;      
+  }        
+}
+
+/* Dropdown menu 블록 설정*/
+
+.dropdown-container > ul { 
+  /* 이 색상톤 잘 활용    */
+  background-color: #ffe4b5b9; 
+  transition: 250ms;    
+}
+
+.dropdown-container > ul > li {
+  padding-block: .55em;
+}
+
+.dropdown-container > ul > li:hover {
+  background-color: #f8c3cd86;
+  color: #3d000b86;      
+}
+
+.navbar-item.activated .dropdown-container{
+  display: block;
+}
+
+/* 화면 너비가 40rem 이상일 때 드롭다운 박스들의 스타일을 변경*/
+@media (min-width: 40rem) {      
+  .dropdown-container > ul {    
+      transform: translate(0, -100%);        
+  }
+ 
+  .navbar-item:hover > .dropdown-container {
+      pointer-events: initial;          
+  }
+
+  .navbar-item:hover > .dropdown-container > ul {
+      transform: translate(0, 0);        
+  }
+
 }
