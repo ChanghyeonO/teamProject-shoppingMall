@@ -1,3 +1,5 @@
+@import "../../rescue_fe/commonMarkUp/reset.css";
+
 * {
 	box-sizing: border-box;
 	margin: 0px;
