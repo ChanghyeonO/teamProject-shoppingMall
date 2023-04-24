@@ -1,21 +1,11 @@
-// html 랜더링 함수 모음
-// 일단 가져온....
-// import {
-//   // 회원가입 등 네비바 랜더링
-//   drawNavbar,
-//   // 카테고리 바 랜더링
-//   drawCategoryBar,
-//   // 토큰 보유에 따라 네비바 변화
-//   activeNavbar,
-//   // 카테고리 목록을 api 에서 받아와 값 채워 넣기
-//   fillCategoryBar,
-//   // 푸터 랜더링
-//   drawFooter,
-//   //숫자 자리수마다 , 찍기
-//   addCommas,
-//   // 관리자 로그인 그리기
-//   drawAdminLink,
-// } from '../useful-functions.js';
+import {
+  // 회원가입 등 네비바 랜더링
+  drawNavbar,
+  // 푸터 랜더링
+  drawFooter,
+} from '../../shared.js';
+drawNavbar();
+drawFooter();
 
 // 모든 slider images 가져옴, 이미지 루틴을 돌리기 위한 index 설정
 const sliderImages = document.querySelectorAll('.slider img');
