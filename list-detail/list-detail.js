@@ -1,6 +1,6 @@
-const contentTopData = document.querySelector('.content-top-data');
-const contentMiddleData = document.querySelector('.content-middle-data')
+const leftContentsBoxData = document.querySelector('.left-content')
 
+const contentMiddleData = document.querySelector('.content-middle-data')
 
 const productName = document.querySelector('.product-name');
 const productPrice = document.querySelector('.product-price');
@@ -22,18 +22,23 @@ const handlingPrecautionsContents = document.querySelector(".handling-precaution
 fetch('./inner-data.json')
     .then(response => response.json())
     .then(data => {
-        //middle-content-box의 inner-data
-        contentTopData.innerHTML = `
-        <img src="${data[0].imgSrc}" />
-        <img src="${data[0].imgSrc1}" />
-        <img src="${data[0].imgSrc2}" />
-    `;
 
+        //left-content-box의 inner-data
+        leftContentsBoxData.innerHTML = `
+        <div class="top-image-box">
+                <img src="${data[0].imgSrc}" />
+        </div>
+        <div class="bottom-image-box">
+                <img src="${data[0].imgSrc1}" />
+        </div>        
+        `
+
+        //middle-content-box의 inner-data 
         contentMiddleData.innerHTML = `
-        <img src="${data[0].imgSrc3}" />
+        <img src="${data[0].imgSrc}" />
         <h5>${data[0].explanationTitle1}</h5>
         <p>${data[0].Explanation1}</p>
-        <img src="${data[0].imgSrc4}" />
+        <img src="${data[0].imgSrc1}" />
         <h5>${data[0].explanationTitle2}</h5>
         <p>${data[0].Explanation2}</p>
     `;
@@ -43,8 +48,27 @@ fetch('./inner-data.json')
         productPrice.innerHTML = data[0].description;
         specificationsText.innerHTML = data[0].specifications;
         handlingPrecautionsText.innerHTML = data[0].handlingPrecautions;
+
+
+
+        document.querySelector('.top-image-box').addEventListener('click', function () {
+            window.scrollTo(0, 0);
+        });
+        document.querySelector('.bottom-image-box').addEventListener('click', function () {
+            window.scrollTo(0, 900);
+        });
     })
     .catch(error => console.log(error));
+
+window.addEventListener('scroll', function () {
+    const scrollY = window.scrollY;
+    const leftContent = document.querySelector('.left-content');
+    if (scrollY >= 100) {
+        leftContent.style.position = 'fixed';
+    } else {
+        leftContent.style.position = 'absolute';
+    }
+});
 
 let count = 1;
 

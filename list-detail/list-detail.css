@@ -73,27 +73,28 @@ body {
 }
 
 .left-content {
-	float: left;
+	position: absolute;
 	width: 120px;
 	height: 360px;
 	margin-right: 5%;
-	background-color: aquamarine;
+	/* background-color: aquamarine; */
+}
+
+.left-content img {
+	width: 100%;
+	cursor: pointer;
+}
+
+.bottom-image-box {
+	margin-top: 50px;
 }
 
 .middle-content {
-	float: left;
+	position: absolute;
+	margin-left: 20%;
 	width: 550px;
 	height: 3100px;
 	/* background-color: blueviolet; */
-}
-
-.content-top-data {
-	width: 100%;
-	height: 54%;
-	/* background-color: antiquewhite; */
-}
-.content-top-data img {
-	width: 100%;
 }
 
 .content-product-detail {
@@ -124,8 +125,9 @@ body {
 }
 
 .right-content {
-	float: right;
+	position: absolute;
 	width: 550px;
+	right: 50px;
 	height: 80%;
 	background-color: #fff;
 }
