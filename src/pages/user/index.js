@@ -1,3 +1,7 @@
+// import { drawNavbar, drawFooter } from '../../shared.js';
+// drawNavbar();
+// drawFooter();
+
 // fetch data의 경우 후에 서버 데이터로 변경이 필요함으로, 상수로 꺼내 유지보수를 편리하게 함.
 const USER_INFO_URL = "./userInfo.json";
 const USER_ORDER_URL = "./userOrder.json";
