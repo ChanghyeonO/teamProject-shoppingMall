@@ -14,7 +14,7 @@ const itemPriceMenu = document.querySelector('.item-price-menu');
 const itemSortingTitle = document.querySelector('.item-sorting-title');
 const itemSortingMenu = document.querySelector('.item-sorting-menu');
 
-fetch('./list-mug.json')
+fetch('./list.json')
     .then(response => response.json())
     .then(jsonData => {
         if (Array.isArray(jsonData)) {
