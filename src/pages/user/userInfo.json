@@ -1,7 +1,7 @@
 {
-    "userId" : "kimchulsu123",
-    "name" : "김철수",
-    "email" : "abc@def.com",
-    "phoneNumber" : "010-1234-5678",
-    "address" : "서울시 성동구 성수동2가"
+	"userId" : "kimchulsu123",
+	"name" : "김철수",
+	"email" : "abc@def.com",
+	"phoneNumber" : "010-1234-5678",
+	"address" : "서울시 성동구 성수동2가"
 }
