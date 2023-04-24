@@ -14,14 +14,14 @@ const itemPriceMenu = document.querySelector('.item-price-menu');
 const itemSortingTitle = document.querySelector('.item-sorting-title');
 const itemSortingMenu = document.querySelector('.item-sorting-menu');
 
-fetch('./list-mug.json')
+fetch('./list.json')
     .then(response => response.json())
     .then(jsonData => {
         if (Array.isArray(jsonData)) {
             const links = jsonData.map(data => {
                 for (let i = 0; i < jsonData.length; i++) {
                     return `
-                    <a href="${data.data[i].pageLink}" class="item-box">
+                    <a href="./item-detail.html? id=${data.data[i].id}" class="item-box">
                         <img src="${data.data[i].imgSrc}" alt="${data.data[i].name}" class="item-image">
                         <h5 class="item-name">${data.data[i].name}</h5>
                         <p class="item-price">${data.data[i].price}원 (부가세포함)</p>
