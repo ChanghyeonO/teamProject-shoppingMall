@@ -4,8 +4,8 @@ const contentMiddleData = document.querySelector('.content-middle-data')
 
 const productName = document.querySelector('.product-name');
 const productPrice = document.querySelector('.product-price');
-const innerText1 = document.querySelector('.inner-text1');
-const innerText2 = document.querySelector('.inner-text2');
+const specificationsText = document.querySelector('.specifications-text');
+const handlingPrecautionsText = document.querySelector('.handling-precautions-text');
 
 const minusButton = document.querySelector('.minus-button');
 const plusButton = document.querySelector('.plus-button');
@@ -16,8 +16,8 @@ const cartAddButton = document.querySelector('.cart-add-button');
 const specificationsContainer = document.querySelector('.specifications-container');
 const handlingPrecautionsContainer = document.querySelector('.handling-precautions-container');
 
-const innerContentsText1 = document.querySelector(".inner-contents1");
-const innerContentsText2 = document.querySelector(".inner-contents2");
+const specificationsContents = document.querySelector(".specifications-contents");
+const handlingPrecautionsContents = document.querySelector(".handling-precautions-contents");
 
 fetch('./inner-data.json')
     .then(response => response.json())
@@ -41,8 +41,8 @@ fetch('./inner-data.json')
         //right-content-box의 inner-data
         productName.innerHTML = data[0].title;
         productPrice.innerHTML = data[0].description;
-        innerText1.innerHTML = data[0].specifications;
-        innerText2.innerHTML = data[0].handlingPrecautions;
+        specificationsText.innerHTML = data[0].specifications;
+        handlingPrecautionsText.innerHTML = data[0].handlingPrecautions;
     })
     .catch(error => console.log(error));
 
@@ -83,19 +83,18 @@ cartAddButton.addEventListener('click', function () {
 
 
 specificationsContainer.addEventListener('click', function () {
-    innerContentsText1.style.display = innerContentsText1.style.display === "none" ? "block" : "none";
+    specificationsContents.style.display = specificationsContents.style.display === "none" ? "block" : "none";
 
 });
 
 handlingPrecautionsContainer.addEventListener('click', function () {
-    if (innerContentsText2.style.display === "none") {
-        innerContentsText2.style.display = "block";
+    if (handlingPrecautionsContents.style.display === "none") {
+        handlingPrecautionsContents.style.display = "block";
         handlingPrecautionsContainer.style.borderBottom = 'none';
 
     } else {
-        innerContentsText2.style.display = "none";
+        handlingPrecautionsContents.style.display = "none";
         handlingPrecautionsContainer.style.borderBottom = '2px solid #ccc';
-
 
     }
 });
