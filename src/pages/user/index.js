@@ -54,22 +54,25 @@ async function getOrderData() {
         const userOrderTable = ` <table>
             <thead>
                 <tr>
-                    <th>주문서 번호</th>
+                    <th>주문 번호</th>
                     <th>제품 번호</th>
-                    <th>상품 수</th>
+                    <th>가격</th>
+                    <th>제품 수</th>
                     <th>상태</th>
                 </tr>
             </thead>
             <tbody>
-                ${userOrderData.map((Data) => `
-                    <tr>
-                        <td>${Data.orderNumber}</td>
-                        <td>${Data.productNumber}</td>
-                        <td>${Data.productCount}</td>
-                        <td>${Data.status}</td>
-                    </tr>
+                ${userOrderData.map((order) => `
+                    ${order.products.map((product) => `
+                        <tr>
+                            <td>${order.orderNumber}</td>
+                            <td>${product.productId}</td>
+                            <td>${product.price}</td>
+                            <td>${product.count}</td>
+                            <td>${product.state}</td>
+                        </tr>
+                    `).join('')}
                 `).join('')}
-                
             </tbody>
         </table>
         `;
