@@ -14,29 +14,31 @@ const itemPriceMenu = document.querySelector('.item-price-menu');
 const itemSortingTitle = document.querySelector('.item-sorting-title');
 const itemSortingMenu = document.querySelector('.item-sorting-menu');
 
-fetch('./list.json')
-    .then(response => response.json())
-    .then(jsonData => {
-        if (Array.isArray(jsonData)) {
-            const links = jsonData.map(data => {
-                for (let i = 0; i < jsonData.length; i++) {
-                    return `
-                    <a href="./item-detail.html? id=${data.data[i].id}" class="item-box">
-                        <img src="${data.data[i].imgSrc}" alt="${data.data[i].name}" class="item-image">
-                        <h5 class="item-name">${data.data[i].name}</h5>
-                        <p class="item-price">${data.data[i].price}원 (부가세포함)</p>
-                    </a>
-                `;
-                }
-            });
-            itemArea.innerHTML = links.join('');
-            //jsonData의 length를 측정하여 itemCount의 innerHTML에 추가.
-            mainTitle.innerHTML = jsonData[0].data[0].category;
 
-            itemCount.innerHTML = `${jsonData.length}`;
+const productListUrl = 'http://34.64.252.224/product/list?category=TEA';
+
+async function fetchData() {
+    try {
+        const response = await fetch(productListUrl);
+        const jsonData = await response.json();
+        if (Array.isArray(jsonData.data)) {
+            const links = jsonData.data.map(data => `
+          <a href="./item-detail.html?id=${data._id}" class="item-box">
+            <img src="${data.imgSrc}" alt="${data.name}" class="item-image">
+            <h5 class="item-name">${data.name}</h5>
+            <p class="item-price">${data.price}원 (부가세포함)</p>
+          </a>
+        `);
+            itemArea.innerHTML = links.join('');
+            mainTitle.innerHTML = jsonData.data[0].category;
+            itemCount.innerHTML = `${jsonData.data.length}`;
         }
-    })
-    .catch(error => console.log(error));
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+fetchData();
 
 // item - color - menu 조작하는 js 코드 생성
 
