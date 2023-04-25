@@ -1,11 +1,10 @@
 const URI = "http://34.64.252.224";
 
 // html 요소
-const idInput = document.querySelector('#idInput');
+const userNameInput = document.querySelector('#userNameInput');
 const passwordInput = document.querySelector('#passwordInput');
 const passwordConfirmInput = document.querySelector('#passwordConfirmInput');
 
-const nameInput = document.querySelector('#nameInput');
 const emailInput = document.querySelector('#emailInput');
 const phoneNumberInput = document.querySelector('#phoneNumberInput');
 const addressBasicInput = document.querySelector('#addressBasicInput');
@@ -20,23 +19,20 @@ registerButton.addEventListener('click', handleSubmit);
 async function handleSubmit(e) {
   e.preventDefault();
 
-  const userName = idInput.value;
+  const userName = userNameInput.value;
   const password = passwordInput.value;
   const passwordConfirm = passwordConfirmInput.value;
   const roleType = "USER";
-  const name = nameInput.value;
   const phoneNumber = phoneNumberInput.value;
   const mail = emailInput.value;
   const address = addressBasicInput.value;
-  const addressOption = addressOptionInput.value;
     
   // 유효성 검사
   const isIdValid = userName.length >= 3 && userName.length <= 15;
   const isPasswordValid = password.length >= 12 && password.length <= 30;
   const isPasswordCheck = password === passwordConfirm;
-  const isNameValid = name.length >= 1;
-  const isPhoneNumberValid = /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$/.test(phoneNumber);
-  const isEmailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/.test(mail);
+  const isPhoneNumberValid = /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/.test(phoneNumber);
+  const isEmailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.com$/.test(mail);
 
 
   if (!isIdValid) {
@@ -50,10 +46,6 @@ async function handleSubmit(e) {
   if (!isPasswordCheck) {
     return alert("비밀번호가 일치하지 않습니다.");
   }
-
-  if (!isNameValid) {
-    return alert("이름을 확인해주세요.");
-  }
   
   if (!isEmailValid) {
     return alert("이메일을 확인해주세요.");
@@ -63,17 +55,14 @@ async function handleSubmit(e) {
     return alert("전화번호를 확인해주세요.");
   }
 
-
   // 객체 생성
   const data = {
     userName,
     password,
     roleType,
-    // name,
     phoneNumber,
     mail,
     address,
-    // addressOption
   }
   
   // JSON 생성
