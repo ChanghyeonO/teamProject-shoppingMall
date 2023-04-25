@@ -64,7 +64,6 @@
 
 
 /* Menu button */
-
 .navbar-item {    
   padding: .75em 1em;
   cursor: pointer;
@@ -99,7 +98,7 @@
 
 /* Dropdown menu */
 .dropdown-container {
-  width: 320%;
+  width: 460%;
   display: none;
   top: 1.8rem;
   margin-top: 1rem;
@@ -152,7 +151,7 @@
 
 .dropdown-container > ul > li:hover {
   background-color: #f8c3cd86;
-  color: #3d000b86;      
+  color: #42000ce5;      
 }
 
 .navbar-item.activated .dropdown-container{
@@ -172,5 +171,10 @@
   .navbar-item:hover > .dropdown-container > ul {
       transform: translate(0, 0);        
   }
+}
 
+
+/* Icon Menu button */
+.icon-button:hover {
+  cursor: pointer;
 }
