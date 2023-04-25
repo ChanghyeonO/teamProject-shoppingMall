@@ -17,10 +17,10 @@ document.querySelectorAll('a.remove').forEach(function (removeLink) {
 });
 
 // 테스트용으로 모든 아이템 보여주기
-document.querySelectorAll('a.btn.continue').forEach(function (continueLink) {
-  continueLink.addEventListener('click', function () {
-    document.querySelectorAll('li.items').forEach(function (item) {
-      item.style.display = 'block';
-    });
-  });
-});
+// document.querySelectorAll('a.btn.continue').forEach(function (continueLink) {
+//   continueLink.addEventListener('click', function () {
+//     document.querySelectorAll('li.items').forEach(function (item) {
+//       item.style.display = 'block';
+//     });
+//   });
+// });

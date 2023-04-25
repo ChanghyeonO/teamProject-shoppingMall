@@ -74,10 +74,6 @@ img {
     text-align: right;
     margin-right: 50px;
     /* 아래는 다른 각각의 브라우저에서 애니메이션 효과 지정 */
-    -webkit-transition: all 0.25s linear;
-    -moz-transition: all 0.25s linear;
-    -ms-transition: all 0.25s linear;
-    -o-transition: all 0.25s linear;
     transition: all 0.25s linear;
 }
 .heading a.continue:after {
@@ -85,10 +81,6 @@ img {
     padding: 0.5em;
     position: relative;
     right: 0;
-    -webkit-transition: all 0.15s linear;
-    -moz-transition: all 0.15s linear;
-    -ms-transition: all 0.15s linear;
-    -o-transition: all 0.15s linear;
     transition: all 0.15s linear;
 }
 .heading a.continue:hover, .heading a.continue:focus, .heading a.continue:active {
@@ -99,7 +91,7 @@ img {
 }
 
 
-/* .tableHead {
+.tableHead {
     display: table;
     width: 100%;
     font-family: 'Noto Sans KR', sans-serif;
@@ -112,7 +104,7 @@ img {
 }
 .tableHead li.prodHeader {
     text-align: left;
-} */
+}
 
 
 /* 장바구니 상품 구매 정보 */
