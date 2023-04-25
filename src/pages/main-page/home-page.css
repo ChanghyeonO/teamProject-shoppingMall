@@ -17,8 +17,8 @@
 .slider-container {
   position: relative;
   overflow: hidden;
-  width: 90%;
-  height: 700px; /* adjust to desired height */
+  width: 95%;
+  max-height: 700px;
 }
 .slider {
   display: flex;
@@ -27,14 +27,14 @@
 }
 .slider img {
   width: 33.33%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
 }
 .dots-container {
   position: absolute;
   top: 50%;
-  bottom: 15%;
-  right: 110px;
+  bottom: 5%;
+  right: 52px;
   display: flex;
   flex-direction: column;
   justify-content: center;
