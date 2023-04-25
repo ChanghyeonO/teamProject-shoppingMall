@@ -12,19 +12,15 @@ async function getUserData() {
 		const userInfoData = await response1.json();
 
 		// userId 먼저 적용
-		document.querySelector('.userProfile-userName').innerText = userInfoData.userId;
+		document.querySelector('.userProfile-userName').innerText = userInfoData.userName;
 		// 가져온 데이터를 테이블로 만들어 insert
 		const userInfoTable = `
 		<div class ="userProfile-userInfo">
 			<table>
 				<tbody>
 					<tr>
-						<td class="tableList">이름</td>
-						<td id="name">${userInfoData.name}</td>
-					</tr>
-					<tr>
 						<td class="tableList">이메일</td>
-						<td id="email">${userInfoData.email}</td>
+						<td id="email">${userInfoData.mail}</td>
 					</tr>
 					<tr>
 						<td class="tableList">핸드폰 번호</td>
