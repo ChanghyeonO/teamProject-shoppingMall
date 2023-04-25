@@ -68,28 +68,26 @@ export const drawFooter = () => {
     .catch((error) => console.error(error));
 };
 
+
 // nav 바에 js 요소 적용
 export const activeNavbar = () => {
   const loginBtn = document.getElementById('login');
   const logoutBtn = document.getElementById('logout');
-  // const joinBtn = document.getElementById('join');
   const mypageBtn = document.getElementById('mypage');
 
   const loginAfter = document.getElementById('vb-login-after');
   const logoutAfter = document.getElementById('vb-logout-after');
-  const joinAfter = document.getElementById('vb-join-after');
+
   const cart = document.getElementById('cart');
 
   // 로그인 시 세션 스토리지 확인용
   // sessionStorage.setItem('loginToken', '1');
 
   // 세션 스토리지 로그인 토큰 확인, nav 메뉴 구성
-  // css 에 active 관련 추가해서 사용할 것
+  // css 에 active 관련 추가?
   if (sessionStorage.getItem('loginToken')) {
     loginBtn.classList.add('active');
     loginAfter.classList.add('active');
-    joinBtn.classList.add('active');
-    joinAfter.classList.add('active');
     logoutBtn.classList.remove('active');
     logoutAfter.classList.remove('active');
     logoutBtn.addEventListener('click', () => {
@@ -102,26 +100,11 @@ export const activeNavbar = () => {
     console.log('로그인 확인 토큰 없음');
     loginBtn.classList.remove('active');
     loginAfter.classList.remove('active');
-    joinBtn.classList.remove('active');
-    joinAfter.classList.remove('active');
     logoutBtn.classList.add('active');
     logoutAfter.classList.add('active');
 
     mypageBtn.addEventListener('click', () => {
       alert('로그인 후 이용 가능합니다.');
-    });
-  }
-
-  // 관리자 토큰 보유 시, 마이페이지 버튼 눌렀을때 관리자 마이페이지 로 이동하도록 경로 수정
-  if (sessionStorage.getItem('adminToken')) {
-    mypageBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.location.href = '/admin';
-    });
-    cart.removeAttribute('href');
-    cart.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert('장바구니를 이용하시려면 일반 회원 계정으로 로그인해주세요.');
     });
   }
 
