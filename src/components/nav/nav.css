@@ -1,24 +1,31 @@
-/* navbar-menu의 마진 모두 20px 늘리기 */
 .navbar-menu {
-  margin: 20px;
+  margin: 10px;
   /* background-color: #f3f3f0ea; */
 }
 
-/*navbar-item 간 거리 13px만큼 늘리기 */
 .navbar-item {
   margin-right: 13px;
 }
 
-/* icon-button 간 거리 15px만큼 늘리기 */
-.icon-button {
+.navbar-end {
   margin-right: 15px;
+}
+
+.navbar-icon {
+  display: flex;
+  align-items: center;
+}
+
+.icon-button {
+  margin-right: 20px;
+  justify-content: flex-start;
 }
 
 
 /* navbar menu */
 .navbar-start {
   display: block;
-  margin: 1rem auto;
+  margin: 0.5rem 0.5rem;
   padding: .5em 1em;
   border: 0.25rem solid #fff;
   color: #fff;
