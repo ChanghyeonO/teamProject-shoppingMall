@@ -173,8 +173,17 @@
   }
 }
 
-
 /* Icon Menu button */
 .icon-button:hover {
   cursor: pointer;
+}
+
+/* footer CSS */
+.footer {
+  background-color: #1a1817ea; 
+  font-family: 'Noto Sans KR', sans-serif; 
+  font-size: 12px; 
+  text-align: center;
+  line-height: 2.0;
+  padding: 50px 0px 50px 0px !important;
 }
