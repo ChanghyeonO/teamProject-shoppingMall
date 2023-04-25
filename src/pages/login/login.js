@@ -1,3 +1,6 @@
+// 서버 포트 URI
+const URI = "http://34.64.252.224";
+
 // html 요소
 const idInput = document.querySelector('#idInput');
 const passwordInput = document.querySelector('#passwordInput');
@@ -30,19 +33,19 @@ async function handleSubmit(e) {
   const dataJson = JSON.stringify(data);
   
   // 로그인 요청 서버에 보내기
-  const response = await fetch(`/auth/login`, {
+  const response = await fetch(`${URI}/auth/login`, {
     method: 'POST',
     headers: {
-        'Content-Type': 'application/json',
+      'Content-Type': 'application/json',
     },
     body: dataJson,
+    credentials: 'include'
   })
-  .then(response => response.json())
-  .then(data => {
+  .then(response => {
     if (response.status === 200) {
       alert("로그인에 성공하였습니다!");
       // 로그인 후 페이지 이동
-      window.location.href = '' // 메인 페이지 연결하기
+      window.location.href = '../main-page/home-page.html'
     } else {
       throw new Error('로그인 실패');
     }
@@ -50,4 +53,4 @@ async function handleSubmit(e) {
   .catch(error => {
     console.error(error);
   });
-}
+};
