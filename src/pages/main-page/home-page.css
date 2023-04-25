@@ -18,7 +18,7 @@
   position: relative;
   overflow: hidden;
   width: 95%;
-  height: 700px; 
+  max-height: 700px;
 }
 .slider {
   display: flex;
@@ -27,7 +27,7 @@
 }
 .slider img {
   width: 33.33%;
-  height: 100%;
+  height: auto;
   object-fit: cover;
 }
 .dots-container {
