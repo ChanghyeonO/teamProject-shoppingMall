@@ -5,17 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>DAM-AH</title>
     <link rel="stylesheet" href="./nav.css" />
+    <link rel="stylesheet" href="../../assets/styles/reset.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     />
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+    <!-- uicons-regular-rounded CSS 라이브러리(다양한 아이콘) -->
     <link
       rel="stylesheet"
       href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css"
     />
     <script src="./nav.js" type="module" defer></script>
   </head>
+
   <body>
     <!-- nav bar 관련 -->
     <nav class="navbar" role="navigation" aria-label="main navigation">
@@ -42,31 +45,24 @@
 
       <div class="navbar-menu" id="navMenu">
         <div class="navbar-start">
-          <a class="navbar-item" href="#">SHOP</a>
-          <a class="navbar-item" href="#">ABOUT</a>
-          <a class="navbar-item" href="#">LOCATION</a>
-          <a class="navbar-item" href="#">FOR BUSINESS</a>
-        </div>
+          <li class="navbar-item navbar-item--arrow" href="#">
+            PRODUCT
+            <div class="dropdown-container">
+              <ul>
+                <li>TEA-WARE</li>
+                <li>TUMBLER & BOTTLE</li>
+                <li>MUG & CUP</li>
+              </ul>
+            </div>
+          </li>
 
-        <div class="navbar-wrapper">
-          <div class="columns lines">
-            <div class="column">
-              <h3 class="navbar-heading">TEA-WARE</h3>
-              <a class="navbar-item" href="#">티웨어</a>
-            </div>
-            <div class="column">
-              <h3 class="navbar-heading">PICNIC-WARE</h3>
-              <a class="navbar-item" href="#">텀블러 & 보틀</a>
-            </div>
-            <div class="column">
-              <h3 class="navbar-heading">KITCHEN-WARE</h3>
-              <a class="navbar-item" href="#">머그 & 컵</a>
-            </div>
-          </div>
+          <li class="navbar-item" href="#">ABOUT</li>
+          <li class="navbar-item" href="#">LOCATION</li>
+          <li class="navbar-item" href="#">FOR BUSINESS</li>
         </div>
 
         <div class="navbar-end">
-          <div class="navbar-item">
+          <div class="navbar-icon">
             <div class="icon-buttons">
               <span class="icon-button">
                 <i class="fi fi-rr-envelope"></i>
