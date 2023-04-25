@@ -23,7 +23,7 @@ async function fetchData() {
         const jsonData = await response.json();
         if (Array.isArray(jsonData.data)) {
             const links = jsonData.data.map(data => `
-          <a href="./item-detail.html?id=${data._id}" class="item-box">
+          <a href="../list-detail/list-detail.html?id=${data._id}" class="item-box">
             <img src="${data.imgSrc}" alt="${data.name}" class="item-image">
             <h5 class="item-name">${data.name}</h5>
             <p class="item-price">${data.price}원 (부가세포함)</p>
