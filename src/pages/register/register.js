@@ -1,3 +1,5 @@
+const URI = "http://34.64.252.224";
+
 // html 요소
 const idInput = document.querySelector('#idInput');
 const passwordInput = document.querySelector('#passwordInput');
@@ -18,23 +20,23 @@ registerButton.addEventListener('click', handleSubmit);
 async function handleSubmit(e) {
   e.preventDefault();
 
-  const userId = idInput.value;
+  const userName = idInput.value;
   const password = passwordInput.value;
   const passwordConfirm = passwordConfirmInput.value;
-
+  const roleType = "USER";
   const name = nameInput.value;
   const phoneNumber = phoneNumberInput.value;
-  const email = emailInput.value;
+  const mail = emailInput.value;
   const address = addressBasicInput.value;
   const addressOption = addressOptionInput.value;
     
   // 유효성 검사
-  const isIdValid = userId.length >= 3 && userId.length <= 15;
+  const isIdValid = userName.length >= 3 && userName.length <= 15;
   const isPasswordValid = password.length >= 12 && password.length <= 30;
   const isPasswordCheck = password === passwordConfirm;
   const isNameValid = name.length >= 1;
   const isPhoneNumberValid = /^[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}$/.test(phoneNumber);
-  const isEmailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/.test(email);
+  const isEmailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/.test(mail);
 
 
   if (!isIdValid) {
@@ -64,19 +66,20 @@ async function handleSubmit(e) {
 
   // 객체 생성
   const data = {
-    userId,
+    userName,
     password,
-    name,
+    roleType,
+    // name,
     phoneNumber,
-    email,
+    mail,
     address,
-    addressOption
+    // addressOption
   }
   
   // JSON 생성
   const dataJson = JSON.stringify(data);
   
-  const res = await fetch('/auth/signup', {
+  const res = await fetch(`${URI}/auth/signup`, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -86,10 +89,9 @@ async function handleSubmit(e) {
   
   if (res.status === 200) {
     alert("회원가입에 성공하였습니다!");
-    // 로그인 페이지로 이동
-    window.location.href = '/auth/login';
+    window.location.href = '../login/login.html';
   } else {
     alert("회원가입에 실패하였습니다");
-    console.log(error);
+    console.error(error);
   }
 }
