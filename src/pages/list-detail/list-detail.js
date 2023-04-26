@@ -1,6 +1,8 @@
-const contentTopData = document.querySelector('.content-top-data');
-const contentMiddleData = document.querySelector('.content-middle-data')
+const URI = "http://34.64.252.224";
 
+const leftContentsBoxData = document.querySelector('.left-content')
+
+const contentMiddleData = document.querySelector('.content-middle-data')
 
 const productName = document.querySelector('.product-name');
 const productPrice = document.querySelector('.product-price');
@@ -11,6 +13,7 @@ const minusButton = document.querySelector('.minus-button');
 const plusButton = document.querySelector('.plus-button');
 const innerNumber = document.querySelector('.inner-number');
 
+const countHint = document.querySelector('.count-hint');
 const cartAddButton = document.querySelector('.cart-add-button');
 
 const specificationsContainer = document.querySelector('.specifications-container');
@@ -19,37 +22,137 @@ const handlingPrecautionsContainer = document.querySelector('.handling-precautio
 const specificationsContents = document.querySelector(".specifications-contents");
 const handlingPrecautionsContents = document.querySelector(".handling-precautions-contents");
 
-fetch('./inner-data.json')
-    .then(response => response.json())
-    .then(data => {
-        //middle-content-box의 inner-data
-        contentTopData.innerHTML = `
-        <img src="${data[0].imgSrc}" />
-        <img src="${data[0].imgSrc1}" />
-        <img src="${data[0].imgSrc2}" />
-    `;
+// //현재 URL에서 쿼리 문자열을 추출해서 URLSearchParmas 객체 생성
+// const params = new URLSearchParams(window.location.search);
 
-        contentMiddleData.innerHTML = `
-        <img src="${data[0].imgSrc3}" />
-        <h5>${data[0].explanationTitle1}</h5>
-        <p>${data[0].Explanation1}</p>
-        <img src="${data[0].imgSrc4}" />
-        <h5>${data[0].explanationTitle2}</h5>
-        <p>${data[0].Explanation2}</p>
-    `;
+// //객체에서 값만 추출해서 변수 data에 저장
+// let data = "";
+
+// for (const value of params.values()) {
+//     data = value;
+// }
+
+// fetch('./inner-data.json')
+//     .then(response => response.json())
+//     .then(data => {
+
+//         //left-content-box의 inner-data
+//         leftContentsBoxData.innerHTML = `
+//         <div class="top-image-box">
+//                 <img src="${data[0].imgSrc}" />
+//         </div>
+//         <div class="bottom-image-box">
+//                 <img src="${data[0].imgSrc1}" />
+//         </div>        
+//         `
+
+//         //middle-content-box의 inner-data 
+//         contentMiddleData.innerHTML = `
+//         <img src="${data[0].imgSrc}" />
+//         <h5>${data[0].explanationTitle1}</h5>
+//         <p>${data[0].Explanation1}</p>
+//         <img src="${data[0].imgSrc1}" />
+//         <h5>${data[0].explanationTitle2}</h5>
+//         <p>${data[0].Explanation2}</p>
+//     `;
+
+//         //right-content-box의 inner-data
+//         productName.innerHTML = data[0].title;
+//         productPrice.innerHTML = data[0].description;
+//         specificationsText.innerHTML = data[0].specifications;
+//         handlingPrecautionsText.innerHTML = data[0].handlingPrecautions;
+
+
+
+//         document.querySelector('.top-image-box').addEventListener('click', function () {
+//             window.scrollTo(0, 0);
+//         });
+//         document.querySelector('.bottom-image-box').addEventListener('click', function () {
+//             window.scrollTo(0, 900);
+//         });
+//     })
+//     .catch(error => console.log(error));
+
+
+
+async function fetchData() {
+    try {
+        //현재 URL에서 쿼리 문자열을 추출해서 URLSearchParmas 객체 생성
+        const params = new URLSearchParams(window.location.search);
+        //객체에서 값만 추출해서 변수 data에 저장
+        let data = "";
+        for (const value of params.values()) {
+            data = value;
+        }
+        //fetch() 메서드에서 http://34.64.252.224/product/detail? 문자열과 URLSearchParmas 객체를 조합해서 요청 URL 생성 및 서버에 요청
+        const response = await fetch(`http://34.64.252.224/api/product/detail?` + new URLSearchParams({ id: data }));
+
+        const jsonData = await response.json();
+        console.log(jsonData);
+
+        //left-content-box의 inner-data
+        //     leftContentsBoxData.innerHTML = `
+        //     <div class="top-image-box">
+        //       <img src="${jsonData[0].imgSrc}" />
+        //     </div>
+        //     <div class="bottom-image-box">
+        //       <img src="${jsonData[0].imgSrc1}" />
+        //     </div>        
+        //   `
+
+        //middle-content-box의 inner-data 
+        //     contentMiddleData.innerHTML = `
+        //     <img src="${jsonData[0].imgSrc}" />
+        //     <h5>${jsonData[0].explanationTitle1}</h5>
+        //     <p>${jsonData[0].Explanation1}</p>
+        //     <img src="${jsonData[0].imgSrc1}" />
+        //     <h5>${jsonData[0].explanationTitle2}</h5>
+        //     <p>${jsonData[0].Explanation2}</p>
+        //   `;
 
         //right-content-box의 inner-data
-        productName.innerHTML = data[0].title;
-        productPrice.innerHTML = data[0].description;
-        specificationsText.innerHTML = data[0].specifications;
-        handlingPrecautionsText.innerHTML = data[0].handlingPrecautions;
-    })
-    .catch(error => console.log(error));
+        productName.innerHTML = jsonData.data.name;
+        productPrice.innerHTML = `${jsonData.data.price}원 (부가세별도)`;
+        specificationsText.innerHTML = jsonData.data.specifications;
+        handlingPrecautionsText.innerHTML = jsonData.data.handlingPrecautions;
+
+
+        // //left-content-box의 image박스를 클릭했을 때 해당 이미지가 있는 scrollY 좌표로 이동하도록 구현
+        // document.querySelector('.top-image-box').addEventListener('click', function () {
+        //     window.scrollTo(0, 0);
+        // });
+        // document.querySelector('.bottom-image-box').addEventListener('click', function () {
+        //     window.scrollTo(0, 900);
+        // });
+
+        console.log(jsonData.count)
+        // if (innerNumber.value > jsonData.count) {
+
+        // }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+fetchData();
+
+
+
+
+window.addEventListener('scroll', function () {
+    const scrollY = window.scrollY;
+    const leftContent = document.querySelector('.left-content');
+    if (scrollY >= 100) {
+        leftContent.style.position = 'fixed';
+    } else {
+        leftContent.style.position = 'absolute';
+    }
+});
 
 let count = 1;
 
 minusButton.addEventListener('click', function () {
-    if (count > 0) {
+    if (count > 1) {
         count--;
     }
     innerNumber.value = count;

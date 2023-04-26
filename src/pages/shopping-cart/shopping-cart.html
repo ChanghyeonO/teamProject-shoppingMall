@@ -4,8 +4,21 @@
   <meta charset="UTF-8">
   <title>담아 - 장바구니</title>
   <link rel="stylesheet" href="shopping-cart.css">
+  <link rel="stylesheet" href="../../assets/styles/global.css">
+  <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+  <!-- flacticon styles load all -->
+  <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css"/>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'/>
+  <script src="./shopping-cart.js" type="module" defer></script>
 </head>
 <body>
+  <header>
+    <!-- navbar template로 삽입 -->
+  </header>
   <div class="wrap cf">   <!-- cf = clearfix -->
     <h1 class="projTitle">장 바 구 니</h1>
     <div class="heading cf">
@@ -13,12 +26,6 @@
       <a href="#" class="continue">계속 쇼핑</a>
     </div>
     <div class="cart">
-      <!-- <ul class="tableHead">
-        <li class="prodHeader">Product</li>
-        <li>구매 개수</li>
-        <li>총 합</li>
-        <li>삭제</li>
-      </ul> -->
       <ul class="cartWrap">
         <li class="items odd">
           <div class="infoWrap"> 
@@ -26,7 +33,16 @@
               <img src="https://kinto.kr/data/item/21091/thumb-21091_1024x1024_600x600.jpg" alt="" class="itemImg" />
               <p class="itemNumber">#상품 넘버링</p>
               <h3>상품명 1</h3>
-              <p> <input type="text"  class="qty" placeholder="1"/> x 15000 원</p>
+
+              <ul class="count-container">
+                <li class="count-button">
+                  <div class="minus-button"><i class="fi fi-br-minus"></i></div>
+                  <input type="text" value="1" class="inner-number"></input>
+                  <div class="plus-button"><i class="fi fi-rr-plus"></i></div>
+                </li>
+              </ul>
+
+              <p class="qty"> x 15000 원</p>
               <p class="stockStatus"> 재고 있음</p>
             </div>  
           
@@ -111,5 +127,9 @@
       </ul>
     </div>
   </div>
+
+  <footer>
+    <!-- footer template로 삽입 -->
+  </footer>
 </body>
 </html>
