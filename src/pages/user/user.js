@@ -2,14 +2,20 @@
 // drawNavbar();
 // drawFooter();
 
+
 // fetch data의 경우 후에 서버 데이터로 변경이 필요함으로, 상수로 꺼내 유지보수를 편리하게 함.
-const USER_INFO_URL = "./userInfo.json";
-const USER_ORDER_URL = "./userOrder.json";
+const USER_INFO_URL = "http://34.64.252.224";
 
 async function getUserData() {
 	try {
-		const response1 = await fetch(USER_INFO_URL); 
-		const userInfoData = await response1.json();
+		const response1 = await fetch(`${USER_INFO_URL}/api/order/orders`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+			}
+		}); 
+		const responseData1 = await response1.json();
+		const userInfoData = responseData1.data.user;
 
 		// userId 먼저 적용
 		document.querySelector('.userProfile-userName').innerText = userInfoData.userName;
@@ -45,9 +51,24 @@ async function getUserData() {
 
 async function getOrderData() {
 	try {
+		const response1 = await fetch(`${USER_INFO_URL}/api/order/orders`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+			}
+		}); 
+		const responseData2 = await response1.json();
+	try {
 		// 주문 내역 데이터를 가져와 적용. 
-		const response2 = await fetch(USER_ORDER_URL);
-		const userOrderData = await response2.json();
+		const response2 = await fetch(`${USER_INFO_URL}/api/order/orders`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+			}
+		}); 
+		const userOrderData2 = await response2.json();
+		const userOrderData = responseData2.data.order;
+
 
 		// map으로 여러개의 데이터를 가져와 순회하면서 td 생성.
 		const userOrderTable = ` <table>
