@@ -121,3 +121,23 @@ innerNumber.addEventListener('input', function () {
         count = parseInt(value);
     }
 });
+
+
+// cartItem이 추가될 때마다 실행되는 함수
+function updateTotalRow() {
+  // sessionStorage에서 cartItem들을 가져옴
+  const cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
+  // 총 가격을 저장할 변수
+  let totalPrice = 0;
+  // cartItems를 순회하며 각 아이템의 가격과 수량을 곱한 값을 totalPrice에 더함
+  cartItems.forEach(item => {
+    totalPrice += item.productPrice * item.quantity;
+  });
+  // totalPrice를 .totalRow의 innerHTML로 설정
+  document.querySelector('.selected-all-value').innerHTML = totalPrice + ' 원';
+  document.querySelector('.total-value').innerHTML = (totalPrice + 4000) + ' 원';
+}
+
+// cartItem이 추가될 때마다 updateTotalRow 함수를 실행
+window.addEventListener('storage', updateTotalRow);
+

@@ -73,7 +73,7 @@
 }
 
 .navbar-item:hover {
-  background-color: #ffe4b5b9;
+  background-color: #e9e7e7;
 }
 
 @media (min-width: 40rem) {    
@@ -141,7 +141,7 @@
 
 .dropdown-container > ul { 
   /* 이 색상톤 잘 활용    */
-  background-color: #ffe4b5b9; 
+  background-color: #e9e7e7; 
   transition: 250ms;    
 }
 

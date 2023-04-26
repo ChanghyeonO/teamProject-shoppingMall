@@ -44,9 +44,9 @@ export const drawNavbar = () => {
         <div class="navbar-end">
           <div class="navbar-icon">
             <div class="icon-buttons">
-              <span class="icon-button" id="login">
-                <i class="fi fi-rr-power"></i>
-              </span>
+              <span class="icon-button" id="homebtn">
+                <i class="fi fi-rr-home"></i>
+              </span>   
               <span class="icon-button" id="userinfo">
                 <i class="fi fi-rr-user"></i>
               </span>
@@ -85,40 +85,20 @@ export const drawFooter = () => {
 // nav 바에 js 요소 적용
 export const activeNavbar = () => {
   // 로그인 버튼, 로그아웃 버튼, 유저 정보 버튼, 장바구니 버튼을 가져온다.
-  const loginBtn = document.getElementById('login');
+  const homeBtn = document.getElementById('homebtn');
   // const logoutBtn = document.getElementById('logout');
   const userinfoBtn = document.getElementById('userinfo');
   const cartBtn = document.getElementById('cart');
+  const URI = 'http://34.64.252.224'; // 서버 포트 URI
 
-  // 서버 포트 URI
-  const URI = 'http://34.64.252.224';
+  homeBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = '../main-page/home-page.html';
+  });
 
   loginBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log("addEvent is working on");
     window.location.href = '../login/login.html';
-  });
-
-  // userinfoBtn 클릭 시 실행되는 함수
-  userinfoBtn.addEventListener('click', async (e) => {
-    e.preventDefault();
-
-    // 서버로 signed-in 요청 보내기
-    const response = await fetch(`${URI}/api/auth/signed-in`, {
-        method: 'GET',
-        credentials: 'include',
-      })
-      .then((response) => {
-        if (response.ok) {
-          // 로그인 되었다면 바로 유저 정보 페이지로 이동
-          window.location.href = '../user/user.html';
-        } else {
-          window.location.href = '../login/login.html';
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
   });
 
   cartBtn.addEventListener('click', (e) => {
@@ -126,9 +106,41 @@ export const activeNavbar = () => {
     window.location.href = '../shopping-cart/shopping-cart.html';
   });
 
+  userinfoBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (sessionStorage.getItem('isLogined')) {
+      window.location.href = '../user/user.html';
+    } else {
+      console.log('로그인 확인 토큰 없음');
+      window.location.href = '../login/login.html';
+    }
+  });
+
   // // 로그아웃 버튼을 클릭했을 때 이벤트
   // logoutBtn.addEventListener('click', (e) => {
   //   e.preventDefault();
   //   //
+  // });
+
+  // // userinfoBtn 클릭 시 실행되는 함수
+  // userinfoBtn.addEventListener('click', async (e) => {
+  //   e.preventDefault();
+
+  //   // 서버로 signed-in 요청 보내기
+  //   const response = await fetch(`${URI}/api/auth/signed-in`, {
+  //       method: 'GET',
+  //       credentials: 'include',
+  //     })
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         // 로그인 되었다면 바로 유저 정보 페이지로 이동
+  //         window.location.href = '../user/user.html';
+  //       } else {
+  //         window.location.href = '../login/login.html';
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
   // });
 };
