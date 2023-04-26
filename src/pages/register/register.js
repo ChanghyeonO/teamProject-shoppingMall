@@ -68,7 +68,7 @@ async function handleSubmit(e) {
   // JSON 생성
   const dataJson = JSON.stringify(data);
   
-  const res = await fetch(`${URI}/auth/signup`, {
+  const res = await fetch(`${URI}/api/auth/signup`, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
