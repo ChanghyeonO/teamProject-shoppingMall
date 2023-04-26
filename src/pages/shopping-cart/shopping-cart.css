@@ -1,6 +1,4 @@
-@import "compass/css3";
 @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,400italic|Montserrat:400,700);
-@import "compass/reset";
 * {
 	 box-sizing: border-box;    /* 패딩과 테두리가 요소의 크기에 포함되게 사이징됨 */
 }
@@ -187,6 +185,42 @@ img {
     display: inline;
     padding-right: 1em;
 }
+
+
+/* 상품 qty추가 하는 버튼 */
+.count-container {
+	display: flex;
+	/* width: 100%; */
+	height: 20px;
+	/* align-items: center; */
+}
+.count-container p {
+	font-size: 5px;
+}
+.count-button {
+	display: flex;
+    width: 20px;
+	height: 20px;
+	margin-left: 0;
+	border: 1px solid #ccc;
+}
+.count-button .minus-button i,
+.count-button .plus-button i {
+	border: none;
+	width: 1px;
+	background-color: #fff;
+	cursor: pointer;
+}
+.count-button input {
+	border: none;
+	width: 20px;
+	font-size: 15px;
+	color: #2a2a2a;
+	text-align: center;
+}
+
+
+
 
 /* 장바구니 상품 없에기 버튼 */
 a.remove {
