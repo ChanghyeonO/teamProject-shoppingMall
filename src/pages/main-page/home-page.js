@@ -3,9 +3,11 @@ import {
   drawNavbar,
   // 푸터 랜더링
   drawFooter,
-} from '../../util/index.js';
+  activeNavbar,
+} from '../../utils/index.js';
 drawNavbar();
 drawFooter();
+activeNavbar();
 
 // 모든 slider images 가져옴, 이미지 루틴을 돌리기 위한 index 설정
 const sliderImages = document.querySelectorAll('.slider img');

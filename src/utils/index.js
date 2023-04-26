@@ -53,9 +53,6 @@ export const drawNavbar = () => {
                 <span class="icon-button" id="cart">
                   <i class="fi fi-rr-shopping-cart"></i>
                 </span>
-                <span class="icon-button" id="logout">
-                  <i class="fi fi-rr-exit"></i>
-                </span>
               </div>
             </div>
           </div>
@@ -125,6 +122,7 @@ export const activeNavbar = () => {
 
   loginBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    console.log("addEvent is working on");
     window.location.href = '../login/login.html';
   });
 
@@ -155,10 +153,11 @@ export const activeNavbar = () => {
     window.location.href = '../shopping-cart/shopping-cart.html';
   });
 
-  logoutBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    //
-  });
+  // // 로그아웃 버튼을 클릭했을 때 이벤트
+  // logoutBtn.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   //
+  // });
 
   // userinfoBtn을 클릭했을 때 실행되는 함수
   function handleUserInfoBtnClick() {
@@ -187,27 +186,27 @@ export const activeNavbar = () => {
       });
   }
 
-  // 세션 스토리지에서 토큰을 가져와 로그인 여부를 확인한다.
-  if (sessionStorage.getItem('loginToken')) {
-    // 만약 로그인을 했다면, 로그인 버튼을 비활성화하고 로그아웃 버튼을 활성화한다.
-    // 또한, 로그아웃 버튼 클릭 시 세션 스토리지에서 토큰과 관련된 정보를 삭제한다.
-    loginBtn.classList.add('active');
-    logoutBtn.classList.remove('active');
-    logoutAfter.classList.remove('active');
-    logoutBtn.addEventListener('click', () => {
-      sessionStorage.removeItem('loginToken');
-      sessionStorage.removeItem('userId');
-      sessionStorage.removeItem('adminToken');
-    });
-  } else {
-    // 로그인을 하지 않았다면, 로그아웃 버튼을 활성화하지 않고, 유저 정보 버튼 클릭 시 로그인 후 이용 가능하다는 알림창을 띄운다.
-    console.log('로그인 확인 토큰 없음');
-    logoutBtn.classList.add('active');
-    logoutAfter.classList.add('active');
-    userinfoBtn.addEventListener('click', () => {
-      alert('로그인 후 이용 가능합니다.');
-    });
-  }
+  // // 세션 스토리지에서 토큰을 가져와 로그인 여부를 확인한다.
+  // if (sessionStorage.getItem('loginToken')) {
+  //   // 만약 로그인을 했다면, 로그인 버튼을 비활성화하고 로그아웃 버튼을 활성화한다.
+  //   // 또한, 로그아웃 버튼 클릭 시 세션 스토리지에서 토큰과 관련된 정보를 삭제한다.
+  //   loginBtn.classList.add('active');
+  //   logoutBtn.classList.remove('active');
+  //   logoutAfter.classList.remove('active');
+  //   logoutBtn.addEventListener('click', () => {
+  //     sessionStorage.removeItem('loginToken');
+  //     sessionStorage.removeItem('userId');
+  //     sessionStorage.removeItem('adminToken');
+  //   });
+  // } else {
+  //   // 로그인을 하지 않았다면, 로그아웃 버튼을 활성화하지 않고, 유저 정보 버튼 클릭 시 로그인 후 이용 가능하다는 알림창을 띄운다.
+  //   console.log('로그인 확인 토큰 없음');
+  //   logoutBtn.classList.add('active');
+  //   logoutAfter.classList.add('active');
+  //   userinfoBtn.addEventListener('click', () => {
+  //     alert('로그인 후 이용 가능합니다.');
+  //   });
+  // }
 
   // 로그아웃 시 세션스토리지 토큰 제거
   if (logoutBtn.classList.contains('active')) {
