@@ -125,7 +125,7 @@ innerNumber.addEventListener('input', function () {
 
 // cartItem이 추가될 때마다 실행되는 함수
 function updateTotalRow() {
-  // sessionStorage에서 cartItem들을 가져옴
+  // sessionStorage에서 cartItem들을 가져옴, default는 []
   const cartItems = JSON.parse(sessionStorage.getItem('cartItems')) || [];
   // 총 가격을 저장할 변수
   let totalPrice = 0;
@@ -137,7 +137,5 @@ function updateTotalRow() {
   document.querySelector('.selected-all-value').innerHTML = totalPrice + ' 원';
   document.querySelector('.total-value').innerHTML = (totalPrice + 4000) + ' 원';
 }
-
-// cartItem이 추가될 때마다 updateTotalRow 함수를 실행
 window.addEventListener('storage', updateTotalRow);
 
