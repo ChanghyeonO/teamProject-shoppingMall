@@ -1,3 +1,5 @@
+const URI = "http://34.64.252.224";
+
 const itemArea = document.querySelector('.item-area');
 const mainTitle = document.querySelector('.main-title')
 const itemCount = document.querySelector('.item-count');
@@ -14,7 +16,7 @@ const itemPriceMenu = document.querySelector('.item-price-menu');
 const itemSortingTitle = document.querySelector('.item-sorting-title');
 const itemSortingMenu = document.querySelector('.item-sorting-menu');
 
-const productListUrl = 'http://34.64.252.224/product/list?category=TEA';
+const productListUrl = `${URI}/api/product/list?category=TEA`;
 
 async function fetchData() {
     try {
