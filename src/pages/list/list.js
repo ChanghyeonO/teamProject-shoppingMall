@@ -16,7 +16,7 @@ const itemPriceMenu = document.querySelector('.item-price-menu');
 const itemSortingTitle = document.querySelector('.item-sorting-title');
 const itemSortingMenu = document.querySelector('.item-sorting-menu');
 
-const productListUrl = `${URI}/api/product/list?category=TEA`;
+const productListUrl = `${URI}/api/product/list?category=TUMBLER`;
 
 async function fetchData() {
     try {
