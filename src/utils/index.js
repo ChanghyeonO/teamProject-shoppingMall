@@ -208,10 +208,10 @@ export const activeNavbar = () => {
   //   });
   // }
 
-  // 로그아웃 시 세션스토리지 토큰 제거
-  if (logoutBtn.classList.contains('active')) {
-    sessionStorage.removeItem('loginToken');
-    sessionStorage.removeItem('userId');
-    sessionStorage.removeItem('adminToken');
-  }
+  // // 로그아웃 시 세션스토리지 토큰 제거
+  // if (logoutBtn.classList.contains('active')) {
+  //   sessionStorage.removeItem('loginToken');
+  //   sessionStorage.removeItem('userId');
+  //   sessionStorage.removeItem('adminToken');
+  // }
 };
