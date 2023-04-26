@@ -14,24 +14,29 @@ const itemPriceMenu = document.querySelector('.item-price-menu');
 const itemSortingTitle = document.querySelector('.item-sorting-title');
 const itemSortingMenu = document.querySelector('.item-sorting-menu');
 
+//만약 nav바 product중 list를 클릭하면 
 const productListUrl = 'http://34.64.252.224/product/list?category=TEA';
 
 async function fetchData() {
     try {
         const response = await fetch(productListUrl);
+        //productListUrl의 Promise 데이터를 받아오기까지 기다림
         const jsonData = await response.json();
+
         if (Array.isArray(jsonData.data)) {
             const links = jsonData.data.map(data => `
-          <a href="./item-detail.html?id=${data._id}" class="item-box">
+          <a href="./item-detail?id=${data._id}" class="item-box">
             <img src="${data.imgSrc}" alt="${data.name}" class="item-image">
             <h5 class="item-name">${data.name}</h5>
             <p class="item-price">${data.price}원 (부가세포함)</p>
           </a>
         `);
+
             itemArea.innerHTML = links.join('');
             mainTitle.innerHTML = jsonData.data[0].category;
             itemCount.innerHTML = `${jsonData.data.length}`;
         }
+        //내가 작성한 함수 내에 에러가 발생 했을 경우에 catch로 error를 출력
     } catch (error) {
         console.log(error);
     }
