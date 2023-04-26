@@ -44,10 +44,10 @@ export const drawNavbar = () => {
           <div class="navbar-end">
             <div class="navbar-icon">
               <div class="icon-buttons">
-                <span class="icon-button" id="questions">
-                  <i class="fi fi-rr-envelope"></i>
-                </span>
                 <span class="icon-button" id="login">
+                  <i class="fi fi-rr-power"></i>
+                </span>
+                <span class="icon-button" id="userinfo">
                   <i class="fi fi-rr-user"></i>
                 </span>
                 <span class="icon-button" id="cart">
@@ -150,23 +150,42 @@ export const drawFooter = () => {
 
 // nav 바에 js 요소 적용
 export const activeNavbar = () => {
+  // 로그인 버튼, 로그아웃 버튼, 유저 정보 버튼, 장바구니 버튼을 가져온다.
   const loginBtn = document.getElementById('login');
   const logoutBtn = document.getElementById('logout');
-  const mypageBtn = document.getElementById('mypage');
+  const userinfoBtn = document.getElementById('userinfo');
+  const cartBtn = document.getElementById('cart');
 
-  const loginAfter = document.getElementById('vb-login-after');
-  const logoutAfter = document.getElementById('vb-logout-after');
+  // userinfoBtn을 클릭했을 때 실행되는 함수
+  function handleUserInfoBtnClick() {
+    // jwt 토큰을 가져옴
+    const token = getToken();
+    // fetch를 이용해 서버에 /api/user 요청을 보냄
+    fetch('/api/user', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        // 응답이 성공적으로 도착했을 때
+        if (response.ok) {
+          // 사용자 정보 페이지를 보여줌
+          displayPersonalInformationPage();
+        } else {
+          // 응답이 실패했을 때 (로그인하지 않은 경우)
+          // 로그인 페이지를 보여줌
+          displayLoginPage();
+        }
+      })
+      .catch((error) => {
+        // 에러가 발생했을 때
+        console.error(error);
+      });
+  }
 
-  const cart = document.getElementById('cart');
-
-  // 로그인 시 세션 스토리지 확인용
-  // sessionStorage.setItem('loginToken', '1');
-
-  // 세션 스토리지 로그인 토큰 확인, nav 메뉴 구성
-  // css 에 active 관련 추가?
+  // 로그인 여부를 확인하기 위해 세션 스토리지에서 토큰을 가져온다.
+  // 만약 로그인을 했다면, 로그아웃 버튼을 보이게 하고, 클릭 시 세션 스토리지에서 토큰을 삭제한다.
   if (sessionStorage.getItem('loginToken')) {
-    loginBtn.classList.add('active');
-    loginAfter.classList.add('active');
     logoutBtn.classList.remove('active');
     logoutAfter.classList.remove('active');
     logoutBtn.addEventListener('click', () => {
@@ -175,14 +194,11 @@ export const activeNavbar = () => {
       sessionStorage.removeItem('adminToken');
     });
   } else {
-    // 토큰이 없다면
+    // 로그인을 하지 않았다면, 로그아웃 버튼을 숨기고, 유저 정보 버튼 클릭 시 로그인 후 이용 가능하다는 알림창을 띄운다.
     console.log('로그인 확인 토큰 없음');
-    loginBtn.classList.remove('active');
-    loginAfter.classList.remove('active');
     logoutBtn.classList.add('active');
     logoutAfter.classList.add('active');
-
-    mypageBtn.addEventListener('click', () => {
+    userinfoBtn.addEventListener('click', () => {
       alert('로그인 후 이용 가능합니다.');
     });
   }

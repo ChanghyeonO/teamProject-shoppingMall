@@ -3,7 +3,7 @@ import {
   drawNavbar,
   // 푸터 랜더링
   drawFooter,
-} from '../../index.js';
+} from '../../util/index.js';
 drawNavbar();
 drawFooter();
 
