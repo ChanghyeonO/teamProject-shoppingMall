@@ -43,6 +43,7 @@ async function handleSubmit(e) {
   })
   .then(response => {
     if (response.status === 200) {
+      sessionStorage.setItem("isLogined", "true");
       alert("로그인에 성공하였습니다!");
       // 로그인 후 페이지 이동
       window.location.href = '../main-page/home-page.html'
