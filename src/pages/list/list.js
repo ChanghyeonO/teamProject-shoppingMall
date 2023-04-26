@@ -1,3 +1,5 @@
+const URI = "http://34.64.252.224";
+
 const itemArea = document.querySelector('.item-area');
 const mainTitle = document.querySelector('.main-title')
 const itemCount = document.querySelector('.item-count');
@@ -14,8 +16,7 @@ const itemPriceMenu = document.querySelector('.item-price-menu');
 const itemSortingTitle = document.querySelector('.item-sorting-title');
 const itemSortingMenu = document.querySelector('.item-sorting-menu');
 
-
-const productListUrl = 'http://34.64.252.224/product/list?category=TEA';
+const productListUrl = `${URI}/api/product/list?category=TUMBLER`;
 
 async function fetchData() {
     try {
@@ -23,7 +24,7 @@ async function fetchData() {
         const jsonData = await response.json();
         if (Array.isArray(jsonData.data)) {
             const links = jsonData.data.map(data => `
-          <a href="../list-detail/list-detail.html?id=${data._id}" class="item-box">
+            <a href="../list-detail/list-detail.html?id=${data._id}" class="item-box">
             <img src="${data.imgSrc}" alt="${data.name}" class="item-image">
             <h5 class="item-name">${data.name}</h5>
             <p class="item-price">${data.price}원 (부가세포함)</p>
