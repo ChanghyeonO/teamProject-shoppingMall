@@ -3,9 +3,11 @@ import {
   drawNavbar,
   // 푸터 랜더링
   drawFooter,
+  activeNavbar,
 } from '../../utils/index.js';
 drawNavbar();
 drawFooter();
+activeNavbar();
 
 // 장바구니에서 아이템 삭제
 document.querySelectorAll('a.remove').forEach(function (removeLink) {
