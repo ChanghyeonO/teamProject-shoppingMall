@@ -51,14 +51,6 @@ async function getUserData() {
 
 async function getOrderData() {
 	try {
-		const response1 = await fetch(`${USER_INFO_URL}/api/order/orders`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-			}
-		}); 
-		const responseData2 = await response1.json();
-	try {
 		// 주문 내역 데이터를 가져와 적용. 
 		const response2 = await fetch(`${USER_INFO_URL}/api/order/orders`, {
 			method: 'GET',
@@ -66,38 +58,37 @@ async function getOrderData() {
 				'Content-Type': 'application/json',
 			}
 		}); 
-		const userOrderData2 = await response2.json();
+		const responseData2 = await response2.json();
 		const userOrderData = responseData2.data.order;
 
-
-		// map으로 여러개의 데이터를 가져와 순회하면서 td 생성.
-		const userOrderTable = ` <table>
-			<thead>
-				<tr>
-					<th>주문 번호</th>
-					<th>제품 번호</th>
-					<th>가격</th>
-					<th>제품 수</th>
-					<th>상태</th>
-				</tr>
-			</thead>
-			<tbody>
-				${userOrderData.map((order) => `
-					${order.products.map((product) => `
+		if (userOrderData && userOrderData.length > 0) {
+			const userOrderTable = ` <table>
+				<thead>
+					<tr>
+						<th>제품명</th>
+						<th>제품 번호</th>
+						<th>가격</th>
+						<th>제품 수</th>
+						<th>상태</th>
+					</tr>
+				</thead>
+				<tbody>
+					${userOrderData.map((orders) => `
 						<tr>
-							<td>${order.orderNumber}</td>
-							<td>${product.productId}</td>
-							<td>${product.price}</td>
-							<td>${product.count}</td>
-							<td>${product.state}</td>
+							<td>${orders.name}</td>
+							<td>${orders._id}</td>
+							<td>${orders.price}</td>
+							<td>${orders.count}</td>
+							<td>배송중</td>
 						</tr>
 					`).join('')}
-				`).join('')}
-			</tbody>
-		</table>
-		`;
-
-		document.querySelector('.ordered').insertAdjacentHTML('beforeend', userOrderTable);
+				</tbody>
+			</table>
+			`;
+			document.querySelector('.ordered').insertAdjacentHTML('beforeend', userOrderTable);
+		} else {
+			console.log('No order data found');
+		}
 	} catch (error) {
 		console.error(error);
 	}
