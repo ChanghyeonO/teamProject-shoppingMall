@@ -33,7 +33,7 @@ async function handleSubmit(e) {
   const dataJson = JSON.stringify(data);
   
   // 로그인 요청 서버에 보내기
-  const response = await fetch(`${URI}/auth/login`, {
+  const response = await fetch(`${URI}/api/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
