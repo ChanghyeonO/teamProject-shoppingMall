@@ -124,17 +124,6 @@ const result = await fetchData();
 
 console.log(result.jsonDataId)
 
-
-window.addEventListener('scroll', function () {
-    const scrollY = window.scrollY;
-    const leftContent = document.querySelector('.left-content');
-    if (scrollY >= 100) {
-        leftContent.style.position = 'fixed';
-    } else {
-        leftContent.style.position = 'absolute';
-    }
-});
-
 let count = 1;
 
 minusButton.addEventListener('click', function () {
