@@ -200,7 +200,7 @@ img {
 }
 .count-button {
 	display: flex;
-    width: 20px;
+    width: 55px;
 	height: 20px;
 	margin-left: 0;
 	border: 1px solid #ccc;
@@ -208,13 +208,16 @@ img {
 .count-button .minus-button i,
 .count-button .plus-button i {
 	/* border: none; */
-	width: 1px;
+    display: inline-block;
+    height: 15px;
+	width: 15px;
 	background-color: #fff;
 	cursor: pointer;
 }
 .count-button input {
 	border: none;
-	width: 20px;
+	width: 19px;
+    height: 19px;
 	font-size: 15px;
 	color: #2a2a2a;
 	text-align: center;
