@@ -24,10 +24,6 @@ const itemStockMenu = document.querySelector('.item-stock-menu');
 const itemSortingTitle = document.querySelector('.item-sorting-title');
 const itemSortingMenu = document.querySelector('.item-sorting-menu');
 
-const teaWareNav = document.querySelector(".tea-list");
-const tumblerBottleNav = document.querySelector(".tumbler-list");
-const mugCupNav = document.querySelector(".mug-list");
-
 
 const category = new URLSearchParams(window.location.search).get("c");
 const productListUrl = `${URI}/api/product/list?category=${category}`;
