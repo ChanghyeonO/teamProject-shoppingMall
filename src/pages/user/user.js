@@ -26,15 +26,12 @@ async function logoutEvent(e) {
 			}
 		});
 		sessionStorage.removeItem('isLogined');
-		console.log(response.status);
 		alert('로그아웃 되었습니다.');
 		window.location.href ='../main-page/home-page.html'
 	} catch (error) {
 		console.error(error);
 	}
 }
-
-
 
 async function getUserData() {
 	try {
