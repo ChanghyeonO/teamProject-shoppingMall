@@ -1,27 +1,28 @@
-const logoutButton = document.querySelector('#logout');
-
-logoutButton.addEventListener('click', logoutEvent);
+// fetch data의 경우 후에 서버 데이터로 변경이 필요함으로, 상수로 꺼내 유지보수를 편리하게 함.
+const USER_INFO_URL = "http://34.64.252.224";
 
 // 로그아웃 이벤트 
+const logoutButton = document.querySelector('#logout');
+logoutButton.addEventListener('click', logoutEvent);
+
 async function logoutEvent(e) {
 	e.preventDefault();
 	try {
-		const response1 = await fetch(`${USER_INFO_URL}/api/auth/logout`, {
+		const response = await fetch(`${USER_INFO_URL}/api/auth/logout`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			}
-		})
-		.then(response1 => {
-			alert('로그아웃 되었습니다.')
-		}); 
+		});
+		sessionStorage.removeItem('isLogined');
+		alert('로그아웃 되었습니다.');
+		window.location.href ='../main-page/home-page.html'
 	} catch (error) {
 		console.error(error);
 	}
 }
 
-// fetch data의 경우 후에 서버 데이터로 변경이 필요함으로, 상수로 꺼내 유지보수를 편리하게 함.
-const USER_INFO_URL = "http://34.64.252.224";
+
 
 async function getUserData() {
 	try {
