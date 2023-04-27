@@ -27,7 +27,6 @@ const itemSortingMenu = document.querySelector('.item-sorting-menu');
 
 const category = new URLSearchParams(window.location.search).get("c");
 const productListUrl = `${URI}/api/product/list?category=${category}`;
-console.log(category)
 
 
 //상품 목록 불러오는 fetchData함수 선언
@@ -37,8 +36,21 @@ async function fetchData() {
         const response = await fetch(productListUrl);
         const jsonData = await response.json();
 
+        let jsonDataData = jsonData.data;
+
+        document.querySelector('.sorting-low-price-button').addEventListener('click', function () {
+            // 가격이 낮은 순서대로 정렬
+            jsonDataData = jsonData.data.sort((a, b) => a.price - b.price);
+        });
+
+        document.querySelector('.sorting-high-price-button').addEventListener('click', function () {
+            // 가격이 높은 순서대로 정렬
+            jsonDataData = jsonData.data.sort((a, b) => b.price - a.price);
+        });
+
+
         //상품 목록 데이터가 배열일 경우, 상품 목록 UI 생성
-        if (Array.isArray(jsonData.data)) {
+        if (Array.isArray(jsonDataData)) {
 
             const links = jsonData.data.map(data => `
                 <a href="../list-detail/list-detail.html?id=${data._id}" class="item-box">
@@ -103,13 +115,15 @@ async function fetchData() {
 
             displayRaw(0);
 
+
         }
     } catch (error) {
         console.log(error);
     }
 }
-
 fetchData();
+
+
 
 
 // item - color - menu 조작하는 js 코드 생성
