@@ -1,3 +1,14 @@
+import {
+  // 회원가입 등 네비바 랜더링
+  drawNavbar,
+  // 푸터 랜더링
+  drawFooter,
+  activeNavbar,
+} from '../../utils/index.js';
+drawNavbar();
+drawFooter();
+activeNavbar();
+
 // 서버 포트 URI
 const URI = "http://34.64.252.224";
 

@@ -22,59 +22,6 @@ const handlingPrecautionsContainer = document.querySelector('.handling-precautio
 const specificationsContents = document.querySelector(".specifications-contents");
 const handlingPrecautionsContents = document.querySelector(".handling-precautions-contents");
 
-// //현재 URL에서 쿼리 문자열을 추출해서 URLSearchParmas 객체 생성
-// const params = new URLSearchParams(window.location.search);
-
-// //객체에서 값만 추출해서 변수 data에 저장
-// let data = "";
-
-// for (const value of params.values()) {
-//     data = value;
-// }
-
-// fetch('./inner-data.json')
-//     .then(response => response.json())
-//     .then(data => {
-
-//         //left-content-box의 inner-data
-//         leftContentsBoxData.innerHTML = `
-//         <div class="top-image-box">
-//                 <img src="${data[0].imgSrc}" />
-//         </div>
-//         <div class="bottom-image-box">
-//                 <img src="${data[0].imgSrc1}" />
-//         </div>        
-//         `
-
-//         //middle-content-box의 inner-data 
-//         contentMiddleData.innerHTML = `
-//         <img src="${data[0].imgSrc}" />
-//         <h5>${data[0].explanationTitle1}</h5>
-//         <p>${data[0].Explanation1}</p>
-//         <img src="${data[0].imgSrc1}" />
-//         <h5>${data[0].explanationTitle2}</h5>
-//         <p>${data[0].Explanation2}</p>
-//     `;
-
-//         //right-content-box의 inner-data
-//         productName.innerHTML = data[0].title;
-//         productPrice.innerHTML = data[0].description;
-//         specificationsText.innerHTML = data[0].specifications;
-//         handlingPrecautionsText.innerHTML = data[0].handlingPrecautions;
-
-
-
-//         document.querySelector('.top-image-box').addEventListener('click', function () {
-//             window.scrollTo(0, 0);
-//         });
-//         document.querySelector('.bottom-image-box').addEventListener('click', function () {
-//             window.scrollTo(0, 900);
-//         });
-//     })
-//     .catch(error => console.log(error));
-
-
-
 async function fetchData() {
     try {
         //현재 URL에서 쿼리 문자열을 추출해서 URLSearchParmas 객체 생성
@@ -84,11 +31,18 @@ async function fetchData() {
         for (const value of params.values()) {
             data = value;
         }
+
         //fetch() 메서드에서 http://34.64.252.224/product/detail? 문자열과 URLSearchParmas 객체를 조합해서 요청 URL 생성 및 서버에 요청
         const response = await fetch(`http://34.64.252.224/api/product/detail?` + new URLSearchParams({ id: data }));
 
         const jsonData = await response.json();
-        console.log(jsonData);
+
+        const jsonDataId = jsonData.data._id;
+        const jsonDataPrice = jsonData.data.price;
+        const jsonDataName = jsonData.data.name;
+        const jsonDataSpecifications = jsonData.data.specifications;
+        const jsonDataHandlingPrecautions = jsonData.data.handlingPrecautions;
+
 
         //left-content-box의 inner-data
         //     leftContentsBoxData.innerHTML = `
@@ -111,10 +65,10 @@ async function fetchData() {
         //   `;
 
         //right-content-box의 inner-data
-        productName.innerHTML = jsonData.data.name;
-        productPrice.innerHTML = `${jsonData.data.price}원 (부가세별도)`;
-        specificationsText.innerHTML = jsonData.data.specifications;
-        handlingPrecautionsText.innerHTML = jsonData.data.handlingPrecautions;
+        productName.innerHTML = jsonDataName;
+        productPrice.innerHTML = `${jsonDataPrice}원 (부가세별도)`;
+        specificationsText.innerHTML = jsonDataSpecifications;
+        handlingPrecautionsText.innerHTML = jsonDataHandlingPrecautions;
 
 
         // //left-content-box의 image박스를 클릭했을 때 해당 이미지가 있는 scrollY 좌표로 이동하도록 구현
@@ -125,18 +79,25 @@ async function fetchData() {
         //     window.scrollTo(0, 900);
         // });
 
-        console.log(jsonData.count)
         // if (innerNumber.value > jsonData.count) {
 
         // }
+
+        return {
+            jsonDataId,
+            jsonDataPrice,
+            jsonDataName,
+            jsonDataSpecifications,
+            jsonDataHandlingPrecautions
+        }
     } catch (error) {
         console.log(error);
     }
 }
 
-fetchData();
+const result = await fetchData();
 
-
+console.log(result.jsonDataId)
 
 
 window.addEventListener('scroll', function () {
@@ -177,9 +138,9 @@ const cartItems = [];
 cartAddButton.addEventListener('click', function () {
     // 여기에 제품 아이디 추가 하셔야합니다!
     const cartItem = {
-        // productID: 
-        productName: productName.innerHTML,
-        productPrice: productPrice.innerHTML,
+        productID: result.jsonDataId,
+        productName: result.jsonDataName,
+        productPrice: result.jsonDataPrice,
         quantity: innerNumber.value
     };
 
@@ -187,8 +148,11 @@ cartAddButton.addEventListener('click', function () {
 });
 
 function addToCart(item) {
+    // 장바구니 목록을 불러옴
+    let cartItems = JSON.parse(sessionStorage.getItem('cartItems') || '[]');
+
     // 이미 장바구니에 존재하는 제품인지 찾는다.
-    const existingItemIndex = cartItems.findIndex(i => i.id === item.id);
+    const existingItemIndex = cartItems.findIndex(i => i.productID === item.productID);
 
     if (existingItemIndex > -1) {
         // 이미 존재하는 제품일 경우, 수량을 더함.
@@ -197,6 +161,7 @@ function addToCart(item) {
         // 새로운 제품일 경우, 장바구니에 추가.
         cartItems.push(item);
     }
+
     // 장바구니 목록을 localStorage에 저장
     sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
 }

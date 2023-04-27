@@ -1,9 +1,5 @@
 @import "../../assets/styles/reset.css";
 
-body {
-	height: 3700px;
-}
-
 /* header */
 
 .header {
@@ -120,7 +116,7 @@ body {
 }
 
 .item-box {
-	width: 13%;
+	width: 14%;
 	height: 220px;
 	padding: 25px;
 	margin-left: 30px;
@@ -140,19 +136,19 @@ body {
 
 .item-name {
 	font-size: 15px;
-	height: 30px;
+	height: 40px;
 }
 
 .item-price {
 	/* position: absolute; */
 	font-size: 12px;
-	margin-top: 20px;
+	margin-top: 30px;
 	display: flex;
 }
 
 .pagenation {
 	width: 100%;
-	height: 100px;
+	height: 110px;
 	text-align: center;
 	justify-content: center;
 	display: flex;

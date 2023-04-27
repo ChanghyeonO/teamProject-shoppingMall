@@ -24,12 +24,18 @@ const itemStockMenu = document.querySelector('.item-stock-menu');
 const itemSortingTitle = document.querySelector('.item-sorting-title');
 const itemSortingMenu = document.querySelector('.item-sorting-menu');
 
-const teaWareNav = document.querySelector("#tea-list");
-const tumblerBottleNav = document.querySelector("#tumbler-list");
-const mugCupNav = document.querySelector("#mug-list");
+const teaWareNav = document.querySelector(".tea-list");
+const tumblerBottleNav = document.querySelector(".tumbler-list");
+const mugCupNav = document.querySelector(".mug-list");
+
+
+const category = new URLSearchParams(window.location.search).get("c");
+const productListUrl = `${URI}/api/product/list?category=${category}`;
+console.log(category)
+
 
 //상품 목록 불러오는 fetchData함수 선언
-async function fetchData(productListUrl) {
+async function fetchData() {
     try {
         // fetch 함수를 사용해 상품 목록 데이터를 서버에서 가져옴
         const response = await fetch(productListUrl);
@@ -37,12 +43,13 @@ async function fetchData(productListUrl) {
 
         //상품 목록 데이터가 배열일 경우, 상품 목록 UI 생성
         if (Array.isArray(jsonData.data)) {
+
             const links = jsonData.data.map(data => `
-            <a href="../list-detail/list-detail.html?id=${data._id}" class="item-box">
-            <img src="${data.imgSrc}" alt="${data.name}" class="item-image">
-            <h5 class="item-name">${data.name}</h5>
-            <p class="item-price">${data.price}원 (부가세포함)</p>
-          </a>
+                <a href="../list-detail/list-detail.html?id=${data._id}" class="item-box">
+                <img src="../../assets/img/mug1.jpg" alt="${data.name}" class="item-image">
+                <h5 class="item-name">${data.name}</h5>
+                <p class="item-price">${data.price}원<br>(부가세포함)</p>
+            </a>
         `);
 
             //상품 목록 UI 브라우저에 출력
@@ -106,21 +113,7 @@ async function fetchData(productListUrl) {
     }
 }
 
-//해당 버튼을 누를 때 마다 일치하는 데이터를 불러오는 이벤트
-teaWareNav.addEventListener("click", () => {
-    const productListUrl = `${URI}/api/product/list?category=TEA`;
-    fetchData(productListUrl);
-});
-
-tumblerBottleNav.addEventListener("click", () => {
-    const productListUrl = `${URI}/api/product/list?category=TUMBLER`;
-    fetchData(productListUrl);
-});
-
-mugCupNav.addEventListener("click", () => {
-    const productListUrl = `${URI}/api/product/list?category=MUG`;
-    fetchData(productListUrl);
-});
+fetchData();
 
 
 // item - color - menu 조작하는 js 코드 생성
