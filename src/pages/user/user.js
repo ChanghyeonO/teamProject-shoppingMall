@@ -11,6 +11,9 @@ async function logoutEvent(e) {
 			headers: {
 				'Content-Type': 'application/json',
 			}
+		})
+		.then(response1 => {
+			alert('로그아웃 되었습니다.')
 		}); 
 	} catch (error) {
 		console.error(error);
@@ -90,7 +93,7 @@ async function getOrderData() {
 					${userOrderData.map((orders) => `
 						<tr>
 							<td>${orders.name}</td>
-							<td>${new Date(order.createdAt).toLocaleString()}</td>
+							<td>${new Date(orders.createdAt).toLocaleString()}</td>
 							<td>${orders.price}</td>
 							<td>${orders.count}</td>
 							<td>배송중</td>
