@@ -36,11 +36,11 @@
   border-radius: 1em;
 }
 
-@media (min-width: 40rem) {    
+/* @media (min-width: 40rem) {    
   button {
       display: none;
   }
-}
+} */
 
 /* Menu */
 
