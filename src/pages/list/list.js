@@ -27,6 +27,7 @@ async function fetchData() {
 
         //상품 목록 데이터가 배열일 경우, 상품 목록 UI 생성
         if (Array.isArray(jsonData.data)) {
+
             const links = jsonData.data.map(data => `
             <a href="../list-detail/list-detail.html?id=${data._id}" class="item-box">
             <img src="${data.imgSrc}" alt="${data.name}" class="item-image">
@@ -97,6 +98,7 @@ async function fetchData() {
 }
 
 fetchData();
+
 
 // item - color - menu 조작하는 js 코드 생성
 
