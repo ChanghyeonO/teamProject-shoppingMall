@@ -29,9 +29,9 @@ export const drawNavbar = () => {
             PRODUCT
             <div class="dropdown-container">
               <ul>
-                <li class="tea-list" href="../list/list.html">TEA-WARE</li>
-                <li class="tumbler-list" href="../list/list.html">TUMBLER & BOTTLE</li>
-                <li class="mug-list" href="../list/list.html">MUG & CUP</li>
+                <li class="product-list"><a href="../list/list.html" class="tea-list">TEA-WARE</a></li>
+                <li class="product-list"><a href="../list/list.html" class="tumbler-list">TUMBLER & BOTTLE</a></li>
+                <li class="product-list"><a href="../list/list.html" class="mug-list">MUG & CUP</a></li>
               </ul>
             </div>
           </li>
