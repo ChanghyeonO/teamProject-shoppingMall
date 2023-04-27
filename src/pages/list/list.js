@@ -1,3 +1,14 @@
+import {
+    // 회원가입 등 네비바 랜더링
+    drawNavbar,
+    // 푸터 랜더링
+    drawFooter,
+    activeNavbar,
+} from '../../utils/index.js';
+drawNavbar();
+drawFooter();
+activeNavbar();
+
 const URI = "http://34.64.252.224";
 
 const itemArea = document.querySelector('.item-area');
@@ -10,17 +21,15 @@ const itemColorMenu = document.querySelector('.item-color-menu');
 const stockMenuTitle = document.querySelector('.stock-menu-title');
 const itemStockMenu = document.querySelector('.item-stock-menu');
 
-const priceMenuTitle = document.querySelector('.price-menu-title');
-const itemPriceMenu = document.querySelector('.item-price-menu');
-
 const itemSortingTitle = document.querySelector('.item-sorting-title');
 const itemSortingMenu = document.querySelector('.item-sorting-menu');
 
-
-const productListUrl = `${URI}/api/product/list?category=MUG`;
+const teaWareNav = document.querySelector("#tea-list");
+const tumblerBottleNav = document.querySelector("#tumbler-list");
+const mugCupNav = document.querySelector("#mug-list");
 
 //상품 목록 불러오는 fetchData함수 선언
-async function fetchData() {
+async function fetchData(productListUrl) {
     try {
         // fetch 함수를 사용해 상품 목록 데이터를 서버에서 가져옴
         const response = await fetch(productListUrl);
@@ -97,7 +106,22 @@ async function fetchData() {
     }
 }
 
-fetchData();
+//해당 버튼을 누를 때 마다 일치하는 데이터를 불러오는 이벤트
+teaWareNav.addEventListener("click", () => {
+    const productListUrl = `${URI}/api/product/list?category=TEA`;
+    fetchData(productListUrl);
+});
+
+tumblerBottleNav.addEventListener("click", () => {
+    const productListUrl = `${URI}/api/product/list?category=TUMBLER`;
+    fetchData(productListUrl);
+});
+
+mugCupNav.addEventListener("click", () => {
+    const productListUrl = `${URI}/api/product/list?category=MUG`;
+    fetchData(productListUrl);
+});
+
 
 // item - color - menu 조작하는 js 코드 생성
 
