@@ -217,6 +217,23 @@ body {
 	transition: 0.5s;
 }
 
+.move-cartpage-button {
+	width: 29%;
+	height: 60px;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	letter-spacing: 0.1em;
+	border: none;
+	cursor: pointer;
+	background-color: #ccc;
+}
+
+.move-cartpage-button:hover {
+	background-color: #565656;
+	transition: 0.5s;
+}
+
 .specifications-container {
 	display: flex;
 	width: 100%;
