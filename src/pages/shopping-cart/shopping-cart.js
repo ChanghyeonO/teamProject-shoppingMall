@@ -9,6 +9,9 @@ drawNavbar();
 drawFooter();
 activeNavbar();
 
+// sessionStorage에서 정보 가져오기
+const cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
+
 // 장바구니에서 아이템 삭제
 document.querySelectorAll('a.remove').forEach(function (removeLink) {
   removeLink.addEventListener('click', function (event) {
@@ -95,8 +98,6 @@ const innerNumber = document.querySelector('.inner-number');
 // 초기 수량을 1로 설정
 let count = 1;
 
-// sessionStorage에서 정보 가져오기
-const cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
 // 현재 수량 값
 count = parseInt(innerNumber.value);
 // 마이너스 버튼 클릭 이벤트
@@ -115,6 +116,7 @@ minusButton.addEventListener('click', function () {
   // 변경된 정보를 sessionStorage에 다시 저장
   sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
   updateCart();
+  updateTotalRow();
 });
 
 // 플러스 버튼 클릭 이벤트
@@ -130,6 +132,7 @@ plusButton.addEventListener('click', function () {
   });
   sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
   updateCart();
+  updateTotalRow();
 });
 
 // 수량을 나타내는 숫자 요소의 값이 변경될 때 이벤트
@@ -152,6 +155,7 @@ innerNumber.addEventListener('input', function () {
   });
   sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
   updateCart();
+  updateTotalRow();
 });
 
 // 선택상품 금액, 주문금액 갱신해주는 함수
@@ -170,11 +174,7 @@ function updateTotalRow() {
 window.addEventListener('storage', updateTotalRow);
 
 
-
-
-
-
-// 구매하기 버튼 누르고 서버에 요청가는 게 이거 맞나요???
+// 주문하기 버튼
 const orderButton = document.querySelector('.order');
 orderButton.addEventListener('click', (event) => {
   event.preventDefault();
@@ -195,6 +195,8 @@ orderButton.addEventListener('click', (event) => {
   })
   .then(response => {
     if (response.ok) {
+      alert('주문 성공!');
+      window.location.href = '../main-page/home-page.html';
       return fetch('/api/order/orders');
     } else {
       throw new Error('주문 실패');
@@ -204,5 +206,8 @@ orderButton.addEventListener('click', (event) => {
   .then(orderList => {
     // 구매창에서 주문 내역으로 무언가
   })
-  .catch(error => console.error(error));
+  .catch(error => {
+    alert('주문 실패, 재고를 확인해주세요');
+    console.error(error);
+  });
 })
