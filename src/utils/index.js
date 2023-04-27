@@ -3,7 +3,7 @@ export const drawNavbar = () => {
   let navTemplate = `
     <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="/">
+        <a class="navbar-item" href="../main-page/home-page.html">
           <img
             src="../../assets/img/DAMAH-logo.PNG"
             alt="담아"

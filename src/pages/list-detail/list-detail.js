@@ -1,3 +1,15 @@
+import {
+    // 회원가입 등 네비바 랜더링
+    drawNavbar,
+    // 푸터 랜더링
+    drawFooter,
+    activeNavbar,
+} from '../../utils/index.js';
+drawNavbar();
+drawFooter();
+activeNavbar();
+
+
 const URI = "http://34.64.252.224";
 
 const leftContentsBoxData = document.querySelector('.left-content')
@@ -8,6 +20,10 @@ const productName = document.querySelector('.product-name');
 const productPrice = document.querySelector('.product-price');
 const specificationsText = document.querySelector('.specifications-text');
 const handlingPrecautionsText = document.querySelector('.handling-precautions-text');
+
+const modalBox = document.querySelector('.modal-box');
+const closeButton = document.querySelector('.close-modal');
+const explanationModal = document.querySelector('.explanation-modal');
 
 const minusButton = document.querySelector('.minus-button');
 const plusButton = document.querySelector('.plus-button');
@@ -31,9 +47,10 @@ async function fetchData() {
         for (const value of params.values()) {
             data = value;
         }
+        console.log(data)
 
         //fetch() 메서드에서 http://34.64.252.224/product/detail? 문자열과 URLSearchParmas 객체를 조합해서 요청 URL 생성 및 서버에 요청
-        const response = await fetch(`http://34.64.252.224/api/product/detail?` + new URLSearchParams({ id: data }));
+        const response = await fetch(`${URI}/api/product/detail?` + new URLSearchParams({ id: data }));
 
         const jsonData = await response.json();
 
@@ -44,25 +61,24 @@ async function fetchData() {
         const jsonDataHandlingPrecautions = jsonData.data.handlingPrecautions;
 
 
-        //left-content-box의 inner-data
-        //     leftContentsBoxData.innerHTML = `
-        //     <div class="top-image-box">
-        //       <img src="${jsonData[0].imgSrc}" />
-        //     </div>
-        //     <div class="bottom-image-box">
-        //       <img src="${jsonData[0].imgSrc1}" />
-        //     </div>        
-        //   `
+        // left - content - box의 inner - data
+        leftContentsBoxData.innerHTML = `
+            <div class="top-image-box">
+              <img src="https://kinto.kr/data/item/8433/thumb-pinfo_cast_w_pd_009_800x600.jpg" />
+            </div>
+            <div class="bottom-image-box">
+              <img src="https://kinto.kr/data/item/8433/thumb-pinfo_cast_w_pd_003_800x600.jpg" />
+            </div>        
+          `
 
-        //middle-content-box의 inner-data 
-        //     contentMiddleData.innerHTML = `
-        //     <img src="${jsonData[0].imgSrc}" />
-        //     <h5>${jsonData[0].explanationTitle1}</h5>
-        //     <p>${jsonData[0].Explanation1}</p>
-        //     <img src="${jsonData[0].imgSrc1}" />
-        //     <h5>${jsonData[0].explanationTitle2}</h5>
-        //     <p>${jsonData[0].Explanation2}</p>
-        //   `;
+        contentMiddleData.innerHTML = `
+            <img src="https://kinto.kr/data/item/8433/thumb-pinfo_cast_w_pd_009_800x600.jpg"/>
+            <h5>제품 이미지</h5>
+            <p>상기 이미지는 모니터마다 보여지는 색이 다를 수 있습니다.<br> 해당 이미지는 참고용으로만 사용하시기 바랍니다.</p>
+            <img src="https://kinto.kr/data/item/8433/thumb-pinfo_cast_w_pd_003_800x600.jpg"/>
+            <h5>제품 이미지</h5>
+            <p>상기 이미지는 모니터마다 보여지는 색이 다를 수 있습니다.<br> 해당 이미지는 참고용으로만 사용하시기 바랍니다.</p>
+            `
 
         //right-content-box의 inner-data
         productName.innerHTML = jsonDataName;
@@ -71,17 +87,26 @@ async function fetchData() {
         handlingPrecautionsText.innerHTML = jsonDataHandlingPrecautions;
 
 
-        // //left-content-box의 image박스를 클릭했을 때 해당 이미지가 있는 scrollY 좌표로 이동하도록 구현
-        // document.querySelector('.top-image-box').addEventListener('click', function () {
-        //     window.scrollTo(0, 0);
-        // });
-        // document.querySelector('.bottom-image-box').addEventListener('click', function () {
-        //     window.scrollTo(0, 900);
-        // });
+        //left-content-box의 image박스를 클릭했을 때 해당 이미지가 있는 scrollY 좌표로 이동하도록 구현
+        document.querySelector('.top-image-box').addEventListener('click', function () {
+            window.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+        });
 
-        // if (innerNumber.value > jsonData.count) {
+        document.querySelector('.bottom-image-box').addEventListener('click', function () {
+            window.scroll({
+                top: 800,
+                left: 0,
+                behavior: 'smooth'
+            });
+        });
 
-        // }
+        if (innerNumber.value > jsonData.count) {
+
+        }
 
         return {
             jsonDataId,
@@ -145,6 +170,11 @@ cartAddButton.addEventListener('click', function () {
     };
 
     addToCart(cartItem);
+    modalBox.style.display = 'block';
+    explanationModal.innerHTML = `
+    ${result.jsonDataName} 제품
+    ${innerNumber.value}개가 장바구니에 추가되었습니다.
+    `
 });
 
 function addToCart(item) {
@@ -167,6 +197,11 @@ function addToCart(item) {
 }
 
 
+closeButton.addEventListener('click', function () {
+    modalBox.style.display = 'none';
+})
+
+
 specificationsContainer.addEventListener('click', function () {
     specificationsContents.style.display = specificationsContents.style.display === "none" ? "block" : "none";
 
@@ -183,4 +218,5 @@ handlingPrecautionsContainer.addEventListener('click', function () {
 
     }
 });
+
 
