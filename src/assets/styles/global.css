@@ -149,6 +149,10 @@
   padding-block: .55em;
 }
 
+.dropdown-container > ul > li > a {
+  color:#222;
+}
+
 .dropdown-container > ul > li:hover {
   background-color: #f8c3cd86;
   color: #42000ce5;      
