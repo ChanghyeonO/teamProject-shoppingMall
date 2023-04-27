@@ -96,10 +96,10 @@ export const activeNavbar = () => {
     window.location.href = '../main-page/home-page.html';
   });
 
-  loginBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.location.href = '../login/login.html';
-  });
+  // loginBtn.addEventListener('click', (e) => {
+  //   e.preventDefault();
+  //   window.location.href = '../login/login.html';
+  // });
 
   cartBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -122,25 +122,4 @@ export const activeNavbar = () => {
   //   //
   // });
 
-  // // userinfoBtn 클릭 시 실행되는 함수
-  // userinfoBtn.addEventListener('click', async (e) => {
-  //   e.preventDefault();
-
-  //   // 서버로 signed-in 요청 보내기
-  //   const response = await fetch(`${URI}/api/auth/signed-in`, {
-  //       method: 'GET',
-  //       credentials: 'include',
-  //     })
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         // 로그인 되었다면 바로 유저 정보 페이지로 이동
-  //         window.location.href = '../user/user.html';
-  //       } else {
-  //         window.location.href = '../login/login.html';
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //     });
-  // });
 };

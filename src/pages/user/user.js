@@ -1,3 +1,14 @@
+import {
+  // 회원가입 등 네비바 랜더링
+  drawNavbar,
+  // 푸터 랜더링
+  drawFooter,
+  activeNavbar,
+} from '../../utils/index.js';
+drawNavbar();
+drawFooter();
+activeNavbar();
+
 // fetch data의 경우 후에 서버 데이터로 변경이 필요함으로, 상수로 꺼내 유지보수를 편리하게 함.
 const USER_INFO_URL = "http://34.64.252.224";
 

@@ -18,25 +18,18 @@ document.querySelectorAll('a.remove').forEach(function (removeLink) {
   });
 });
 
-// 테스트용으로 모든 아이템 보여주기
-// document.querySelectorAll('a.btn.continue').forEach(function (continueLink) {
-//   continueLink.addEventListener('click', function () {
-//     document.querySelectorAll('li.items').forEach(function (item) {
-//       item.style.display = 'block';
-//     });
-//   });
-// });
-
-// SessionStorage에 저장된 'cartItem'을 가져오는 함수 생성
 async function getSessionStorage() {
   try {
     let cartData = sessionStorage.getItem('cartItem');
     if (cartData) {
       cartData = JSON.parse(cartData);
+      if (!Array.isArray(cartData)) {
+        // cartData를 array타입으로 변경
+        cartData = [cartData];
+      }
     } else {
       cartData = { items: [] };
     }
-
     // 현재 sessionStorage에 담겨 있는 정보 예시
     // [{productName: "킨토 캐스트 에스프레소컵 90ml", productPrice: "7,400원 (부가세포함)", quantity: "3"}]
 
@@ -54,6 +47,13 @@ async function getSessionStorage() {
           <div class="cartSection">
             <img src="https://kinto.kr/data/item/21091/thumb-21091_1024x1024_600x600.jpg" alt="" class="itemImg" />
             <h3>${item.productName}</h3>
+            <ul class="count-container">
+              <li class="count-button">
+                <div class="minus-button"><i class="fi fi-br-minus"></i></div>
+                <input type="text" value="1" class="inner-number"></input>
+                <div class="plus-button"><i class="fi fi-rr-plus"></i></div>
+              </li>
+            </ul>
             <p> <input type="text" class="qty" placeholder="1"/>${item.quantity} x ${item.productPrice} 원</p>
           </div>  
         
@@ -83,8 +83,7 @@ async function updateCart() {
   const cartData = await getSessionStorage();
   const prodTotalPrice = cartData.productPrice * cartData.quantity;
 
-  document.querySelector('.prodTotal.cartSection p').innerHTML =
-    prodTotalPrice + '원';
+  document.querySelector('.prodTotal.cartSection p').innerHTML = prodTotalPrice + '원';
 }
 getSessionStorage();
 
@@ -115,6 +114,7 @@ minusButton.addEventListener('click', function () {
   });
   // 변경된 정보를 sessionStorage에 다시 저장
   sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+  updateCart();
 });
 
 // 플러스 버튼 클릭 이벤트
@@ -129,6 +129,7 @@ plusButton.addEventListener('click', function () {
     }
   });
   sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+  updateCart();
 });
 
 // 수량을 나타내는 숫자 요소의 값이 변경될 때 이벤트
@@ -150,6 +151,7 @@ innerNumber.addEventListener('input', function () {
     }
   });
   sessionStorage.setItem('cartItems', JSON.stringify(cartItems));
+  updateCart();
 });
 
 // 선택상품 금액, 주문금액 갱신해주는 함수
@@ -173,29 +175,34 @@ window.addEventListener('storage', updateTotalRow);
 
 
 // 구매하기 버튼 누르고 서버에 요청가는 게 이거 맞나요???
-const orderData = {
-  products: cartItems.map(item => ({
-    productName: item.productName,
-    productPrice: item.productPrice,
-    quantity: item.quantity
-  }))
-};
-fetch('/api/orders', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(orderData)
+const orderButton = document.querySelector('.order');
+orderButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  const orderData = {
+    products: cartItems.map(item => ({
+      productName: item.productName,
+      productPrice: item.productPrice,
+      quantity: item.quantity
+    }))
+  };
+
+  fetch('/api/order', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(orderData)
+  })
+  .then(response => {
+    if (response.ok) {
+      return fetch('/api/order/orders');
+    } else {
+      throw new Error('주문 실패');
+    }
+  })
+  .then(response => response.json())
+  .then(orderList => {
+    // 구매창에서 주문 내역으로 무언가
+  })
+  .catch(error => console.error(error));
 })
-.then(response => {
-  if (response.ok) {
-    return fetch('/api/order/orders');
-  } else {
-    throw new Error('주문 실패');
-  }
-})
-.then(response => response.json())
-.then(orderList => {
-  // 구매창에서 주문 내역으로 무언가
-})
-.catch(error => console.error(error));
