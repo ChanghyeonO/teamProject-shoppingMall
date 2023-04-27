@@ -1,3 +1,14 @@
+import {
+  // 회원가입 등 네비바 랜더링
+  drawNavbar,
+  // 푸터 랜더링
+  drawFooter,
+  activeNavbar,
+} from '../../utils/index.js';
+drawNavbar();
+drawFooter();
+activeNavbar();
+
 // 서버 포트 URI
 const URI = "http://34.64.252.224";
 
@@ -33,7 +44,7 @@ async function handleSubmit(e) {
   const dataJson = JSON.stringify(data);
   
   // 로그인 요청 서버에 보내기
-  const response = await fetch(`${URI}/auth/login`, {
+  const response = await fetch(`${URI}/api/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -43,6 +54,7 @@ async function handleSubmit(e) {
   })
   .then(response => {
     if (response.status === 200) {
+      sessionStorage.setItem("isLogined", "true");
       alert("로그인에 성공하였습니다!");
       // 로그인 후 페이지 이동
       window.location.href = '../main-page/home-page.html'

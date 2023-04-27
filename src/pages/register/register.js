@@ -1,3 +1,14 @@
+import {
+  // 회원가입 등 네비바 랜더링
+  drawNavbar,
+  // 푸터 랜더링
+  drawFooter,
+  activeNavbar,
+} from '../../utils/index.js';
+drawNavbar();
+drawFooter();
+activeNavbar();
+
 const URI = "http://34.64.252.224";
 
 // html 요소
@@ -68,7 +79,7 @@ async function handleSubmit(e) {
   // JSON 생성
   const dataJson = JSON.stringify(data);
   
-  const res = await fetch(`${URI}/auth/signup`, {
+  const res = await fetch(`${URI}/api/auth/signup`, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',

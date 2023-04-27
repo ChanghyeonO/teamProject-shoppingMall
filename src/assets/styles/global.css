@@ -36,11 +36,11 @@
   border-radius: 1em;
 }
 
-@media (min-width: 40rem) {    
+/* @media (min-width: 40rem) {    
   button {
       display: none;
   }
-}
+} */
 
 /* Menu */
 
@@ -73,7 +73,7 @@
 }
 
 .navbar-item:hover {
-  background-color: #ffe4b5b9;
+  background-color: #e9e7e7;
 }
 
 @media (min-width: 40rem) {    
@@ -141,12 +141,16 @@
 
 .dropdown-container > ul { 
   /* 이 색상톤 잘 활용    */
-  background-color: #ffe4b5b9; 
+  background-color: #e9e7e7; 
   transition: 250ms;    
 }
 
 .dropdown-container > ul > li {
   padding-block: .55em;
+}
+
+.dropdown-container > ul > li > a {
+  color:#222;
 }
 
 .dropdown-container > ul > li:hover {

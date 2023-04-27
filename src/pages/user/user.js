@@ -1,15 +1,48 @@
-// import { drawNavbar, drawFooter } from '../../shared.js';
-// drawNavbar();
-// drawFooter();
+import {
+  // 회원가입 등 네비바 랜더링
+  drawNavbar,
+  // 푸터 랜더링
+  drawFooter,
+  activeNavbar,
+} from '../../utils/index.js';
+drawNavbar();
+drawFooter();
+activeNavbar();
 
 // fetch data의 경우 후에 서버 데이터로 변경이 필요함으로, 상수로 꺼내 유지보수를 편리하게 함.
-const USER_INFO_URL = "./userInfo.json";
-const USER_ORDER_URL = "./userOrder.json";
+const USER_INFO_URL = "http://34.64.252.224";
+
+// 로그아웃 이벤트 
+const logoutButton = document.querySelector('#logout');
+logoutButton.addEventListener('click', logoutEvent);
+
+async function logoutEvent(e) {
+	e.preventDefault();
+	try {
+		const response = await fetch(`${USER_INFO_URL}/api/auth/logout`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			}
+		});
+		sessionStorage.removeItem('isLogined');
+		alert('로그아웃 되었습니다.');
+		window.location.href ='../main-page/home-page.html'
+	} catch (error) {
+		console.error(error);
+	}
+}
 
 async function getUserData() {
 	try {
-		const response1 = await fetch(USER_INFO_URL); 
-		const userInfoData = await response1.json();
+		const response1 = await fetch(`${USER_INFO_URL}/api/order/orders`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+			}
+		}); 
+		const responseData1 = await response1.json();
+		const userInfoData = responseData1.data.user[0];
 
 		// userId 먼저 적용
 		document.querySelector('.userProfile-userName').innerText = userInfoData.userName;
@@ -38,7 +71,7 @@ async function getUserData() {
 		// insertAdjacentHTML로 전달
 		document.querySelector('.userProfile').insertAdjacentHTML('beforeend', userInfoTable);
 
-		} catch (error) {
+	} catch (error) {
 		console.error(error);
 	}
 }
@@ -46,37 +79,43 @@ async function getUserData() {
 async function getOrderData() {
 	try {
 		// 주문 내역 데이터를 가져와 적용. 
-		const response2 = await fetch(USER_ORDER_URL);
-		const userOrderData = await response2.json();
+		const response2 = await fetch(`${USER_INFO_URL}/api/order/orders`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json',
+			}
+		}); 
+		const responseData2 = await response2.json();
+		const userOrderData = responseData2.data.order;
 
-		// map으로 여러개의 데이터를 가져와 순회하면서 td 생성.
-		const userOrderTable = ` <table>
-			<thead>
-				<tr>
-					<th>주문 번호</th>
-					<th>제품 번호</th>
-					<th>가격</th>
-					<th>제품 수</th>
-					<th>상태</th>
-				</tr>
-			</thead>
-			<tbody>
-				${userOrderData.map((order) => `
-					${order.products.map((product) => `
+		if (userOrderData && userOrderData.length > 0) {
+			const userOrderTable = ` <table>
+				<thead>
+					<tr>
+						<th>제품명</th>
+						<th>주문 날짜</th>
+						<th>가격</th>
+						<th>제품 수</th>
+						<th>상태</th>
+					</tr>
+				</thead>
+				<tbody>
+					${userOrderData.map((orders) => `
 						<tr>
-							<td>${order.orderNumber}</td>
-							<td>${product.productId}</td>
-							<td>${product.price}</td>
-							<td>${product.count}</td>
-							<td>${product.state}</td>
+							<td>${orders.name}</td>
+							<td>${new Date(orders.createdAt).toLocaleString()}</td>
+							<td>${orders.price}</td>
+							<td>${orders.count}</td>
+							<td>배송중</td>
 						</tr>
 					`).join('')}
-				`).join('')}
-			</tbody>
-		</table>
-		`;
-
-		document.querySelector('.ordered').insertAdjacentHTML('beforeend', userOrderTable);
+				</tbody>
+			</table>
+			`;
+			document.querySelector('.ordered').insertAdjacentHTML('beforeend', userOrderTable);
+		} else {
+			console.log('No order data found');
+		}
 	} catch (error) {
 		console.error(error);
 	}
