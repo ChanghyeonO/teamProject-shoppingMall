@@ -1,8 +1,3 @@
-// import { drawNavbar, drawFooter } from '../../shared.js';
-// drawNavbar();
-// drawFooter();
-
-
 // fetch data의 경우 후에 서버 데이터로 변경이 필요함으로, 상수로 꺼내 유지보수를 편리하게 함.
 const USER_INFO_URL = "http://34.64.252.224";
 
@@ -15,7 +10,7 @@ async function getUserData() {
 			}
 		}); 
 		const responseData1 = await response1.json();
-		const userInfoData = responseData1.data.user;
+		const userInfoData = responseData1.data.user[0];
 
 		// userId 먼저 적용
 		document.querySelector('.userProfile-userName').innerText = userInfoData.userName;
@@ -66,7 +61,7 @@ async function getOrderData() {
 				<thead>
 					<tr>
 						<th>제품명</th>
-						<th>제품 번호</th>
+						<th>주문 날짜</th>
 						<th>가격</th>
 						<th>제품 수</th>
 						<th>상태</th>
@@ -76,7 +71,7 @@ async function getOrderData() {
 					${userOrderData.map((orders) => `
 						<tr>
 							<td>${orders.name}</td>
-							<td>${orders._id}</td>
+							<td>${new Date(order.createdAt).toLocaleString()}</td>
 							<td>${orders.price}</td>
 							<td>${orders.count}</td>
 							<td>배송중</td>
