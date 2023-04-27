@@ -1,3 +1,22 @@
+const logoutButton = document.querySelector('#logout');
+
+logoutButton.addEventListener('click', logoutEvent);
+
+// 로그아웃 이벤트 
+async function logoutEvent(e) {
+	e.preventDefault();
+	try {
+		const response1 = await fetch(`${USER_INFO_URL}/api/auth/logout`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			}
+		}); 
+	} catch (error) {
+		console.error(error);
+	}
+}
+
 // fetch data의 경우 후에 서버 데이터로 변경이 필요함으로, 상수로 꺼내 유지보수를 편리하게 함.
 const USER_INFO_URL = "http://34.64.252.224";
 
@@ -39,7 +58,7 @@ async function getUserData() {
 		// insertAdjacentHTML로 전달
 		document.querySelector('.userProfile').insertAdjacentHTML('beforeend', userInfoTable);
 
-		} catch (error) {
+	} catch (error) {
 		console.error(error);
 	}
 }
