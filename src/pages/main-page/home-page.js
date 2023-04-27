@@ -28,7 +28,7 @@ function changeImage() {
   sliderImages[currentImageIndex].style.display = 'block';
 }
 // 이미지 전환 간격은 7000ms
-setInterval(changeImage, 7000);
+setInterval(changeImage, 5000);
 
 // 매개변수로 받은 인덱스의 slider 이미지를 보여주는 함수
 function showImage(index) {
