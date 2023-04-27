@@ -33,8 +33,6 @@ async function logoutEvent(e) {
 	}
 }
 
-
-
 async function getUserData() {
 	try {
 		const response1 = await fetch(`${USER_INFO_URL}/api/order/orders`, {

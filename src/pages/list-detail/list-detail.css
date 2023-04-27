@@ -201,7 +201,7 @@ body {
 }
 
 .cart-add-button {
-	width: 70%;
+	width: 65%;
 	height: 60px;
 	font-size: 20px;
 	font-weight: bold;
@@ -213,6 +213,23 @@ body {
 }
 
 .cart-add-button:hover {
+	background-color: #565656;
+	transition: 0.5s;
+}
+
+.move-cartpage-button {
+	width: 30%;
+	height: 60px;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	letter-spacing: 0.1em;
+	border: none;
+	cursor: pointer;
+	background-color: #ccc;
+}
+
+.move-cartpage-button:hover {
 	background-color: #565656;
 	transition: 0.5s;
 }
