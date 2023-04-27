@@ -1,3 +1,14 @@
+import {
+    // 회원가입 등 네비바 랜더링
+    drawNavbar,
+    // 푸터 랜더링
+    drawFooter,
+    activeNavbar,
+} from '../../utils/index.js';
+drawNavbar();
+drawFooter();
+activeNavbar();
+
 const URI = "http://34.64.252.224";
 
 const itemArea = document.querySelector('.item-area');
@@ -9,9 +20,6 @@ const itemColorMenu = document.querySelector('.item-color-menu');
 
 const stockMenuTitle = document.querySelector('.stock-menu-title');
 const itemStockMenu = document.querySelector('.item-stock-menu');
-
-const priceMenuTitle = document.querySelector('.price-menu-title');
-const itemPriceMenu = document.querySelector('.item-price-menu');
 
 const itemSortingTitle = document.querySelector('.item-sorting-title');
 const itemSortingMenu = document.querySelector('.item-sorting-menu');
@@ -98,7 +106,7 @@ async function fetchData(productListUrl) {
     }
 }
 
-//해당 버튼을 누를 때 마다 일치하는 데이터를 불러오는 
+//해당 버튼을 누를 때 마다 일치하는 데이터를 불러오는 이벤트
 teaWareNav.addEventListener("click", () => {
     const productListUrl = `${URI}/api/product/list?category=TEA`;
     fetchData(productListUrl);
