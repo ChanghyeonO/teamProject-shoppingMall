@@ -33,7 +33,8 @@ body {
 
 .field {
     width: 100%;
-    margin: 10px;
+    height: 95px;
+    margin-bottom: 10px;
 }
 .inputbox {
     width: 100%;
@@ -42,6 +43,13 @@ body {
     border-radius: 7px;
     border: 1px solid #D2D2D2;
     padding: 18px;
+}
+
+.errorType {
+    color: red;
+    font-size: 12px;
+    margin: 5px 0 0 5px;
+    display: none;
 }
 
 .control {
