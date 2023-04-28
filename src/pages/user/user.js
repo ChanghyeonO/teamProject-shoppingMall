@@ -92,22 +92,22 @@ async function getOrderData() {
 			const userOrderTable = ` <table>
 				<thead>
 					<tr>
+						<th>주문 날짜</th>	
 						<th>제품명</th>
-						<th>주문 날짜</th>
 						<th>가격</th>
 						<th>제품 수</th>
 						<th>상태</th>
 					</tr>
 				</thead>
 				<tbody>
-					${userOrderData.map((orders) => `
-						<tr>
-							<td>${orders.order.name}</td>
-							<td>${new Date(data.createdAt).toLocaleString()}</td>
-							<td>${orders.order.price}</td>
-							<td>${orders.order.count}</td>
-							<td>배송중</td>
-						</tr>
+					<tr>
+						<td>${new Date(userOrderData.createdAt).toLocaleString()}</td>
+						${userOrderData.map((orders) => `
+						<td>${orders.name}</td>
+						<td>${orders.price}</td>
+						<td>${orders.count}</td>
+						<td>배송중</td>
+					</tr>
 					`).join('')}
 				</tbody>
 			</table>
