@@ -88,7 +88,7 @@ async function getOrderData() {
 		const responseData2 = await response2.json();
 		const userOrderData = responseData2.data;
 
-		if (userOrderData && userOrderData.length > 0) {
+		if (userOrderData) {
 			const userOrderTable = ` <table>
 				<thead>
 					<tr>
@@ -100,12 +100,12 @@ async function getOrderData() {
 					</tr>
 				</thead>
 				<tbody>
-					${userOrderData.map((datalist) => `
+					${userOrderData.map((orders) => `
 						<tr>
-							<td>${datalist.order[0].name}</td>
-							<td>${new Date(datalist.createdAt).toLocaleString()}</td>
-							<td>${datalist.order[0].price}</td>
-							<td>${datalist.order[0].count}</td>
+							<td>${orders.order.name}</td>
+							<td>${new Date(data.createdAt).toLocaleString()}</td>
+							<td>${orders.order.price}</td>
+							<td>${orders.order.count}</td>
 							<td>배송중</td>
 						</tr>
 					`).join('')}
