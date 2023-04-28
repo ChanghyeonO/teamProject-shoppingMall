@@ -116,10 +116,9 @@ export const activeNavbar = () => {
     }
   });
 
-  // // 로그아웃 버튼을 클릭했을 때 이벤트
-  // logoutBtn.addEventListener('click', (e) => {
-  //   e.preventDefault();
-  //   //
-  // });
+};
 
+// 숫자에 쉼표를 추가 (10000 -> 10,000)
+export const addCommas = n => {
+  return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };

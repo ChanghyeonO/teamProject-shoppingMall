@@ -2,6 +2,7 @@ import {
   drawNavbar,
   drawFooter,
   activeNavbar,
+  addCommas,
 } from '../../utils/index.js';
 drawNavbar();
 drawFooter();
@@ -100,7 +101,7 @@ minusButtons.forEach(function (button) {
           item.quantity = innerNumber.value;
           event.target.parentElement.parentElement.parentElement.parentElement.querySelector('.item-quantity').textContent = innerNumber.value;
           event.target.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector('.prodTotal').textContent 
-            = innerNumber.value * event.target.parentElement.parentElement.parentElement.parentElement.querySelector('.item-price').textContent + "원";
+            = addCommas( innerNumber.value * event.target.parentElement.parentElement.parentElement.parentElement.querySelector('.item-price').textContent + "원" );
         }
       });
       // 변경된 정보를 sessionStorage에 다시 저장
@@ -126,7 +127,7 @@ plusButtons.forEach(function (button) {
         item.quantity = innerNumber.value;
         event.target.parentElement.parentElement.parentElement.parentElement.querySelector('.item-quantity').textContent = innerNumber.value;
         event.target.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector('.prodTotal').textContent 
-          = innerNumber.value * event.target.parentElement.parentElement.parentElement.parentElement.querySelector('.item-price').textContent + "원";
+          = addCommas( innerNumber.value * event.target.parentElement.parentElement.parentElement.parentElement.querySelector('.item-price').textContent + "원" );
       }
     });
     // 변경된 정보를 sessionStorage에 다시 저장
@@ -162,7 +163,7 @@ innerNumbers.forEach(function (button) {
         item.quantity = inputQty;
         event.target.parentElement.parentElement.parentElement.parentElement.querySelector('.item-quantity').textContent = inputQty;
         event.target.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector('.prodTotal').textContent 
-          = inputQty * event.target.parentElement.parentElement.parentElement.parentElement.querySelector('.item-price').textContent + "원";
+          = addCommas( inputQty * event.target.parentElement.parentElement.parentElement.parentElement.querySelector('.item-price').textContent + "원" );
       }
     });
     // 변경된 정보를 sessionStorage에 다시 저장
@@ -188,8 +189,12 @@ function updateTotalRow() {
     totalPrice += item.productPrice * item.quantity;
   });
 
-  document.querySelector('.selected-all-value').innerHTML = totalPrice + ' 원';
-  document.querySelector('.total-value').innerHTML = totalPrice + 4000 + ' 원';
+  document.querySelector('.selected-all-value').innerHTML = addCommas(totalPrice + ' 원');
+  if (totalPrice === 0) {
+    document.querySelector('.total-value').innerHTML = '0 원'
+  } else {
+    document.querySelector('.total-value').innerHTML = addCommas(totalPrice + 4000 + ' 원');
+  }
 }
 window.addEventListener('storage', updateTotalRow);
 
@@ -254,7 +259,7 @@ document.querySelectorAll('a.remove').forEach(function (removeLink) {
 
 // removeAllBtn 클릭 시, 모든 sessionStorage의 데이터를 지우고
 // sessionStorage를 다시 불러옴
-const removeAllBtn = document.querySelector('.removeAll');
+const removeAllBtn = document.querySelector('.removeall');
 removeAllBtn.addEventListener('click', removeAllItem);
 
 function removeAllItem() {
