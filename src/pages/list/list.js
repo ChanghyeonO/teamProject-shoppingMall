@@ -29,6 +29,7 @@ const category = new URLSearchParams(window.location.search).get("c");
 const productListUrl = `${URI}/api/product/list?category=${category}`;
 
 
+
 //상품 목록 불러오는 fetchData함수 선언
 async function fetchData() {
     try {
@@ -46,7 +47,7 @@ async function fetchData() {
 
                 const links = jsonDataData.map(data => `
                     <a href="../list-detail/list-detail.html?id=${data._id}" class="item-box">
-                    <img src="../../assets/img/mug1.jpg" alt="${data.name}" class="item-image">
+                    <img src="../../assets/product-imgs/${data._id}.jpeg" alt="${data.name}" class="item-image">
                     <h5 class="item-name">${data.name}</h5>
                     <p class="item-price">${data.price}원<br>(부가세포함)</p>
                 </a>
@@ -69,7 +70,7 @@ async function fetchData() {
 
                 const links = jsonDataData.map(data => `
                     <a href="../list-detail/list-detail.html?id=${data._id}" class="item-box">
-                    <img src="../../assets/img/mug1.jpg" alt="${data.name}" class="item-image">
+                    <img src="../../assets/product-imgs/${data._id}.jpeg" alt="${data.name}" class="item-image">
                     <h5 class="item-name">${data.name}</h5>
                     <p class="item-price">${data.price}원<br>(부가세포함)</p>
                 </a>
@@ -89,7 +90,7 @@ async function fetchData() {
 
             const links = jsonDataData.map(data => `
                 <a href="../list-detail/list-detail.html?id=${data._id}" class="item-box">
-                <img src="../../assets/img/mug1.jpg" alt="${data.name}" class="item-image">
+                <img src="../../assets/product-imgs/${data._id}.jpeg" alt="${data.name}" class="item-image">
                 <h5 class="item-name">${data.name}</h5>
                 <p class="item-price">${data.price}원<br>(부가세포함)</p>
             </a>
@@ -101,7 +102,7 @@ async function fetchData() {
             itemCount.innerHTML = `${jsonData.data.length}`;
 
             //페이지네이션 구현
-            const rowsPerPage = 15;
+            const rowsPerPage = 18;
             const rows = itemArea.querySelectorAll('.item-box');
             const rowsCount = rows.length;
             const pageCount = Math.ceil(rowsCount / rowsPerPage);
@@ -151,14 +152,25 @@ async function fetchData() {
             displayRaw(0);
 
 
+            return
+
         }
     } catch (error) {
         console.log(error);
     }
 }
+
 fetchData();
 
 
+
+// let idArray = []
+
+// for (let k = 0; k < jsonDataData.length; k++) {
+//     idArray.push(jsonDataData[k]._id)
+// }
+
+// console.log(idArray)
 
 
 // item - color - menu 조작하는 js 코드 생성
