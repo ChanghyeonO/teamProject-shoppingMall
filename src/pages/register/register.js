@@ -34,7 +34,6 @@ function validateInputs() {
   const userName = userNameInput.value;
   const password = passwordInput.value;
   const passwordConfirm = passwordConfirmInput.value;
-  const roleType = "USER";
   const phoneNumber = phoneNumberInput.value;
   const mail = emailInput.value;
   const address = addressBasicInput.value;
@@ -68,7 +67,7 @@ registerButton.addEventListener('click', async (e) => {
     const phoneNumber = phoneNumberInput.value;
     const mail = emailInput.value;
     const address = addressBasicInput.value;
-    
+
     const data = {
       userName,
       password,
