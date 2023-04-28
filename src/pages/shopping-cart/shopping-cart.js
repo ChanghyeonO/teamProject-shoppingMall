@@ -35,11 +35,12 @@ async function getSessionStorage() {
       .map((item) => {
         const productTotal =
           parseInt(item.quantity) * parseInt(item.productPrice);
+        const productImageID = "${item.productID}.jpeg";
         return `
           <li class="items odd">
             <div class="infoWrap"> 
               <div class="cartSection">
-                <img src="https://kinto.kr/data/item/21091/thumb-21091_1024x1024_600x600.jpg" alt="" class="itemImg" />
+                <img src="../../assets/product-imgs/${item.productID}.jpeg" alt="" class="itemImg" />
                 <h3 class= productName>${item.productName}</h3>
                 <ul class="count-container">
                   <li class="count-button">
@@ -247,11 +248,12 @@ document.querySelectorAll('a.remove').forEach(function (removeLink) {
     const cartItems = JSON.parse(sessionStorage.getItem('cartItems'));
     const updatedCartItems = cartItems.filter(item => ( item.productName !== productNameToDelete ));
     sessionStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+    updateTotalRow();
   });
 });
 
 // removeAllBtn 클릭 시, 모든 sessionStorage의 데이터를 지우고
-// sessionStorage를 다시 불러옴.
+// sessionStorage를 다시 불러옴
 const removeAllBtn = document.querySelector('.removeAll');
 removeAllBtn.addEventListener('click', removeAllItem);
 
@@ -259,4 +261,3 @@ function removeAllItem() {
   sessionStorage.removeItem('cartItem');
   getSessionStorage();
 }
-

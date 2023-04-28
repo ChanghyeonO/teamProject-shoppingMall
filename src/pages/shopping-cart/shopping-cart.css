@@ -172,7 +172,7 @@ img {
 }
 .cart .items .cartSection.qtyWrap, .cart .items .cartSection.prodTotal {
     /* position: absolute; */
-    width: 30%;
+    width: 25%;
     text-align: center;
     margin: 15px 30px 15px 30px;
     font-family: 'Gothic A1', sans-serif;;
