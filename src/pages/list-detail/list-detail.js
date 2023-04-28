@@ -29,7 +29,6 @@ const minusButton = document.querySelector('.minus-button');
 const plusButton = document.querySelector('.plus-button');
 const innerNumber = document.querySelector('.inner-number');
 
-const countHint = document.querySelector('.count-hint');
 const cartAddButton = document.querySelector('.cart-add-button');
 
 const specificationsContainer = document.querySelector('.specifications-container');
