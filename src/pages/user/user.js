@@ -101,8 +101,8 @@ async function getOrderData() {
 				</thead>
 				<tbody>
 					<tr>
+					${userOrderData.order.map((orders) => `
 						<td>${new Date(userOrderData.createdAt).toLocaleString()}</td>
-						${userOrderData.order.map((orders) => `
 						<td>${orders.name}</td>
 						<td>${orders.price}</td>
 						<td>${orders.count}</td>
