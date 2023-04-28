@@ -41,18 +41,53 @@ async function fetchData() {
         document.querySelector('.sorting-low-price-button').addEventListener('click', function () {
             // 가격이 낮은 순서대로 정렬
             jsonDataData = jsonData.data.sort((a, b) => a.price - b.price);
+
+            if (Array.isArray(jsonDataData)) {
+
+                const links = jsonDataData.map(data => `
+                    <a href="../list-detail/list-detail.html?id=${data._id}" class="item-box">
+                    <img src="../../assets/img/mug1.jpg" alt="${data.name}" class="item-image">
+                    <h5 class="item-name">${data.name}</h5>
+                    <p class="item-price">${data.price}원<br>(부가세포함)</p>
+                </a>
+            `);
+
+
+
+                //상품 목록 UI 브라우저에 출력
+                itemArea.innerHTML = links.join('');
+                mainTitle.innerHTML = jsonData.data[0].category;
+                itemCount.innerHTML = `${jsonData.data.length}`;
+            }
         });
 
         document.querySelector('.sorting-high-price-button').addEventListener('click', function () {
             // 가격이 높은 순서대로 정렬
             jsonDataData = jsonData.data.sort((a, b) => b.price - a.price);
-        });
 
+            if (Array.isArray(jsonDataData)) {
+
+                const links = jsonDataData.map(data => `
+                    <a href="../list-detail/list-detail.html?id=${data._id}" class="item-box">
+                    <img src="../../assets/img/mug1.jpg" alt="${data.name}" class="item-image">
+                    <h5 class="item-name">${data.name}</h5>
+                    <p class="item-price">${data.price}원<br>(부가세포함)</p>
+                </a>
+            `);
+
+
+
+                //상품 목록 UI 브라우저에 출력
+                itemArea.innerHTML = links.join('');
+                mainTitle.innerHTML = jsonData.data[0].category;
+                itemCount.innerHTML = `${jsonData.data.length}`;
+            }
+        });
 
         //상품 목록 데이터가 배열일 경우, 상품 목록 UI 생성
         if (Array.isArray(jsonDataData)) {
 
-            const links = jsonData.data.map(data => `
+            const links = jsonDataData.map(data => `
                 <a href="../list-detail/list-detail.html?id=${data._id}" class="item-box">
                 <img src="../../assets/img/mug1.jpg" alt="${data.name}" class="item-image">
                 <h5 class="item-name">${data.name}</h5>
