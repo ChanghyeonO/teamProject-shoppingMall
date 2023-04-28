@@ -38,12 +38,12 @@ function validateInputs() {
   const mail = emailInput.value;
   const address = addressBasicInput.value;
 
-  const isIdValid = userName.length >= 3 && userName.length <= 15;
-  const isPasswordValid = password.length >= 12 && password.length <= 30;
+  const isIdValid = /^.{3,15}$/u.test(userName);
+  const isPasswordValid = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{12,30}$/u.test(password);;
   const isPasswordCheck = password === passwordConfirm;
-  const isPhoneNumberValid = /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/.test(phoneNumber);
-  const isEmailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.com$/.test(mail);
-  const isAddressValid = address.length >= 1;
+  const isPhoneNumberValid = /^[0-9]{3}-[0-9]{4}-[0-9]{4}$/u.test(phoneNumber);
+  const isEmailValid = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.com$/u.test(mail);
+  const isAddressValid = /^.{1,}$/u.test(address);
 
   // 에러 메시지 출력
   showError(document.querySelector('#idError'), !isIdValid, userNameInput);
