@@ -19,6 +19,14 @@ const phoneNumberInput = document.querySelector('#phoneNumberInput');
 const addressBasicInput = document.querySelector('#addressBasicInput');
 const registerButton = document.querySelector('#registerButton');
 
+const userName = userNameInput.value;
+const password = passwordInput.value;
+const passwordConfirm = passwordConfirmInput.value;
+const roleType = "USER";
+const phoneNumber = phoneNumberInput.value;
+const mail = emailInput.value;
+const address = addressBasicInput.value;
+
 // 에러 메시지 출력 함수
 function showError(errorElement, isInvalid, focusInput) {
   if (isInvalid) {
@@ -31,14 +39,6 @@ function showError(errorElement, isInvalid, focusInput) {
 
 // 유효성 검사 함수
 function validateInputs() {
-  const userName = userNameInput.value;
-  const password = passwordInput.value;
-  const passwordConfirm = passwordConfirmInput.value;
-  const roleType = "USER";
-  const phoneNumber = phoneNumberInput.value;
-  const mail = emailInput.value;
-  const address = addressBasicInput.value;
-
   const isIdValid = userName.length >= 3 && userName.length <= 15;
   const isPasswordValid = password.length >= 12 && password.length <= 30;
   const isPasswordCheck = password === passwordConfirm;
