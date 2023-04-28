@@ -1,85 +1,25 @@
 @import "../../assets/styles/reset.css";
 
-/* header */
-
-.header {
-	position: fixed;
-	display: flex;
-	width: 100%;
-	height: 50px;
-	background-color: aqua;
-	z-index: 1;
-}
-
-.homepage-name {
-	font-size: 30px;
-	margin: 10px 15px 15px 40px;
-	text-decoration: none;
-}
-
-.text-navigation {
-	font-size: 15px;
-	margin: 18px 0px 0px 50px;
-}
-
-.text-navigation a {
-	margin-right: 30px;
-	text-decoration: none;
-}
-
-.icon-navigation {
-	font-size: 15px;
-	margin-top: 18px;
-	margin-left: 65%;
-}
-
-.icon-navigation a {
-	margin-right: 35px;
-}
-
-.products-detail {
-	position: absolute;
-	/* position: fixed; */
-	width: 100px;
-	height: 100px;
-	background-color: aquamarine;
-	text-align: center;
-	margin-top: 50px;
-	margin-left: 140px;
-	/* display: none; */
-}
-
-.products-detail li {
-	margin-top: 12px;
-}
-
-.products-detail li a {
-	text-decoration: none;
-}
-
 /* main */
 
 .section-title {
 	width: 100%;
-	height: 200px;
+	height: 100px;
 	border-bottom: 1px solid #919090;
 }
 
 .section-title h1 {
 	font-size: 20px;
 	color: #555;
-	padding-top: 160px;
+	padding-top: 3%;
 	margin-left: 10%;
 	margin-right: 10%;
 }
-
 .section-menu {
 	display: flex;
 	font-size: 15px;
 	color: #555;
-	margin-top: 25px;
-	margin-left: 10%;
-	margin-right: 10%;
+	margin: 25px 10%;
 }
 
 .item-count {
@@ -90,16 +30,47 @@
 .item-filter-box {
 	display: flex;
 	margin-left: 30px;
-	cursor: pointer;
 }
 
 .item-filter-box p {
 	margin-left: 30px;
+	margin-right: 20px;
+	cursor: pointer;
+}
+
+.item-filter-box p.menu-title {
+	margin-left: 30px;
+	cursor: pointer;
+}
+
+.item-filter-box .dropdown-menu {
+	display: none;
+	position: absolute;
+	background-color: white;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+}
+
+.item-filter-box .dropdown:hover .dropdown-menu {
+	display: block;
+}
+
+.item-filter-box .dropdown-menu p {
+	padding: 10px;
 }
 
 .item-sorting-title {
-	margin-left: 72%;
+	margin-left: auto;
 	cursor: pointer;
+}
+
+.item-sorting-title .sorting-menu-title {
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.item-sorting-title .fa-chevron-down {
+	margin-left: 5px;
 }
 
 .item-area {
@@ -190,10 +161,10 @@
 	flex-wrap: wrap;
 	width: 220px;
 	height: 240px;
-	margin-left: 120px;
+	left: 18%;
 	margin-top: 30px;
 	padding: 20px 20px 10px 20px;
-	background-color: aliceblue;
+	background-color: #fff;
 	font-size: 20px;
 	border: 1px solid #000;
 	box-shadow: 3px 3px 15px #666;
@@ -276,13 +247,13 @@
 	display: none;
 	position: absolute;
 	width: 220px;
-	height: 100px;
+	height: 150px;
 	margin-top: 30px;
-	margin-left: 190px;
+	left: 24%;
 	padding: 20px 20px 10px 20px;
 	border: 1px solid #000;
 	box-shadow: 3px 3px 15px #666;
-	background-color: aliceblue;
+	background-color: #fff;
 	list-style: none;
 }
 
@@ -317,31 +288,42 @@
 	width: 220px;
 	height: 150px;
 	margin-top: 30px;
-	right: 12%;
+	right: 10.5%;
 	padding: 20px 20px 10px 20px;
-	border: 1px solid #000;
 	box-shadow: 3px 3px 15px #666;
-	background-color: aliceblue;
-}
-/*  */
-.item-sorting-menu li {
-	margin-bottom: 20px;
+	background-color: #fff;
 }
 
-.item-sorting-menu input {
-	appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	width: 15px;
-	height: 15px;
-	border-radius: 50%;
-	border: 1px solid #ccc;
-	outline: none;
+.sorting-low-price-button {
+	display: block;
+	width: 100%;
+	height: 40px;
+	margin-bottom: 30px;
 	cursor: pointer;
-	vertical-align: middle;
+	color: #fff;
+	font-size: 15px;
+	border: none;
+	background-color: #ccc;
 }
 
-.item-sorting-menu input:checked {
-	border: 1px solid #000;
-	background: #ccc;
+.sorting-low-price-button:hover {
+	background-color: #565656;
+	transition: 0.5s;
+}
+
+.sorting-high-price-button {
+	display: block;
+	width: 100%;
+	height: 40px;
+	cursor: pointer;
+	color: #fff;
+
+	font-size: 15px;
+	border: none;
+	background-color: #ccc;
+}
+
+.sorting-high-price-button:hover {
+	background-color: #565656;
+	transition: 0.5s;
 }

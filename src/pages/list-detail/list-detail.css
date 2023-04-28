@@ -1,81 +1,90 @@
 @import "../../assets/styles/reset.css";
 
-body {
-	height: 3700px;
-}
-
-/* header */
-
-.navbar {
-	position: fixed;
-	display: flex;
-	width: 100%;
-	height: 50px;
-	background-color: aqua;
-	z-index: 1;
-}
-
-.homepage-name {
-	font-size: 30px;
-	margin: 10px 15px 15px 40px;
-	text-decoration: none;
-}
-
-.text-navigation {
-	font-size: 15px;
-	margin: 18px 0px 0px 50px;
-}
-
-.text-navigation a {
-	margin-right: 30px;
-	text-decoration: none;
-}
-
-.icon-navigation {
-	font-size: 15px;
-	margin-top: 18px;
-	margin-left: 65%;
-}
-
-.icon-navigation a {
-	margin-right: 35px;
-}
-
-.products-detail {
-	position: absolute;
-	/* position: fixed; */
-	width: 100px;
-	height: 100px;
-	background-color: aquamarine;
-	text-align: center;
-	margin-top: 50px;
-	margin-left: 140px;
-	display: none;
-}
-
-.products-detail li {
-	margin-top: 12px;
-}
-
-.products-detail li a {
-	text-decoration: none;
-}
-
 /* body */
 
 .main-content-box {
-	position: absolute;
 	width: 80%;
-	height: 3500px;
+	padding-top: 100px;
+	height: 1600px;
 	top: 150px;
 	left: 10%;
 	/* background-color: blue; */
 }
 
+.modal-box {
+	position: fixed;
+	width: 500px;
+	height: 200px;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+	background-color: #fff;
+	display: none;
+}
+
+.explanation-modal {
+	width: 100%;
+	height: 50px;
+	margin-top: 75px;
+	padding-top: 10px;
+	color: #000;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.close-modal {
+	float: right;
+	width: 50px;
+	height: 50px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	background-color: #ccc;
+}
+.close-modal:hover {
+	background-color: #565656;
+	transition: 0.5s;
+}
+
+.move-cart-modal {
+	position: absolute; /* 자식 요소를 absolute로 설정합니다. */
+	bottom: 0;
+	right: 0;
+	width: 50%;
+	height: 50px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	background-color: #ccc;
+}
+
+.move-cart-modal:hover {
+	background-color: #565656;
+	transition: 0.5s;
+}
+
+.move-main-modal {
+	position: absolute; /* 자식 요소를 absolute로 설정합니다. */
+	bottom: 0;
+	left: 0;
+	width: 50%;
+	height: 50px;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	background-color: #ccc;
+}
+.move-main-modal:hover {
+	background-color: #565656;
+	transition: 0.5s;
+}
+
 .left-content {
-	position: absolute;
+	position: fixed;
+	left: 10%;
 	width: 120px;
-	height: 360px;
 	margin-right: 5%;
 	/* background-color: aquamarine; */
 }
@@ -93,7 +102,6 @@ body {
 	position: absolute;
 	margin-left: 20%;
 	width: 550px;
-	height: 3100px;
 	/* background-color: blueviolet; */
 }
 
@@ -197,12 +205,15 @@ body {
 .cart-container {
 	width: 100%;
 	height: 80px;
+	margin-top: 20px;
 	/* background-color: #000; */
 }
 
 .cart-add-button {
-	width: 65%;
-	height: 60px;
+	position: absolute;
+	left: 0;
+	width: 49%;
+	height: 50px;
 	font-size: 20px;
 	font-weight: bold;
 	color: white;
@@ -218,8 +229,10 @@ body {
 }
 
 .move-cartpage-button {
-	width: 30%;
-	height: 60px;
+	position: absolute;
+	right: 0;
+	width: 49%;
+	height: 50px;
 	font-size: 20px;
 	font-weight: bold;
 	color: white;
@@ -247,7 +260,7 @@ body {
 }
 
 .specifications-container i {
-	margin-left: 400px;
+	margin-left: 405px;
 }
 
 .specifications-contents {
@@ -281,7 +294,7 @@ body {
 
 .handling-precautions-contents {
 	width: 100%;
-	height: 300px;
+	height: 600px;
 	border-bottom: 2px solid #ccc;
 	background-color: #fff;
 	display: none;
