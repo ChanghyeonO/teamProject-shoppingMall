@@ -199,37 +199,36 @@ window.addEventListener('storage', updateTotalRow);
 const orderButton = document.querySelector('.order');
 console.log(orderButton);
 
-// orderButton.addEventListener('click', (event) => {
-//   event.preventDefault();
-//   const orderData = {
-//     products: cartItems.map((item) => ({
-//       productName: item.productName,
-//       productPrice: item.productPrice,
-//       quantity: item.quantity,
-//     })),
-//   };
+orderButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  const orderData = {
+    orders: cartItems.map((item) => ({
+      name: item.productName,
+      count: item.quantity,
+    })),
+  };
 
-//   fetch('/api/order', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(orderData),
-//   })
-//     .then((response) => {
-//       if (response.ok) {
-//         alert('주문 성공!');
-//         window.location.href = '../main-page/home-page.html';
-//         return fetch('/api/order/orders');
-//       } else {
-//         throw new Error('주문 실패');
-//       }
-//     })
-//     .catch((error) => {
-//       alert('주문 실패, 재고를 확인해주세요');
-//       console.error(error);
-//     });
-// });
+  fetch('/api/order', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(orderData),
+  })
+    .then((response) => {
+      if (response.ok) {
+        alert('주문 성공!');
+        window.location.href = '../main-page/home-page.html';
+        return fetch('/api/order/orders');
+      } else {
+        throw new Error('주문 실패');
+      }
+    })
+    .catch((error) => {
+      alert('주문 실패, 재고를 확인해주세요');
+      console.error(error);
+    });
+});
 
 
 
