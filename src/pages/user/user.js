@@ -100,12 +100,12 @@ async function getOrderData() {
 					</tr>
 				</thead>
 				<tbody>
-					${userOrderData.map((data) => `
+					${userOrderData.map((datalist) => `
 						<tr>
-							<td>${data.order[0].name}</td>
-							<td>${new Date(data.createdAt).toLocaleString()}</td>
-							<td>${data.order[0].price}</td>
-							<td>${data.order[0].count}</td>
+							<td>${datalist.order[0].name}</td>
+							<td>${new Date(datalist.createdAt).toLocaleString()}</td>
+							<td>${datalist.order[0].price}</td>
+							<td>${datalist.order[0].count}</td>
 							<td>배송중</td>
 						</tr>
 					`).join('')}
