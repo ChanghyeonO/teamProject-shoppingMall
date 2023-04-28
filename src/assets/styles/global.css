@@ -73,8 +73,8 @@
 }
 
 .navbar-item:hover {
-  background-color: #e9e7e7;
-  border-radius: 4px;
+	background-color: #e9e7e7;
+	border-radius: 4px;
 }
 
 @media (min-width: 40rem) {
@@ -150,7 +150,7 @@
 }
 
 .dropdown-container > ul > li > a {
-	color: #222;
+	color: #fff;
 }
 
 .dropdown-container > ul > li:hover {
