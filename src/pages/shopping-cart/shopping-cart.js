@@ -56,7 +56,7 @@ async function getSessionStorage() {
               </div>  
             
               <div class="prodTotal cartSection">
-                ${productTotal} 원
+                ${addCommas(productTotal)} 원
               </div>
               <div class="cartSection removeWrap">
                 <a href="#" class="remove">x</a>
@@ -99,7 +99,7 @@ minusButtons.forEach(function (button) {
           item.productName === event.target.parentElement.parentElement.parentElement.parentElement.querySelector('.productName').textContent
         ) {
           item.quantity = innerNumber.value;
-          event.target.parentElement.parentElement.parentElement.parentElement.querySelector('.item-quantity').textContent = innerNumber.value;
+          event.target.parentElement.parentElement.parentElement.parentElement.querySelector('.item-quantity').textContent = innerNumber.value;   // closest?
           event.target.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector('.prodTotal').textContent 
             = addCommas( innerNumber.value * event.target.parentElement.parentElement.parentElement.parentElement.querySelector('.item-price').textContent + "원" );
         }
@@ -263,6 +263,6 @@ const removeAllBtn = document.querySelector('.removeall');
 removeAllBtn.addEventListener('click', removeAllItem);
 
 function removeAllItem() {
-  sessionStorage.removeItem('cartItem');
+  sessionStorage.removeItem('cartItems');
   getSessionStorage();
 }
